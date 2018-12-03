@@ -1,0 +1,51 @@
+\documentclass[UTF8]{article}
+\usepackage{setspace}
+% \usepackage{ctex}
+\usepackage{amsmath}
+\setstretch{1.523}
+\title{Title}
+\author{Discount}
+\date{}
+\begin{document}
+
+\maketitle{}
+
+\section{Lemma}
+
+\quad For convenience of expression, we set the setup cost as $S_{1},S_{2}, \dots ,S_{n}$ at interval point while the number of machine changes.
+And $S_{i}$ denotes the setup cost when the machine number changes from $i$ to $i-1$, especially, $S_{1}$ denotes the least setup cost when machine number is $1$ and the corresponding subsidy is $0$.
+We have the equation $S_{1}=S_{2}+\cdots+S_{n}=\sum_{i=2}^n S_i$.
+
+At first by given job processing times and calculating the given program, we can get $n-1$ setup cost values at interval points, that is $S_2,S_3,\dots,S_n$.
+
+Now that $S_2,S_3,\dots,S_n$ can be obtained by calculating, we can have a further result. $S_{1}=(n-1,n-2,\dots,0) \cdot (t_1,t_2,\dots,t_n)^T $, and $ t_1<t_2<\cdots<t_n$.
+
+Consider all the permutation and combination of processing jobs on two machines, we know that the following inequality must hold
+\begin{equation*}
+S_0+(n,n-1,\dots,1)\cdot(t_1,t_2,\dots,t_n)^T \leq
+2S_0+ \bigcirc \cdot (t_1,t_2,\dots,t_n)^T.
+\end{equation*}
+
+% \[
+% \begin{cases}
+%  \alpha_1+\alpha_2+ \cdots+\alpha_n = x_1 \\
+%  \alpha_1+\alpha_2+ \cdots+\alpha_n = x_1 \\
+%  \alpha_1+\alpha_2+ \cdots+\alpha_n = x_1.
+% \end{cases}
+% \]
+
+
+Notice that the inequality holds under any circumstances, which means we should find the minimum of $\bigcirc$.  Meanwhile, we know that $\bigcirc$ must contain jobs' processing time from $t_1$ to $t_n$ once at least. That is $\bigcirc \geq (1,1,\dots,1)$.
+
+So when $\bigcirc = (1,1,\dots,1)$, we get the equality
+\begin{equation}
+    S_0+(n,n-1,\dots,1) \cdot (t_1,t_2,\dots,t_n)^T= 2S_0+\sum_{i=1}^n t_i
+\end{equation}
+
+\qquad  Use $S_1$ to replace $S_0$, we can get
+
+\begin{equation}
+  S_{1}=(n-1,n-2,\dots,0) \cdot (t_1,t_2,\dots,t_n)^T
+\end{equation}
+
+\end{document}

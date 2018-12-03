@@ -1,0 +1,49 @@
+%!TEX program = xelatex
+% 使用 ctexart 文类，UTF-8 编码
+\documentclass[UTF8]{ctexart}
+\usepackage{amsmath}
+\usepackage{cases}
+\begin{document}
+For convenience of expression, we set the setup cost as $S_{1},S_{2}, \dots ,S_{n}$ at interval point while the number of machine changes.
+And $S_{i}$ denotes the setup cost when the machine number changes from $i$ to $i-1$, especially, $S_{1}$ denotes the least setup cost when machine number is $1$ and the corresponding subsidy is $0$.
+We have the equality
+\begin{displaymath}
+  S_{1}=S_{2}+\cdots+S_{n}=\sum_{i=2}^n S_i.
+\end{displaymath}
+Notice that
+\begin{displaymath}
+  (n-1) \sum_{s \in S \setminus\{V\} } \rho_s \geq
+  \sum_{k\in V}\sum_{s \in S \setminus\{V\}:k \in s} \rho_s = n.
+\end{displaymath}
+The left side of the inequality means for every $\rho_s$ can appear at most $(n-1)$ times, so we should know that if and only if for every $\rho_s > 0$ appears $n-1$ times the quality holds.That is to say, the coalitions which contains $n-1$ players are all maximally unsatisfied coalitions. Then we have $n \choose n-1$ equalities.
+\[
+\begin{cases}
+ \alpha_1+\alpha_2+ \cdots+\alpha_{n-1} & = x_1 \\
+ \alpha_1+\alpha_3+ \cdots+\alpha_n & = x_2 \\
+ \quad   \vdots        &\vdots\\
+ \alpha_2+\alpha_3+ \cdots+\alpha_n & = x_n.
+\end{cases}
+\]
+Add these $n$ equations together, and we can get
+\begin{equation*}
+  (n-1)(\alpha_1+\alpha_2+ \cdots+\alpha_n)=\sum_{i=1}^{n}x_i
+\end{equation*}
+As we know, $x_1,x_2,\dots,x_n$ can be expressed as follows:
+\[
+\begin{cases}
+x_1 = S_0 + (n-1)t_1 + (n-2)t_2 + &\cdots + t_{n-1} \\
+x_2 = S_0 + (n-1)t_1 + (n-2)t_3 + &\cdots + t_{n-1} \\
+\quad   \vdots        &\vdots\\
+x_n = S_0 + (n-1)t_2 + (n-2)t_3 + &\cdots + t_{n}
+\end{cases}
+\]
+According to SPT rule, we can obtain the equality
+$c(V)=\alpha_1+\alpha_2+\cdots+\alpha_n=S_0+nt_1+(n-1)t_2+\dots+t_n$
+By replacing $x_1,x_2,\dots,x_n$ together with the expression of $c(V)$, we can get a equality only with $S_0,x_1,x_2,\dots,x_n$.
+Finally, we can obtain $S_0 = \sum_{k=1}^n (n-k)t_k$.
+%\begin{numcases}{f(x)=}
+%  1/q, & if $x = p/q \in \mathbb{Q}$;\\
+%  0 , & else.
+%\end{numcases}
+\end{document}
+\
