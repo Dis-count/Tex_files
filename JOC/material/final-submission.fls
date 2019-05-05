@@ -1,0 +1,4 @@
+PWD F:/Program Files/Tex_files/JOC/material
+INPUT c:/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt
+INPUT final-submission.tex
+OUTPUT final-submission.log

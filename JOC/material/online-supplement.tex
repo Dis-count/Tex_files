@@ -1,0 +1,274 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Author template for INFORMS Journal on Computing (ijoc)
+%% Mirko Janc, Ph.D., INFORMS, mirko.janc@informs.org
+%% ver. 0.95, December 2010
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\documentclass[ijoc,blindrev]{informs3}
+\documentclass[ijoc,nonblindrev]{informs3-online-supplement} % current default for manuscript submission
+
+\OneAndAHalfSpacedXI
+%\OneAndAHalfSpacedXII % current default line spacing
+%%\DoubleSpacedXII
+%%\DoubleSpacedXI
+
+% If hyperref is used, dvi-to-ps driver of choice must be declared as
+%   an additional option to the \documentclass. For example
+%\documentclass[dvips,ijoc]{informs3}      % if dvips is used
+%\documentclass[dvipsone,ijoc]{informs3}   % if dvipsone is used, etc.
+
+% Private macros here (check that there is no clash with the style)
+
+% Natbib setup for author-year style
+\usepackage{natbib}
+ \bibpunct[, ]{(}{)}{,}{a}{}{,}%
+ \def\bibfont{\small}%
+ \def\bibsep{\smallskipamount}%
+ \def\bibhang{24pt}%
+ \def\newblock{\ }%
+ \def\BIBand{and}%
+
+%% Setup of theorem styles. Outcomment only one. 
+%% Preferred default is the first option.
+\TheoremsNumberedThrough     % Preferred (Theorem 1, Lemma 1, Theorem 2)
+%\TheoremsNumberedByChapter  % (Theorem 1.1, Lema 1.1, Theorem 1.2)
+
+%% Setup of the equation numbering system. Outcomment only one.
+%% Preferred default is the first option.
+\EquationsNumberedThrough    % Default: (1), (2), ...
+%\EquationsNumberedBySection % (1.1), (1.2), ...
+
+% In the reviewing and copyediting stage enter the manuscript number.
+\MANUSCRIPTNO{JOC-2015-04-OA-064} % When the article is logged in and DOI assigned to it,
+                 %   this manuscript number is no longer necessary
+
+\usepackage{float}
+\usepackage{color}%,soul}f
+\usepackage{multirow}
+\usepackage{xr}
+\externaldocument{final-paper}
+
+
+
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{pf}{Proof}
+\newcommand*{\QEDB}{\hfill\ensuremath{\square}}
+
+\newcommand{\rv}{random variable}
+\newcommand{\bE}{\bf E}
+\renewcommand{\Box}{\bigboxvoid}
+\newcommand{\qeds}{$\qedsymbol $}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cc}{\mathbb{c}}
+\renewcommand{\theequation}{A.\arabic{equation}}
+
+
+
+%%%%%%%%%%%%%%%%
+\begin{document}
+%%%%%%%%%%%%%%%%
+
+% Outcomment only when entries are known. Otherwise leave as is and 
+%   default values will be used.
+%\setcounter{page}{1}
+%\VOLUME{00}%
+%\NO{0}%
+%\MONTH{Xxxxx}% (month or a similar seasonal id)
+%\YEAR{0000}% e.g., 2005
+%\FIRSTPAGE{000}%
+%\LASTPAGE{000}%
+%\SHORTYEAR{00}% shortened year (two-digit)
+%\ISSUE{0000} %
+%\LONGFIRSTPAGE{0001} %
+%\DOI{10.1287/xxxx.0000.0000}%
+
+% Author's names for the running heads
+% Sample depending on the number of authors;
+% \RUNAUTHOR{Jones}
+% \RUNAUTHOR{Jones and Wilson}
+% \RUNAUTHOR{Jones, Miller, and Wilson}
+% \RUNAUTHOR{Jones et al.} % for four or more authors
+% Enter authors following the given pattern:
+\RUNAUTHOR{Liu, Qi and Xu}
+
+% Title or shortened title suitable for running heads. Sample:
+ \RUNTITLE{Online Supplement to ``Cost Allocation Framework by Lagrangian Relaxation"}
+% Enter the (shortened) title:
+%\RUNTITLE{}
+
+% Full title. Sample:
+% \TITLE{Bundling Information Goods of Decreasing Value}
+% Enter the full title:
+\TITLE{Online Supplement to ``Computing Near-Optimal Stable Cost Allocations for Cooperative Games by Lagrangian Relaxation"}
+% Block of authors and their affiliations starts here:
+% NOTE: Authors with same affiliation, if the order of authors allows, 
+%   should be entered in ONE field, separated by a comma. 
+%   \EMAIL field can be repeated if more than one author
+\ARTICLEAUTHORS{%
+\AUTHOR{Lindong Liu, Xiangtong Qi}
+\AFF{Department of Industrial Engineering and Logistics Management\\The Hong Kong University of Science and Technology\\ \{\EMAIL{ldliu@ust.hk}, \EMAIL{ieemqi@ust.hk}\}}
+\AUTHOR{Zhou Xu}
+\AFF{Department of Logistics and Maritime Studies\\Faculty of Business\\ The Hong Kong Polytechnic University\\ \EMAIL{lgtzx@polyu.edu.hk}}
+% Enter all authors
+} % end of the block
+
+%\ABSTRACT{%
+%}%
+
+% Sample 
+%\KEYWORDS{deterministic inventory theory; infinite linear programming duality; 
+%  existence of optimal policies; semi-Markov decision process; cyclic schedule}
+
+% Fill in data. If unknown, outcomment the field
+%\KEYWORDS{}
+\HISTORY{Accepted by Karen Aardal, Area Editor for Design and Analysis of Algorithms; received April 2015; revised November 2015, March 2016; accepted March 2016.}
+
+\maketitle
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Samples of sectioning (and labeling) in IJOC
+% NOTE: (1) \section and \subsection do NOT end with a period
+%       (2) \subsubsection and lower need end punctuation
+%       (3) capitalization is as shown (title style).
+%
+%\section{Introduction.}\label{intro} %%1.
+%\subsection{Duality and the Classical EOQ Problem.}\label{class-EOQ} %% 1.1.
+%\subsection{Outline.}\label{outline1} %% 1.2.
+%\subsubsection{Cyclic Schedules for the General Deterministic SMDP.}
+%  \label{cyclic-schedules} %% 1.2.1
+%\section{Problem Description.}\label{problemdescription} %% 2.
+
+% Text of your paper here
+
+
+
+%=====================================================================================================================
+%=====================================================================================================================
+% Appendix here
+% Options are (1) APPENDIX (with or without general title) or
+%             (2) APPENDICES (if it has more than one unrelated sections)
+% Outcomment the appropriate case if necessary
+%
+% \begin{APPENDIX}{<Title of the Appendix>}
+% \end{APPENDIX}
+%
+%   or
+%
+% \begin{APPENDICES}
+% \section{<Title of Section A>}
+% \section{<Title of Section B>}
+% etc
+% \end{APPENDICES}
+
+
+\begin{APPENDICES}
+\section{Column and Row Generation Approaches for IM Games} \label{section:LPBalgorithm}
+We summarize the column generation approach and the row generation approach (LPB algorithm) discussed by \cite{Caprara2010LPB} in this section.
+
+For the column generation approach, consider the definition of OCAP by LP $(\ref{eqn:OCAP})$. Its dual problem is:
+\begin{equation}\label{eqn:lpbrow1}
+\min_{\beta} \big\{ \sum_{s \in S}c(s)\beta_s:\sum_{s \ni k}\beta_s = 1,\forall k \in V,\beta_s \geq 0, s \in S \big\}.
+\end{equation}
+Denote by $Q^{x\gamma}$ the overall set of feasible solutions of ILP (\ref{eqn:orgc1}), i.e.,
+$$
+Q^{x\gamma} = \bigl\{ x \in \big\{0,1\big\}^{ t \times 1},\gamma \in \big\{0,1\big\}^{v \times 1}:Ax \geq B\gamma+D,A'x \geq B'\gamma+D',\gamma = \gamma^s,\forall s \in S  \bigr\}.$$
+Then LP (\ref{eqn:lpbrow1}) can be re-formulated, for the purpose of doing   column generation, by enumerating all values in $Q^{x\gamma}$. Specifically,
+for each $(\bar{x},\bar{\gamma}) \in Q^{x\gamma}$, define variable $\beta_{\bar{x},\bar{\gamma}}$ with cost $C\bar{x}$. We will have a master LP
+\begin{equation}\label{eqn:lpbrow2}
+\min_{\beta} \big\{ \sum_{(\bar{x},\bar{\gamma}) \in Q^{x\gamma}} (C\bar{x})\beta_{(\bar{x},\bar{\gamma})}: \sum_{(\bar{x},\bar{\gamma}) \in Q^{x\gamma}} \bar{\gamma}_k \beta_{(\bar{x},\bar{\gamma})}=1,\forall k \in V, \beta_{\bar{x},\bar{\gamma}}\geq 0, (\bar{x},\bar{\gamma})\in Q^{x\gamma} \big\}.
+\end{equation}
+Though the formulation is straightforward, the above column generation is difficult to solve because the pricing problem amounts to optimizing over $Q^{x\gamma}$, which is usually NP-hard in the strong sense.
+
+
+As to the row generation approach, it needs to identify a set of so-called assignable constraints, analogous to the cutting-plane method for solving IP where tight valid constraints are added to sharpen the LP bound. We let $P_I^x = conv \big\{ x \in \big\{0,1\big\}^{ t \times 1}:Ax \geq B\textbf{1}+D,A'x \geq B'\textbf{1}+D'  \big\}$ and $P_{I}^{x\gamma} = conv ~Q^{x\gamma}$, where function $conv\{\cdot\}$ represents the convex hull of a vector. Note that $P_I^x$ is the convex hull of the integer solutions to (\ref{eqn:orgc1}).
+
+
+\begin{definition}
+A valid inequality $ax \geq b$ for $P_I^x$ is said to be $assignable$ if there exists a valid inequality $ax \geq b'\gamma$ for $P_I^{x\gamma}$ such that $\sum_{k \in V}b'_k = b$.
+\end{definition}
+
+
+\begin{theorem}\label{thm:LPBthm}
+For an IM game $(V,c)$, if there exists an LP $\min_{x} \{Cx:Ex \geq F\gamma\}$ that gives a lower bound to ILP (\ref{eqn:orgc1}), where all constraints $Ex \geq F\gamma$ are assignable, then vector $\alpha_{LP}^{EF}$ given by
+\begin{equation*}\label{eqn:LPBca}
+\alpha_{LP}^{EF}(k) = \sum_{l=1}^{m_E} f_{lk}\mu_l^*,~\forall k \in V,
+\end{equation*}
+is a stable cost allocation for the IM game, where $\mu^*$ is the LP dual variable value for an optimal solution to $\min_{x} \{Cx:Ex \geq F\textbf{1}\}$, and $m_E$ is the number of rows of matrix $E$.
+In addition, the total shared cost $\sum_{k \in V}\alpha_{LP}^{EF}(k) = \min_{x} \{Cx:Ex \geq F\textbf{1}\}$.
+\end{theorem}
+
+In fact, Theorem \ref{thm:LPBthm} stands true if $\mu^*$ is relaxed to be an optimal solution to the dual of $\min_{x} \{Cx:Ex \geq F\textbf{1}\}$. The proof is straightforward based on the results in Caprara and Letchford (2010). We will apply the extended results in our analysis.
+
+Note that $c_{LP}^{EF}(V)=\min_{x} \{Cx:Ex \geq F\textbf{1}\}$ gives an LP lower bound of the grand coalition cost $c(V)$.
+According to Theorem $\ref{thm:LPBthm}$, the quality of the LPB cost allocation $\alpha_{LP}^{EF}$ greatly depends on the tightness of constraints set $\{Ex \geq F\textbf{1}\}$, i.e., the tighter the constraints set is, the better the resulting  LPB cost allocation $\alpha_{LP}^{EF}$ is. In addition, if given a basic optimal solution of $\min_{x} \{Cx:Ex \geq F\textbf{1}\}$, then the resulting $\mu^*$ can be regarded as the shadow prices of constraints $Ex \geq F\textbf{1}$, and therefore this leads to some LPB cost allocations with strong business insights. Such examples can be seen in the UFL LPB cost allocations.
+
+Four IM games are investigated in Caprara and Letchford (2010), namely, the Uncapacitated Facility Location game, the Rooted and Unrooted Travelling Salesman games and the Vehicle Routing game. For each game, they give a tight constraint set such that the total shared cost $c_{LP}^{EF}(V)$ is no smaller than $c_{LP}(V)$, the LP lower bound of $c(V)$ from the original ILP formulation.
+
+
+\end{APPENDICES}
+
+
+
+
+\bibliographystyle{informs2014}
+\bibliography{ComputingGoodCAforORGames}
+
+%=====================================================================================================================
+%=====================================================================================================================
+
+% References here (outcomment the appropriate case)
+
+% CASE 1: BiBTeX used to constantly update the references
+%   (while the paper is being written).
+%\bibliographystyle{ormsv080} % outcomment this and next line in Case 1
+%\bibliography{<your bib file(s)>} % if more than one, comma separated
+
+% CASE 2: BiBTeX used to generate mypaper.bbl (to be further fine tuned)
+%\input{mypaper.bbl} % outcomment this line in Case 2
+
+%If you don't use BiBTex, you can manually itemize references as shown below.
+
+
+%\bibliographystyle{nonumber}
+
+
+%\bibliographystyle{chicago}
+
+
+% Acknowledgments here
+%\ACKNOWLEDGMENT{%
+% Enter the text of acknowledgments here
+%}% Leave this (end of acknowledgment)
+
+
+% Appendix here
+% Options are (1) APPENDIX (with or without general title) or 
+%             (2) APPENDICES (if it has more than one unrelated sections)
+% Outcomment the appropriate case if necessary
+%
+% \begin{APPENDIX}{<Title of the Appendix>}
+% \end{APPENDIX}
+%
+%   or 
+%
+% \begin{APPENDICES}
+% \section{<Title of Section A>}
+% \section{<Title of Section B>}
+% etc
+% \end{APPENDICES}
+
+
+% References here (outcomment the appropriate case) 
+
+% CASE 1: BiBTeX used to constantly update the references 
+%   (while the paper is being written).
+%\bibliographystyle{ijocv081} % outcomment this and next line in Case 1
+%\bibliography{<your bib file(s)>} % if more than one, comma separated
+
+% CASE 2: BiBTeX used to generate mypaper.bbl (to be further fine tuned)
+%\input{mypaper.bbl} % outcomment this line in Case 2
+
+\end{document}
+
+

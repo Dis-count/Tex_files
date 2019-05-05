@@ -1,0 +1,13 @@
+# Fdb version 3
+["xdvipdfmx"] 0 "final-submission.xdv" "final-submission.pdf" "final-submission" 0
+  "final-submission.xdv" 0 -1 0 "xelatex"
+  (generated)
+  "final-submission.pdf"
+["xelatex"] 1554190776 "final-submission.tex" "final-submission.xdv" "final-submission" 1554190776
+  "c:/texlive/2018/texmf-var/web2c/xetex/xelatex.fmt" 1538210572 2482158 4629f37b26778d848d091c40e14b89a9 ""
+  "final-submission.aux" 1554190776 9 a94a2480d3289e625eea47cd1b285758 ""
+  "final-submission.tex" 1554190775 100397 9c349a4309e4149e15f04f4976bc7012 ""
+  "informs3.cls" 0 -1 0 ""
+  (generated)
+  "final-submission.log"
+  "final-submission.xdv"

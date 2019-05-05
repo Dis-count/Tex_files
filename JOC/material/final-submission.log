@@ -1,0 +1,33 @@
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.9.29)  2 APR 2019 15:39
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**final-submission.tex
+(./final-submission.tex
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 6 language(s) loaded.
+
+! LaTeX Error: File `informs3.cls' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: cls)
+
+Enter file name: 
+./final-submission.tex:8: Emergency stop.
+<read *> 
+         
+l.8 ^^M
+       
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 9 strings out of 494895
+ 139 string characters out of 6176372
+ 55691 words of memory out of 5000000
+ 3995 multiletter control sequences out of 15000+600000
+ 3640 words of font info for 14 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 10i,0n,8p,109b,8s stack positions out of 5000i,500n,10000p,200000b,80000s
+No pages of output.
