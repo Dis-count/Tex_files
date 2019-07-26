@@ -1,2 +1,28 @@
 {
+    "window.menuBarVisibility": "default",
+    "editor.cursorBlinking": "smooth",
+    "workbench.colorTheme": "Monokai",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "editor.fontSize": 20,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\cmd.exe",
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true
+    "background.enabled": true,
+    "background.useDefault": false,
+    "background.customImages": [
+        "file:///E:/Discounter/Me/我的相册/me.jpg"
+    ],
+    "background.style": {
+        "content": "''",
+        "pointer-events": "none",
+        "position": "absolute",
+        "z-index": "99999",
+        "width": "100%",
+        "height": "100%",
+        "background-position": "center",
+        "background-repeat": "no-repeat",
+        "background-size": "100%,100%",
+        "opacity": 0.2
+    }
 }
