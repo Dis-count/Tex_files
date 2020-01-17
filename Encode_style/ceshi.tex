@@ -1,0 +1,14 @@
+\documentclass{article}% pdflatex编译 tex格式
+\usepackage{ctex}
+\begin{document}
+这是一个~CTEX 的~GBK 编码例子，{\kaishu 这里是楷体显示}，{\songti 这里是宋体显示}，{\heiti 这里是黑体显示}，{\fangsong 这里是仿宋显示}。
+
+我们看到是中英文混排的时候，中文到英语的时候，中文后面的空格不起作用。这个是 pdflatex 编译麻烦处。
+
+Latex一般用CJK和CTEX宏包支持中文编辑。用CJK宏包稍微麻烦一点点，就是要加begin 和 end，现在更多的是使用 ctex包。CJK 和 CTEX 的默认编码是GBK，而windows下的默然编码就是GBK，因此CJK和CTEX不需要特殊配置就可以直接支持中文Latex编译，只需要用GBK编码保存文件即可（就是通常的默认保存）。这段文字我是从网上找到的。解释很清晰！
+
+
+这个模板如果换 Xelatex 编译就会报错，因为 xelatex 的默认输入文件是utf-8编码。pdflatex 默然按照 GBK 编码处理 tex 文件。
+\end{document}
+
+% 这个需要用 pdflatex 同时编码是 gb2312  xelatex  才对应  utf-8
