@@ -25,7 +25,7 @@
 %Natbib setup for author-year style
 
 %\bibliographystyle{chicago}
-\usepackage{float} 
+\usepackage{float}
 \usepackage{multirow}
 \newtheorem{algorithm}{Algorithm}
 \newtheorem{theorem}{Theorem}
@@ -41,7 +41,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\cc}{\mathbb{c}}
 \usepackage{ textcomp }
-\usepackage{float} 
+\usepackage{float}
 \usepackage{multirow}
 \usepackage{comment}
 %\usepackage{enumitem}
@@ -148,7 +148,7 @@ Changing the format from PSF to SPF does not affect our future studies, but prov
 
 
 As an integration of subsidization and penalization, the S\&P instrument includes the two traditional instruments as its special cases.
-To be specific, when subsidy is zero, the corresponding subsidized minimum penalty $z(0)$ will be equal to the least core value $z^*$, whereas when subsidy is $\omega^*$, the resulting minimum penalty $z(\omega^*)$ will be equal to zero. 
+To be specific, when subsidy is zero, the corresponding subsidized minimum penalty $z(0)$ will be equal to the least core value $z^*$, whereas when subsidy is $\omega^*$, the resulting minimum penalty $z(\omega^*)$ will be equal to zero.
 Therefore, following the S\&P idea and stabilizing the grand coalition in unbalanced cooperative games would be a good choice.
 
 
@@ -173,7 +173,7 @@ Furthermore, the LRB algorithm is able to deal with nonlinear situations while t
 
 
 Third, we implement our ideas in the rooted TSP games.
-The result indicates the the effectiveness and efficiency of the LRB algorithm in computing $z(\omega)$, associating with a fair cost allocation. 
+The result indicates the the effectiveness and efficiency of the LRB algorithm in computing $z(\omega)$, associating with a fair cost allocation.
 It also contributes to the TSP game's literature, which previously mainly focused on core existence checking and the time complexity analysis of the $\gamma$-core.
 
 
@@ -243,7 +243,7 @@ Now, we stabilize the grand coalition by the S\&P instrument at different subsid
 %\multirow{1}{*}{} &\multicolumn{1}{c}{HG(\%)} &\multicolumn{1}{c}{TG(\%)}	&\multicolumn{1}{c}{$\bar{\omega}_{t}$(\%)}	&\multicolumn{1}{c}{$t_1$(s)}	&\multicolumn{1}{c}{$t_2$(s)}	&\multicolumn{1}{c}{$t_3$(s)}	&\multicolumn{1}{c}{Total time(s)}\\
 \hline
 $\omega$   &0	&6	&12	&18	&24	&30	&36	&42\\
-\hline      
+\hline
 $z(\omega)$	&15	&12	&9.33	&7.33	&5.33	&3.33	&1.33	&0\\
 $\beta(2,\omega)$	&25	&22	&19.33	&17.33	&15.33	&13.33	&11.33	&10                \\
 $\beta(3,\omega)$	&20	&20	&19.33	&17.33	&15.33	&13.33	&11.33	&10                     \\
@@ -300,15 +300,15 @@ Similar to \cite{leastcore2018}, we can derive some properties of the R-SPF and 
 The results are shown in Remark \ref{rem:convex}.
 
 \begin{remark}\label{rem:convex}
-Given any $c_u(V) \geq c(V)$ and $c_l(s) \leq c(s)$, $\forall s \in S$, for the R-SPF $z_r(\omega)$, we have,\\
+Given any $c_u(V) \geq c(V)$ and $c_l(s) \leq c(s)$, $\forall s \in S \setminus V$, for the R-SPF $z_r(\omega)$, we have,\\
 (i) the R-SPF $z_r(\omega)$ is strictly decreasing, piecewise linear, and convex in subsidy $\omega$, and\\
 (ii) for each linear segment of $z_r(\omega)$, its derivative $z'_r(\omega)$ is in the range $\big[ -\frac{v-1}{v}, -\frac{1}{v} \big] \subset \big[-1,0\big]$.
 \end{remark}
 
 
 Compared with LP $(\ref{eqn:SLC})$, we replace $c(s)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional combinatorial optimization techniques.
-Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(s)$ bounds. 
-In the following subsection, we develop a solution by applying Lagrangian bounds. 
+Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(s)$ bounds.
+In the following subsection, we develop a solution by applying Lagrangian bounds.
 
 
 
@@ -330,7 +330,7 @@ c_{\lambda}(V) = \min_{x} \bigg\{ f(x)-\lambda A'x + \lambda B'\textbf{1}+ \lamb
 
 As with usual Lagrangian relaxation, constraints $\{A'x \geq B'\gamma^s + D'\}$ can be chosen such that $c_{\lambda}(s)$ is relatively easy to solve, for example in (pseudo-)polynomial for any $s \in S$.
 
-Since $c_{\lambda}(V)$ is a lower bound of $c(V)$ for any non-negative $\lambda$, to obtain the sharpest Lagrangian lower bound for $c(V)$, we need to solve the Lagrangian dual problem; that is we have to find the best Lagrangian multipliers $\lambda$ to maximize $c_{\lambda}(V)$: 
+Since $c_{\lambda}(V)$ is a lower bound of $c(V)$ for any non-negative $\lambda$, to obtain the sharpest Lagrangian lower bound for $c(V)$, we need to solve the Lagrangian dual problem; that is we have to find the best Lagrangian multipliers $\lambda$ to maximize $c_{\lambda}(V)$:
 \begin{eqnarray*}\label{eqn:lagrangianfunctionmax}
 \begin{aligned}
 d(V) = \max_{\lambda} \bigg\{ \min_{x} \big\{ f(x)-\lambda A'x + \lambda B'\textbf{1} + \lambda D':Ax \geq B\textbf{1} + D, x \in \{0,1\}^{t \times 1} \big\}:\lambda \geq \textbf{0} \bigg\}.
@@ -351,9 +351,9 @@ s.t.~~ \beta(s) \leq  c_{\lambda}(s) + z,~ \forall s &\in S \setminus V,\\
 \end{eqnarray}
 
 Note that by showing the second constraint in (\ref{eqn:laSLC}) as an inequality, we can simplify our future computations. This transformation is feasible because, as in Remark $\ref{rem:convex}$, $z_{\lambda}(\omega)$ is decreasing with respect to $\omega$.
-From Theorem \ref{thm:rb}, %since $c_{\lambda}(s)$ is a lower bound on $c(s)$, we claim that 
-the optimal $z_{\lambda}(\omega)$ to LP $(\ref{eqn:laSLC})$, or the Lagrangian subsidized minimum penalty, is an upper bound of the subsidized minimum penalty for the IM game $(V,c)$. 
-In this case, given any subsidy $\omega$, the IM game $(V,c)$ can be balanced by letting the penalty deviate from the grand coalition to become $z_{\lambda}(\omega)$. % In addition, the corresponding Lagrangian $\omega$-subsidized least core cost allocation is given by optimal solution $\beta_{\lambda}(\ \cdot \ ,\omega)$. 
+From Theorem \ref{thm:rb}, %since $c_{\lambda}(s)$ is a lower bound on $c(s)$, we claim that
+the optimal $z_{\lambda}(\omega)$ to LP $(\ref{eqn:laSLC})$, or the Lagrangian subsidized minimum penalty, is an upper bound of the subsidized minimum penalty for the IM game $(V,c)$.
+In this case, given any subsidy $\omega$, the IM game $(V,c)$ can be balanced by letting the penalty deviate from the grand coalition to become $z_{\lambda}(\omega)$. % In addition, the corresponding Lagrangian $\omega$-subsidized least core cost allocation is given by optimal solution $\beta_{\lambda}(\ \cdot \ ,\omega)$.
 
 
 Motivated by \cite{LRCA2016}, the remainder of this subsection shows how to compute $z_{\lambda}(\omega)$ with Lagrangian decomposition and column generation techniques.
@@ -472,7 +472,7 @@ The lower bound given by LP $(\ref{eqn:klevel})$ is sharper when $k$ is larger, 
 In this section, we illustrate the LRB algorithm on the rooted TSP game, compute its Lagrangian subsidized minimum penalty, and investigate the quantitative relationship between subsidy and penalty in stabilizing its grand coalition.
 
 \subsection{Game Definition}
-The TSP game examined here is symmetric and rooted; that is the distances between two cities are the same in both directions, and there is a depot city. 
+The TSP game examined here is symmetric and rooted; that is the distances between two cities are the same in both directions, and there is a depot city.
 There is a complete undirected graph $G = (N_p \cup \{1\},E)$ with $N_p \cup \{1\}$ representing the city sites, $E$ being the set of edges linking these cities and city `1' being the depot city. Each edge $\{i,j\} \in E$ has a unit transportation cost of $c_{ji} = c_{ij} > 0$.
 For a given coalition $s \in N_p$, the goal is to find a Hamiltonian circuit on cities $s \cup \{1\}$ with minimum total transportation cost. The notations used in the rooted TSP game are listed in Table~\ref{table:TSnotation}.
 \begin{table}[H]
@@ -533,7 +533,7 @@ x_{ij} \leq \frac{1}{2}&(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}),~\forall i
 \end{aligned}
 \end{eqnarray}
 
-ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1 \big\}$ and $\big\{ x_{ij} \leq \frac{1}{2}(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}):\forall i \in N, j \in N \big\}$ can improve the Lagrangian lower bound for $c(N_t)$. 
+ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1 \big\}$ and $\big\{ x_{ij} \leq \frac{1}{2}(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}):\forall i \in N, j \in N \big\}$ can improve the Lagrangian lower bound for $c(N_t)$.
 By dividing $c_{\sigma}$ into two parts, we can define the rooted TSP sub-games 1 and 2 as $(N_t,c_{\sigma1})$ and $(N_t,c_{\sigma2})$, respectively.
 
 Sub-game 1 is modular, where the expression of $c_{\sigma1}(s)$ is
@@ -552,8 +552,8 @@ x_{ij} \leq \frac{1}{2}&(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}),~\forall i
 \end{aligned}
 \end{eqnarray*}
 
-In the literature, $c_{\sigma2}(N_t)$ is called a `1-tree problem' (e.g. \citealt{held1971traveling}). 
-Similarly, we refer to $c_{\sigma2}(s)$ as a `1-s tree problem' with a subgraph $G=(N_t\cup\{1\},E)$ consisting of a tree on cities $s$ and two distinct edges at city 1 linked to $s$, and minimum transportation cost. 
+In the literature, $c_{\sigma2}(N_t)$ is called a `1-tree problem' (e.g. \citealt{held1971traveling}).
+Similarly, we refer to $c_{\sigma2}(s)$ as a `1-s tree problem' with a subgraph $G=(N_t\cup\{1\},E)$ consisting of a tree on cities $s$ and two distinct edges at city 1 linked to $s$, and minimum transportation cost.
 To solve the 1-$s$ tree problem polynomially, we need to first construct a minimum spanning tree on cities $s$ and then add two edges linked to city 1 with the smallest transportation cost.
 
 For ease of exposition, we rewrite $c_{\sigma2}(s)$ in an equivalent expression as
@@ -564,8 +564,8 @@ s.t.~~&\text{$x$ is a 1-$s$ tree}.
 \end{aligned}
 \end{eqnarray*}
 
-Now, we apply the LRB algorithm and compute the Lagrangian subsidized minimum penalty $z_{\sigma}(\omega)$ for the rooted TSP game. 
-For this particular application of LRB algorithm, we omit all the detailed descriptions and analyse only its hardest part, the corresponding pricing problem. 
+Now, we apply the LRB algorithm and compute the Lagrangian subsidized minimum penalty $z_{\sigma}(\omega)$ for the rooted TSP game.
+For this particular application of LRB algorithm, we omit all the detailed descriptions and analyse only its hardest part, the corresponding pricing problem.
 Specifically, this pricing problem can find the coalition $s \in N_t$ with the minimum negative cost:
 \begin{eqnarray}\label{eqn:tspricinglcv}
 \begin{aligned}
@@ -579,9 +579,9 @@ where $\pi^*$ gives the optimal dual solution to the corresponding master proble
 As stated in the description of Algorithm \ref{alg:SPC}, it is hard to optimally solve ILP $(\ref{eqn:tspricinglcv})$, but we can still apply the LRB algorithm before it is completed, because we only need to find column $\bar{s}$ with a minimum negative cost to continue the algorithm.
 
 
-To further enhance computational efficiency, we adopt the Minimum Adjacency Test (see \citealt{duin1987some,ljubic2006algorithmic}) and reduce the magnitude of the problem $(\ref{eqn:tspricinglcv})$. 
-This method is widely used to reduce the magnitude of prize-collecting Steiner tree problems. 
-The key idea is to merge two cities into one if it does not affect the optimal value. With some modifications, we can obtain an efficient reduction technique for ILP $(\ref{eqn:tspricinglcv})$, as shown in Lemma \ref{lemma:reduction}. 
+To further enhance computational efficiency, we adopt the Minimum Adjacency Test (see \citealt{duin1987some,ljubic2006algorithmic}) and reduce the magnitude of the problem $(\ref{eqn:tspricinglcv})$.
+This method is widely used to reduce the magnitude of prize-collecting Steiner tree problems.
+The key idea is to merge two cities into one if it does not affect the optimal value. With some modifications, we can obtain an efficient reduction technique for ILP $(\ref{eqn:tspricinglcv})$, as shown in Lemma \ref{lemma:reduction}.
 \begin{lemma}\label{lemma:reduction}
 If the pricing problem $(\ref{eqn:tspricinglcv})$ has two nodes $a,b \in N_t$ such that
 \begin{equation*}
@@ -596,10 +596,10 @@ Although this does not guarantee polynomial time complexity, Lemma \ref{lemma:re
 
 \subsection{Computational Results}\label{section:computationalresults}
 In this subsection, we present our results of applying the LRB algorithm to the rooted TSP game.
-We conduct experiments using a Windows 7 PC with an Intel Core i7-2600 running at 3.4GHz and 16G RAM. 
+We conduct experiments using a Windows 7 PC with an Intel Core i7-2600 running at 3.4GHz and 16G RAM.
 The algorithms are implemented with Matlab 2015a.
 
-For our preliminary experiments, we first developed 50 TSP instances, each with 20 cities, including one root. 
+For our preliminary experiments, we first developed 50 TSP instances, each with 20 cities, including one root.
 The distances between two cities are uniformly distributed random values from 1 to 1000.
 Note that further requiring triangle inequality in distance settings will not change our future computational procedures, but uniformly distributed distances can be used in some practical situations, such as for cases with weighted transportation costs.
 
@@ -714,7 +714,7 @@ This work is partially supported by the National Natural Science Foundation of C
 \section*{Appendix}
 \noindent \textbf{Proof of Theorem \ref{thm:rb}.}\\
 The proof is straightforward.
-Denote an optimal solution for LP $(\ref{eqn:aSLC})$ as $\big[\beta_r(\ \cdot \ ,\omega),z_r(\omega)\big]$. Now, we consider vector $\big[\bar{\beta}_r(\ \cdot \ ,\omega),z_r(\omega)\big]$, where $\bar{\beta}_r(k,\omega) = \beta_r(k,\omega) - \big(c_u(V)-c(V)\big)/v$, for all $k \in V$. Then, for each $s \in S \setminus V$, we have 
+Denote an optimal solution for LP $(\ref{eqn:aSLC})$ as $\big[\beta_r(\ \cdot \ ,\omega),z_r(\omega)\big]$. Now, we consider vector $\big[\bar{\beta}_r(\ \cdot \ ,\omega),z_r(\omega)\big]$, where $\bar{\beta}_r(k,\omega) = \beta_r(k,\omega) - \big(c_u(V)-c(V)\big)/v$, for all $k \in V$. Then, for each $s \in S \setminus V$, we have
 \begin{equation*}
 \bar{\beta}_r(s,\omega)  = \beta_r(s,\omega) - \frac{|s|\big[c_u(V)-c(V)\big]}{v} \leq \beta_r(s,\omega) \leq c_l(s)+ z_r(\omega) \leq c(s) + z_r(\omega).
 \end{equation*}
@@ -739,7 +739,7 @@ Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straigh
 Thus, $z_r(\omega)$ is a piece-wise linear and convex function  $\omega$.
 Moreover, since the slope $-\rho_v$ of each straight line constructing $z_r(\omega)$ is negative ($\rho_v$ is clearly positive), the R-SPF $z_r(\omega)$ must be strictly decreasing in $\omega$.
 
-From the constraints in LP $(\ref{eqn:DualSLC})$, we have 
+From the constraints in LP $(\ref{eqn:DualSLC})$, we have
 $$
 1 = \sum_{s \in S \setminus \{V\}} \rho_s \leq \sum_{k \in V}\sum_{s \in S \setminus \{V\}: k \in s} \rho_s \leq (v-1)\sum_{s \in S \setminus \{V\}} \rho_s = v-1.
 $$
@@ -774,14 +774,10 @@ In addition, from Remark \ref{rem:convex}, the LR-SPF $z_{\lambda}(\omega)$ is c
 The proof is straightforward.
 As for the proof of Theorem \ref{thm:rb}, we show that
 $$z_{l}(\omega) = \min_{\beta,z} \big\{ z \in \R:\beta(V)=c_\lambda(V)-\omega \mbox{ and } \beta(s) \leq c_u(s)+z, \forall s \in S \setminus V \big\},$$
-is a lower bound of $z(\omega)$. 
-In addition, we argue that $z_k(\omega) \leq z_{l}(\omega)$, since the latter feasible region is a subset of the former one. 
+is a lower bound of $z(\omega)$.
+In addition, we argue that $z_k(\omega) \leq z_{l}(\omega)$, since the latter feasible region is a subset of the former one.
 Therefore, we have $z_k(\omega)\leq z_{l}(\omega) \leq z(\omega)$.
 \qed
 %%%%%%%%%%%%%%%%%
 \end{document}
 %%%%%%%%%%%%%%%%%
-
-
-
-
