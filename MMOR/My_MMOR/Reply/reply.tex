@@ -1,0 +1,505 @@
+\documentclass[11pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{subfig}
+\usepackage{pdfpages}
+\usepackage{amsfonts,amsthm,amssymb,amsmath}
+\usepackage{graphicx,mathrsfs}
+\usepackage{multirow}
+\usepackage{float}
+%\usepackage{tikz}
+%\usetikzlibrary{arrows}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+%
+% page format
+\usepackage[top=0.81in,bottom=0.81in,left=0.81in,right=0.81in%,a4paper
+]{geometry}
+\linespread{1.3}
+\setlength{\parskip}{3.6pt}
+
+%% for cross reference in paper
+%\usepackage{hyperref}
+%\hypersetup{colorlinks,citecolor=black,filecolor=black,%
+%  linkcolor=black,urlcolor=black}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{assu}{Assumption}
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{coro}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{fact}{Fact}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{alg}{Algorithm}
+\newtheorem{rem}{Remark}
+\newtheorem{fig}{Figure}
+
+\newcommand{\rv}{random variable}
+\newcommand{\bE}{\bf E}
+\renewcommand{\Box}{\bigboxvoid}
+\newcommand{\qeds}{$\qedsymbol $}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cc}{\mathbb{c}}
+
+ %Natbib setup for author-year style
+
+\title{\textbf{Authors' Reply\\Lagrangian Heuristic for Simultaneous Subsidization and Penalization:\\
+Implementations on Rooted Travelling Salesman Games}}
+\author{Lindong Liu, Yuqian Zhou, Zikang Li}
+\date{}
+\begin{document}
+\maketitle
+%\begin{center}
+%{\bf \LARGE \linespread{1.6}{
+%Authors' Reply\\}}
+%\vspace{-1mm}
+%{\bf \LARGE \linespread{1.6}{
+%Stabilizing Grand Coalitions in Unbalanced Cooperative\\}}
+%\vspace{-1mm}
+%{\bf \LARGE \linespread{1.6}{
+%Games by Simultaneously Penalizing and Subsidizing\\}}
+%\vspace{2mm}
+%{\normalsize Lindong Liu, Xiangtong Qi, Zhou Xu}
+%\vspace{4mm}
+%\end{center}
+\noindent
+We would like to thank the Associate Editor and the reviewers for the encouraging and detailed comments on the paper. We have carefully studied all the comments and addressed them in our manuscript. The paper has therefore been substantially revised.
+Our revision follows the  guidance that ``***" and ``***" To this end, we have made the following major changes.
+
+
+First, regarding the proofs of the structural properties of the penalty-subsidy tradeoff function, we now have a much simpler proof which was suggested by the Associate Editor, and for which we are very grateful.
+
+Second, regarding constructing the tradeoff function over the entire effective domain, we add a new approximation algorithm with a guaranteed error bound.
+
+
+Third, regarding computing the tradeoff between penalty and subsidy at a specific point, we remove the Lagrangian relaxation heuristic method, and design two new solution approaches that are more theoretically sound, and that can find the exact solutions for some games \textcolor{magenta}{of which $c(s)$ are solvable.}
+
+
+Fourth, regarding the demonstration games, we replace the TSP game with machine scheduling games. Indeed, we obtain some interesting properties by studying the special structures of these games.
+
+There is another change mainly for the convenience of presentation. For the tradeoff function, we now define it as $\omega(z)$ instead of $z(\omega)$. Because of the one-to-one mapping between penalty $z$ and subsidy $\omega$, all main results still hold.
+
+Please find below our point-by-point reply to the Associate Editor and each of the reviewers. To facilitate reading, the original comments are in {\it italics}.
+
+
+%We would like to thank the associate editor and reviewers for the encouraging and detailed comments on the paper.
+%We have carefully studied all the comments and addressed them in our revision.
+%In this reply, we first summarize several major changes we have made, and then give the specific details.
+%
+%
+%First, we agree with the reviewer and the associate editor that: the original paper is already heavily technical and there is no need to address the ideas on the TSP game, where the coalitions' costs are NP-hard to solve by themselves; the revision should focus on strengthening the main contributions in the first part of the paper.
+%Therefore, we make two major changes as shown in the next two paragraphs.
+%
+%
+%To strengthen the main contributions of our work, we have revised our paper as follows: (1) besides the IPC algorithm, we develop an approximation algorithm in Section 3.2.2 that generates a good upper bound for function $\omega(z)$;
+%%This algorithm serves as a supplement when the IPC algorithm is time consuming to construct the exact function $\omega(z)$;
+%(2) compared with the original paper, we have deeper results on the computational complexity of $\omega(z)$ and its associating optimization problem as shown in Appendix EC.10;
+%(3) rather than the Lagrangian relaxation based heuristic method, we come up with two new solution approaches in Sections 4.2 and 4.3 that can compute $\omega(z)$ both exactly and approximately.
+%
+%
+%
+%Second, to demonstrate our ideas, we choose the Parallel Machines Scheduling game (see, \citealt{schulz2010sharing,schulz2013approximating}) as the new objective, whose coalitions' costs are easier to obtain compared with the TSP game discussed in the original paper.
+%As predicted by the associate editor, by utilizing the special structure of the characteristic function in the machine scheduling game, we are able to derive more and deeper theoretical results about $\omega(z)$ in Section 5.
+%
+%
+%Third, as suggested by one of the reviewers, in order to reach a larger group of readers, the structural properties of function $\omega(z)$ (Theorems 1, 2 and 3 in the current paper) are now proved by using linear programming duality.
+%We need to point out that the proofs are kindly provided by the associate editor in his review report.
+%We cannot be more grateful for this.
+%
+%
+%Forth, instead of the subsidy-penalty function $z(\omega)$, we now use the penalty-subsidy function $\omega(z)$ to evaluate the trade off between penalty and subsidy levels in the concept of simultaneously penalizing and subsidizing.
+%The previous results such as the structural properties and the applicability of the IPC algorithm are still true.
+%In addition, we are able to obtain more and deeper theoretical results as suggested by the associate editor.
+%Using $\omega(z)$ is more convenient for us to facilitate discussion.
+%
+%
+%In making the revision, we have invited another colleague to join the work. He made a substantial contribution to the above third and forth major changes, such as proposing the solution approaches to compute $\omega(z)$ and analyzing the computational complexity. He is now added as a co-author.
+%
+%Please find below our point-by-point reply to the associate editor and each of the reviewers. To facilitate reading, the original comments are in {\it italics}.
+
+%\vspace{10mm}
+
+\newpage
+
+\noindent \textbf{\large Reply to Associate Editor}
+\\[3mm]
+Thank you very much for processing our submission efficiently and providing guidance for the revision.
+We are especially grateful for the simple proofs that you suggested.
+The issues raised in your report are addressed as follows:
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{
+Question 1.}
+When trying to address one issue raised by one of the referees about the proof of Lemma 2 and
+Lemma 3, I came up with simple proofs for several key results in Section 2 and Section 3 by using
+linear programming duality. I find the proofs are quite straightforward. I include the derivations
+below.}
+\\[2mm]
+\noindent \textbf{Reply 1.}
+Thank you so much for providing simpler proofs.
+We have adopted your proofs.
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 2.}
+On the other hand, I also agree with one of the referees that the discussion on TSP game, and more generally the case when computing $c(s)$ itself is hard, diverges the contribution of the paper. (And the contributions rely on known techniques for such games.) I believe the revision should focus on strengthening the contributions of the first part of the paper.}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+We fully agree with the comment, and have focused more on theoretical results instead of solving a particular game by heuristics. Please refer to the major changes (2)-(4) for details.
+%Or\\
+%Thanks for pointing this out.
+%This suggestion leads to some major improvements to our revision which are summarized in the second and third major changes described in the first page of this reply.
+%We now list these improvements here: (1) we develop an approximation algorithm in Section 3.2.2 as a supplement of the IPC algorithm to efficiently generate a good upper bound for function $\omega(z)$; (2) we provide some complexity analyses on computing the value of $\omega(z)$ and the associating optimization problem under any penalty $z$ in Appendix EC.2; (3) rather than the original Lagrangian relaxation based heuristic method to calculate an upper bound for $\omega(z)$ under given $z$, we come up with two solution approaches in Sections 4.1 and 4.2 that can serve as both exact and approximate methods in the computation; (4) we replace the TSP game, demonstration example of our ideas, with the Parallel Machines Scheduling game whose coalitions' costs are easier to obtain, so that we can derive some more interesting results accordingly in Section 5.
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 3.}
+If this were my own paper, I would try to identify interesting games for which one could utilize the structure of the cost function c to derive more, perhaps deeper, theoretical results about $z(\omega)$.}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+Thank you for your suggestion. We believe that  your suggestion will lead to many interesting studies.
+In the revision we have studied parallel machine scheduling games to demonstrate the applicability of the proposed model, algorithms, and solution approaches.
+As a result of studying the special structure of these games, we are indeed able to derive some deeper results.
+For example, as shown in Section 5.1, we can compute the exact value of $\omega(z)$ by a polynomial-time solvable linear program under any penalty $z$; moreover, we are able to obtain an upper bound for the number of breakpoints on function $\omega(z)$ (Theorem 7).
+
+
+
+
+
+\newpage
+\noindent \textbf{\large Reply to Referee 1}
+\\[3mm]
+Thank you for your comments, especially for pointing out that we should focus on the main contributions of our paper by assuming that the coalitions' costs are known. We have adopted your suggestions and revised our paper accordingly. The main issues raised in your report are addressed as follows:
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 1.}
+Constraint #2 in problem (4). It appears from the next page that the equality can be replaced to >= inequality in this problem formulation. I would like the authors to expand the discussion of reasons for that being the case as the brief explanation on page 9 does not seem sufficient. Moreover, it looks like a good idea to do it right after introduction of problem (4), since in this case it becomes obvious that (4) is a restriction of (2) and therefore z_r(w) is an upper bound on z(w):
+$beta(s) <= c_l(s) + z <= c(s) + z$
+$beta(V) >= c_u(U) + z >= c(s) + z$
+}
+\\[2mm]
+\noindent \textbf{Reply 1.}
+For the first part of.
+For the second part
+In fact, according to the cooperative game theory, coalitional stability constraints refer to all the except the grand coalition
+Thus, the second condition in LP(4), i.e., the budget balance constraint is not a restriction of (2).
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 2.}
+When approximate problem (4) is introduced, it is not mentioned which upper bound $c_u(V)$ is used. Probably a discussion of upper bound possibilities will be good here.}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+Thanks a lot for your suggestion.
+In fact, there are specific methods, such as LP-based methods, to obtain the upper bound $c_u(V)$. We add this clarification.
+
+For the consistance of general methods, we only mentioned a general method, i.e., Lagrangian heuristic to calculate the upper bound.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 3.}
+Proof of Theorem 1. This is probably a general question but it also directly affects the proof of Theorem 1. The vector of cost allocation beta is defined to be in R^v.
+I would like to see some discussion on why some individual cost allocation is allowed to be negative (implying a gain for a player, I guess) and how that is possible with existence of grand coalition. My concern is that beta components in the proof of Theorem 1 can become negative, but, again, I am not sure I understand the meaning of negative cost allocation.
+}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+%The main contributions are strengthened as explained in the first page of this reply.
+The beta components in the proof indeed can be negative as you said, that is because the vector of cost allocation beta that is defined to be in $R^v$ in the proof is mathematically valid. When the cost assigned to some player is negative, it can be understood as a gain for the player. In cooperative game theory, cost allocation doesnot mean cost assigned to every player in the cooperative game must to be positive. As long as a cost allocation satisfies the budget balance and coalitional stability constraints we mentioned in the paper, it is meaningful and can make the grand coalition stable, even if some components of it are negative.
+\\[4mm]
+%\textcolor{blue}{
+%The main contributions are strengthened as explained in the first page of this reply.
+%We have tried our best to shorten the paper.
+%There are 25 pages (excluding the reference) in the main part of the revision, while the results are more enriched and compact.
+%We hope this is acceptable.}
+%\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 4.}
+Proof of Remark 1. I am not able to see "the point-wise maximum of a finite set of straight lines (hyperplanes, you mean?)" in defining the z_r(w) (19). Please clarity.
+}
+\\[2mm]
+\noindent \textbf{Reply 4.}
+In the objective function of LP(19), $z_r(\omega)$ is only related to $\omega$ and $c_u(V), c_l(s)$ can be calculated and have no relation with $\omega$. By deriving the $z_r(\omega)$, we can obtain the slope is $\max_\rho -\rho_v$, which is the maximum of the slopes of a finite set of straight lines.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 5.}
+In the description of the Algorithm 1, how is the initial restricted coalition set is constructed? For example, it is not clear what the first step means means if no initial set is defined. And also, I am not able to see how the initial values of Lagrangian coefficients lambda is constructed and how they change (if they do) during the algorithm. It would be great to add some clarifications.
+
+\\[2mm]
+\noindent \textbf{Reply 5.}
+The initial restricted coalition set can be constructed as
+initially.
+In fact,
+
+%
+%
+%
+\noindent \textit{\textbf{Question 6.}
+The description of the TSP game is somewhat different from one can find in the literature. For example in Tamir (1989) the game was defined on an uncomplete graph, while here the game is defined on the complete graph. This affects all the models presented on page 13 and further. Probably both versions of the game exist, but I would like to understand why the descriptions are different.
+
+\\[2mm]
+\noindent \textbf{Reply 6.}
+In Tamir(1989), the author also mentioned the game can be defined on a complete graph. He defined the game on an uncomplete grapg for the convenience's sake.
+And we add another TSP game defined on a complete graph.
+\\[4mm]
+
+
+\noindent \textit{\textbf{Question 7.}
+Constraint (15): I am not sure why would one keep (15) in such an aggregated format when it is possible to disaggregate it to
+$x_{ij} <= \gamma_i$
+$x_{ij} <= \gamma_j$
+In terms of LP relaxation disaggregation gives a tighter bound and probably will lead to the improvement to Lagrangian relaxation just as well.
+\\[2mm]
+\noindent \textbf{Reply 7.}
+The disaggregation indeed gives a better bound when using LP relaxation.
+However, in the Lagrangian relaxation we don't change the integer property of the formulation, i.e., $x_{ij}$ still has to be binary.
+Considering that the aggregated and disaggregated formats are fully equivalent, so the disaggregated format will not lead to the improvement to Lagrangian relaxation.
+For better understanding, we change the aggregated format to the disaggregated one you mentioned.
+\\[4mm]
+
+
+\noindent \textit{\textbf{Question 8.}
+The symmetry of TSP game. I would like to attract the attention of the authors to the Dantzig Fulkerson Johnson (1954) paper, which originated the development of the TSP theory. Most importantly, the authors there also considered a symmetric TSP problem. If the problem is symmetric, one does not need as many binary variables as was introduced by authors. For example, on page 13 x_{ij} exists together with x_{ji} but direction of the travel is not important for symmetric problem therefore it is sufficient to introduce x_e for e being an edge or x_{ij} for i < j only. This is how the TSP problem was introduced in DFJ and this is something that can simplify many notations in this paper. Also, it will be probably a good idea to get rid of x_{ii} variables on page 13 and other optimization problems.
+
+\\[2mm]
+\noindent \textbf{Reply 8.}
+When refering to a symmetric TSP problem, it is more convenient to introduce x_e or  x_{ij}.
+
+However, the player is an important concept in the cooperative game.
+We have to express every single node in the TSP game.
+
+Otherwise the LP() constraint cannot be expressed.
+
+If we use the x_e to express the
+we have to introduce other notations to express single node, which is obviously troublesome.
+\\[4mm]
+
+
+\noindent \textit{\textbf{Question 9.}
+I am a bit confused by Figure 2. Does it represent 4 different games? What exactly is on y axis and x axis, Penalty and Subsidy on y and x axis for all 4 figures? I suggest to add definitions of squared points and round points to the legend of the figure. Why is it that one figure gets two points and another gets 6 and they are evaluated at different levels of subsidy?
+
+\\[2mm]
+\noindent \textbf{Reply 9.}
+Thanks for your suggestions.
+We add the legend of the figure and make a specific explanation on these 4 representives of games.
+x axis and y axis represent penalty and subsidy respectively for all 4 subfigures.
+\\[4mm]
+
+
+\noindent \textit{\textbf{Question 10.}
+In regards to results of experiments in Table 3, what exactly was used and the upper bound \phi(N)? and finally a general remark on the lower bound construction z(w):
+-- if we consider problem (4) as a restriction of (2), then it is also possible to create a relaxation of the problem in the similar was as problem (4) was constructed.
+\\[2mm]
+\noindent \textbf{Reply 10.}
+Thanks for your problem. We forgot to mention $\phi(N)$.
+The upper bound $\phi(N)$ is what we use Lagrangian heuristic method to obtain.
+
+As we mentioned in Reply 1. LP(4) is not a restriction of LP(2). So we know what you concerned, we tried this before but it won't work. Thus we design a new method to obtain the upper and lower bound.
+
+\\[4mm]
+
+
+\noindent \textit{\textbf{Minor comments.}
+1. Problem (2) in the paper is frequently called an LP problem or a combinatorial optimization problem (page 4, for example). I suggest to use one terminology approach for consistency. For example, page 8 "solve LP (4) with some conventional combinatorial optimization techniques" sounds confusing.
+2. Remark 1: probably, for any s in S \ V in the first line of the Remark?
+3. Page 8, line 58. Perhaps it is worth mentioning that this is due to Lagrangian being concave function.
+4. Page 10, line 60. Perhaps LP (4) instead of (2)?
+5. Page 10, line 26. Perhaps, it is better to replace forward reference (9) by "reduced cost".
+6. Page 13, I would suggest to make a reference to the Dantzig Fulkerson Johnson (1954) paper with respect to constraints (13), as these constraints are not given in TSP
+literature but are in fact result of development by those authors.
+7. I would suggest merging first two constraints in (11) as it is a bit confusing in its present form.
+8. Page 15, line 45. don't you need to remove the word 'minimum' here?
+
+\\[2mm]
+
+\noindent \textbf{Reply.}
+1. We changed our expression use LP problem to avoid the confusion.
+2. We've revised.
+3. We added the concave property at the subgradient method.
+4.
+5. We've replaced (9) by reduced cost.
+6. We've added a reference to the Dantzig Fulkerson Johnson (1954) paper when introducing constraints (13).
+7. We've merged first two constraints.
+8. We've removed the word 'minimum'.
+\\[4mm]
+
+
+
+%\vspace{10mm}
+\newpage
+
+\noindent \textbf{\large Reply to Referee 2}
+\\[3mm]
+We appreciate your detailed comments made directly on the manuscript.
+We have corrected all the typos and grammatical errors that you pointed out and carefully studied the technical concerns you raised.
+Because the second part of the paper has been rewritten, we will only address your comments on the first part.
+Nevertheless, we find your other comments also very helpful for our further study.
+%As stated in the first two pages, we have made some major changes to the paper structure to strengthen the main contributions of our work.
+%Sections 4 and 5 in the original paper are replaced.
+%In this report, we will focus on responding to the comments which still mater in the current paper.
+%Your other comments will be great helpful in our further study. Thanks a lot for your work.
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 1.}
+Notation. The paper does not conform with the standard notation in
+TU-games. Usually, coalitions are referred with capital letters and its
+cardinal in lower case letters, i.e. $S \subset N$ and $|S| = s$. This paper uses a different notation with $s$ for coalitions and then some inconsistencies
+appears when referring to $v$ in some places. I would suggest to adapt
+the notation to the standard to ease the readability of potential readers.}
+
+\\[2mm]
+\noindent \textbf{Reply 1.}
+Thanks for your suggestions.
+We've changed the notation to the standard form.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 2.}
+Some confusion appears, here and there, when referring to LP or MIP.
+For instance, in page 4 line 3, it is mentioned that (2) is a combinatorial
+optimization problem. However, (2) is a LP since in its description c is
+given and thus all constraints and variables are linear and continuous.
+The same confusion can be found at other places of the paper. Please
+clarify!
+}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+We changed our expression use LP problem to avoid the confusion.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 3.}
+Page 4 line -13: The authors must be more precise. The Lagrangean
+bound is more accurate than the linear relaxation whenever the problem
+does not fulfill the integrality property.
+}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+Thank you for pointing this out.
+We have added the statement.
+%We have revised our wordings in line X of page X in the revised manuscript.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 4.}
+The statement of Theorem 1 should be modified since the value of the
+LP is one of the many possible upper bounds not the only one as stated
+there.
+}
+\\[2mm]
+\noinden \textbf{Reply 4.}
+This should be ``economic efficiency". Thanks for pointing this out.
+We have changed the word 'the' to 'an'.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 5.}
+Remark 1. The meaning of $v$ is unclear. One should guess that it refers
+to $|V|$ but this has to be made explicit.
+}
+\\[2mm]
+\noindent \textbf{Reply 5.}
+We added that.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 6.}
+Page 8, line -12. Note that (5) is not an LP but an ILP.
+}
+\\[2mm]
+\noindent \textbf{Reply 6.}
+Yes, our focus is the ``effective domain" of the function.
+We have adopted this term all through the revised manuscript.
+Thanks a lot for your suggestion.
+
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 7.}
+To better illustrate the proposed methodology, it would be advisable
+to apply it not only to the rooted traveling salesman problem. I would
+suggest to add another class of combinatorial games, for instance loca-
+tion games, to the computational study.
+\\[2mm]
+\noindent \textbf{Reply 7.}
+
+How to add a computation?
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 8.}
+Page 9: The authors need to clarify this statement: by ``for example", do the authors mean that (10, 10, 10, 10, 10) is a stable cost allocation, or just a way of splitting the cost of 50?
+}
+\\[2mm]
+\noindent \textbf{Reply 8.}
+In our current example, the resulting optimal cost allocation $[20; 18; 14; 8]$ is unique.
+We have pointed this out in the revised manuscript in line X of page X.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 9.}
+Page 9: I believe a graph of these values would be more useful.
+}
+\\[2mm]
+\noindent \textbf{Reply 9.}
+The exact PSF curve is shown later in Figure 1 on page X when we demonstrate the IPC algorithm in Example 1. We have explicitly mentioned this in the paper.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 10.}
+Page 14: The authors need to clarify this statement - as stated and in its current context, it seems like Algorithm 1 iteratively computes an upper and a lower bound on $z(\omega)$. However, the algorithm described in Algorithm 1 doesn't seem to explicitly compute an iterative upper bound on $z(\omega)$. The authors need to a better job linking the discussion preceding the description of this algorithm into a proof of correctness.
+}
+\\[2mm]
+\noindent \textbf{Reply 10.}
+Thanks a lot for your comments.
+You are right that the upper bound is not updated in each iteration. We further realize that we actually do not need an iterative upper bound to derive the exact PSF $\omega(z)$ when applying the IPC algorithm.
+We have refined the description of the IPC algorithm and concluded its correctness in Theorem 4.
+Please see the details on page X.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 11.}
+Page 28: The authors seem to be overstating the impact of their results - I would argue that the results in this manuscript do not support this statement as written.
+}
+\\[2mm]
+\noindent \textbf{Reply 11.}
+Sorry for such an aggressive claim. We have removed this claim, and simply point out that our work is of both theoretical value and practical importance.
+\\[4mm]
+
+
+
+%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%

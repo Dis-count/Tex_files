@@ -13,6 +13,7 @@
 \usepackage[colorlinks,linkcolor=blue,citecolor=red]{hyperref}
 \usepackage{natbib}
 \usepackage{multicol}
+\usepackage{soul}
 %\bibliographystyle{chicago}
 %
 % page format
@@ -93,18 +94,18 @@ Cooperative Game, Travelling Salesman Game, Cost Allocation
 \section{Introduction}\label{section:introduction}
 Cooperative game theory investigates ways to enforce and sustain cooperation among a set of players; the key difficulty is in how to fairly allocate the costs (or profits) among different players by taking individual and group incentives into consideration (e.g., see \citealt{Jain2007CostSharing}).
 
-Strictly, in terms of cost minimization, a cooperative game involving transferable utilities can be represented by a pair $(V,c)$, where $V = \{1,2,...,v\}$ denotes a set of players and $c:2^{|V|} \rightarrow \mathbb{R}$ is the characteristic function of the game. A subset of players, denoted by $s$, is called a coalition; while $V$ is the grand coalition, the set of all feasible coalitions is denoted by $S = 2^{|V|} \setminus \emptyset$. The characteristic function of the game is to specify for every coalition $s \in S$, a value $c(s)$, representing the minimum coalitional cost the members in $s$ have to pay in order to complete their work with cooperation.
+Strictly, in terms of cost minimization, a cooperative game involving transferable utilities can be represented by a pair $(V,c)$, where $V = \{1,2,...,v\}$ denotes a set of players and $c:2^{|V|} \rightarrow \mathbb{R}$ is the characteristic function of the game. A subset of players, denoted by $S$, is called a coalition; while $V$ is the grand coalition, the set of all feasible coalitions is denoted by $\mathbb{S} = 2^{|V|} \setminus \emptyset$. The characteristic function of the game is to specify for every coalition $S \in \mathbb{S}$, a value $c(S)$, representing the minimum coalitional cost the members in $S$ have to pay in order to complete their work with cooperation.
 
 
 
-To sustain cooperation in the grand coalition, the game requires a cost allocation vector $\theta= \big[\theta_1,\ldots,\theta_v\big]$, where $\theta_k$ is the cost assigned to player $k$ such that no individual or group of players has the incentive to deviate. By slightly modifying the notation for the sake of convenience, we use $\theta(s)=\sum_{k\in s}\theta_k$ to denote the total cost assigned to the players in coalition $s$.
+To sustain cooperation in the grand coalition, the game requires a cost allocation vector $\theta= \big[\theta_1,\ldots,\theta_v\big]$, where $\theta_k$ is the cost assigned to player $k$ such that no individual or group of players has the incentive to deviate. By slightly modifying the notation for the sake of convenience, we use $\theta(S)=\sum_{k\in S}\theta_k$ to denote the total cost assigned to the players in coalition $S$.
 Now, the grand coalition of the cooperative game $(V,c)$ will be stable, or the cooperative game $(V,c)$ will be balanced, if and only if the associating \textit{core} is non-empty (\citealt{bondareva1963some}), that is
 \begin{eqnarray}\label{eqn:core}
 \begin{aligned}
-Core(V,c) = \bigg\{ \theta \in \R^v: \theta(V)=c(V) \mbox{ and } \theta(s) \leq c(s), \forall s \in S \setminus V \bigg\} \neq \emptyset,
+Core(V,c) = \bigg\{ \theta \in \R^v: \theta(V)=c(V) \mbox{ and } \theta(S) \leq c(S), \forall S \in \mathbb{S} \setminus V \bigg\} \neq \emptyset,
 \end{aligned}
 \end{eqnarray}
-where $\big\{ \theta(V)=c(V) \big\}$ is the budget balance constraint and $\big\{ \theta(s) \leq c(s),~ \forall s \in S \setminus V \big\}$ are the coalitional stability constraints (\citealt{shapley1969market}).
+where $\big\{ \theta(V)=c(V) \big\}$ is the budget balance constraint and $\big\{ \theta(S) \leq c(S),~ \forall S \in \mathbb{S} \setminus V \big\}$ are the coalitional stability constraints (\citealt{shapley1969market}).
 
 Due to the joint restrictions of the budget balance and coalitional stability constraints, the core of the cooperative game is sometimes empty.
 In this case, to stabilize the grand coalitions in unbalanced cooperative games, researchers have developed several effective instruments, such as the instruments of subsidization, penalization, and simultaneous subsidization and penalization (S\&P).
@@ -116,21 +117,21 @@ This instrument is closely related to the concept of \textit{$\gamma$-core} (\ci
 Mathematically, the budget balance constraint in $(\ref{eqn:core})$ can be relaxed from $\big\{\theta(V) = c(V)\big\}$ to $\big\{\theta(V) \leq c(V)\big\}$, then we have
 \begin{eqnarray*}\label{eqn:subsidy}
 \begin{aligned}
-\omega^* = \min_{\alpha} \bigg\{ c(V) - \alpha(V):~ \alpha(s) \leq c(s) \mbox{ for all } s \in S, ~\alpha \in \R^v \bigg\},
+\omega^* = \min_{\alpha} \bigg\{ c(V) - \alpha(V):~ \alpha(S) \leq c(S) \mbox{ for all } S \in \mathbb{S}, ~\alpha \in \R^v \bigg\},
 \end{aligned}
 \end{eqnarray*}
-where $\omega^*$ is the \textit{minimum subsidy} required for the grand coalition to cooperate and $\alpha(s)=\sum_{k\in s}\alpha_k$ for all $s \in S$.
+where $\omega^*$ is the \textit{minimum subsidy} required for the grand coalition to cooperate and $\alpha(S)=\sum_{k\in S}\alpha_k$ for all $S \in \mathbb{S}$.
 
 
 As for the instrument of penalization, the central authority penalizes each sub-coalition for deviating from the grand coalition; hence, the problem is to minimize the penalty amount and reduce the players' dissatisfaction.
 This instrument is similar to the concept of \textit{least core value} (\citealt{maschler1979geometric,schulz2010sharing}), where the cost assigned to each sub-coalition should not be more than the minimum coalitional cost plus the least core value, while the budget balance constraint in $(\ref{eqn:core})$ still holds.
-Mathematically, the coalitional stability constraints in (\ref{eqn:core}) can be relaxed from $\big\{\theta(s) \leq c(s)\big\}$ to $\big\{\theta(s) \leq c(s)+z\big\}$ for all $s \in S \setminus V$, then we can formulate the penalization instrument as
+Mathematically, the coalitional stability constraints in (\ref{eqn:core}) can be relaxed from $\big\{\theta(S) \leq c(S)\big\}$ to $\big\{\theta(S) \leq c(S)+z\big\}$ for all $S \in \mathbb{S} \setminus V$, then we can formulate the penalization instrument as
 \begin{eqnarray*}\label{eqn:lc}
 \begin{aligned}
-z^* = \min_{\beta,z} \bigg\{ z: ~\beta(V)=c(V), ~\beta(s) \leq c(s)+z \mbox{ for all } s \in S \setminus \{V\}, ~z \in \R, ~\beta \in \R^v \bigg\},
+z^* = \min_{\beta,z} \bigg\{ z: ~\beta(V)=c(V), ~\beta(S) \leq c(S)+z \mbox{ for all } S \in \mathbb{S} \setminus \{V\}, ~z \in \R, ~\beta \in \R^v \bigg\},
 \end{aligned}
 \end{eqnarray*}
-where $z^*$ is the \textit{minimum penalty} required for the grand coalition to cooperate and $\beta(s)=\sum_{k\in s}\beta_k$ for all $s \in S$.
+where $z^*$ is the \textit{minimum penalty} required for the grand coalition to cooperate and $\beta(S)=\sum_{k\in S}\beta_k$ for all $S \in \mathbb{S}$.
 
 Recently, \cite{leastcore2018} introduced the new instrument of simultaneous subsidization and penalization (S\&P) by integrating the existing two instruments.
 In the S\&P instrument, the central authority subsidizes the grand coalition if they cooperate, but at the same time penalizes each sub-coalition if they deviate.
@@ -138,7 +139,7 @@ For any given penalty $z$, the goal is to minimize the subsidy required to stabi
 Mathematically, by relaxing both the budget balance and coalition stability constraints in (\ref{eqn:core}), the S\&P instrument solves
 \begin{eqnarray}\label{eqn:SLC}
 \begin{aligned}
-z(\omega) = \min_{\beta,z} \bigg\{ z \in \R:\beta(V)=c(V)-\omega \mbox{ and } \beta(s) \leq c(s)+z,~\forall s \in S \setminus \{V\} \bigg\},
+z(\omega) = \min_{\beta,z} \bigg\{ z \in \R:\beta(V)=c(V)-\omega \mbox{ and } \beta(S) \leq c(S)+z,~\forall S \in \mathbb{S} \setminus \{V\} \bigg\},
 \end{aligned}
 \end{eqnarray}
 where $z(\omega)$ is the \textit{subsidized minimum penalty}.
@@ -155,20 +156,24 @@ Therefore, following the S\&P idea and stabilizing the grand coalition in unbala
 By broadly focusing on the integer minimization (IM) game, \cite{leastcore2018} developed the cutting plane (CP) and linear programming (LP) approaches based on the CP method and LP duality theory, respectively, to compute $\omega(z)$ for a given $z$.
 The two approaches are effective under certain situations: the CP approach is effective when the corresponding separation problem is computationally tractable, and the LP approach is effective when the associating convex polyhedron is well identified.
 However, computing the subsidized minimum penalty $z(\omega)$ for any given $\omega$ is in general hard due to the following reasons.
-First, LP (\ref{eqn:SLC}) is a combinatorial optimization problem involving an exponential number of constraints.
-Second, the characteristic function $c(s)$ is intractable in some IM games, such as machine scheduling (\citealt{leastcore2018}), facility location (\citealt{Kolen1983FL,Goemans2000FL,Puerto2011}), and travelling salesman (TSP) (\citealt{tamir1989core,kimms2016core}).
+First, LP (\ref{eqn:SLC}) is a \textcolor{red}{linear program involving an exponential number of constraints.}
+Second, the characteristic function $c(S)$ is intractable in some IM games, such as machine scheduling (\citealt{leastcore2018}), facility location (\citealt{Kolen1983FL,Goemans2000FL,Puerto2011}), and travelling salesman (TSP) (\citealt{tamir1989core,kimms2016core}).
 
 
 Following the concept of simultaneous S\&P, we develop a new heuristic algorithm based on the Lagrangian relaxation to compute the subsidized minimum penalty, $z^*(\omega)$, for an IM game.
 We briefly summarize our major contributions to the literature as follows.
 
 First, we design a new framework to develop heuristic algorithms for computing $z(\omega)$.
-The key idea of the framework is to replace $c(s)$ for all $s \in S$ with its tractable bounds and reduce the computational difficulties for solving (\ref{eqn:SLC}).
-Compared with the CP approach in \cite{leastcore2018}, this framework is efficient especially when $c(s)$ is computational intractable in some IM games.
+The key idea of the framework is to replace $c(S)$ for all $S \in \mathbb{S}$ with its tractable bounds and reduce the computational difficulties for solving (\ref{eqn:SLC}).
+Compared with the CP approach in \cite{leastcore2018}, this framework is efficient especially when $c(S)$ is computational intractable in some IM games.
 
 
 Second, following the heuristic framework, we introduce the well-known Lagrangian bounds and develop an algorithm based on Lagrangian relaxation (LRB algorithm) for computing $z(\omega)$.
-Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, for many integer linear programmings, Lagrangian bounds are sharper than linear relaxation bounds.
+Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, for many integer linear programmings, Lagrangian bounds
+
+\textcolor{red}{add integrality property}
+
+are sharper than linear relaxation bounds.
 Furthermore, the LRB algorithm is able to deal with nonlinear situations while the LP approach is not.
 
 
@@ -197,10 +202,10 @@ $~~\bullet$ left-hand side matrices $A \in \R^{e \times t}$ and $A' \in \R^{e' \
 $~~\bullet$ right-hand side matrices $B \in \R^{e \times v}$ and $B' \in \R^{e' \times v}$;\\
 $~~\bullet$ non-negative right-hand side column vectors $D \in \R^{e}_+$ and $D' \in \R^{e'}_+$;\\
 $~~\bullet$ an objective function $f(x)$ in $x$ \big($f(x)$ can be non-linear in this paper\big);\\
-$~~\bullet$ an incidence vector $\gamma^s \in \{0,1\}^{v \times 1}$ with $\gamma_i^s=1$, where if $i \in s$, $\gamma_i^s=0$, otherwise, $\forall i \in V$,\\
-such that the cost $c(s)$ equals the optimal value of the following integer programme for all $s \in S$:
+$~~\bullet$ an incidence vector $\gamma^S \in \{0,1\}^{v \times 1}$ with $\gamma_i^S=1$, where if $i \in S$, $\gamma_i^S=0$, otherwise, $\forall i \in V$,\\
+such that the cost $c(S)$ equals the optimal value of the following integer programme for all $S \in \mathbb{S}$:
 \begin{equation}\label{eqn:orgc}
-c(s) = \min_{x} \bigg\{ f(x):Ax \geq B\gamma^s + D, ~A'x \geq B'\gamma^s + D', ~x \in \{0,1\}^{t \times 1} \bigg\},
+c(S) = \min_{x} \bigg\{ f(x):Ax \geq B\gamma^S + D, ~A'x \geq B'\gamma^S + D', ~x \in \{0,1\}^{t \times 1} \bigg\},
 \end{equation}
 where constraints in $(\ref{eqn:orgc})$ are divided into two parts for the usage of Lagrangian relaxation later in Section \ref{section:CGBAM}.
 \end{definition}
@@ -211,13 +216,13 @@ As described in Introduction, the S\&P instrument is proposed by \cite{leastcore
 The key problem for the S\&P instrument is computing the subsidized minimum penalty $z(\omega)$ for any given subsidy $\omega$, where the resulting combinatorial optimization problem is
 \begin{eqnarray*}
 \begin{aligned}
-z(\omega) = \min_{\beta,z} \bigg\{ z \in \R:\beta(V)=c(V)-\omega \mbox{ and } \beta(s) \leq c(s)+z,~\forall s \in S \setminus \{V\} \bigg\}.
+z(\omega) = \min_{\beta,z} \bigg\{ z \in \R:\beta(V)=c(V)-\omega \mbox{ and } \beta(S) \leq c(S)+z,~\forall S \in \mathbb{S} \setminus \{V\} \bigg\}.
 \end{aligned}
 \end{eqnarray*}
 Below, we illustrate the S\&P instrument with a small example of a rooted TSP game as follows.
 \renewcommand{\baselinestretch}{1.5}
 \begin{example}\label{example:1}
-Consider a rooted TSP game where node $1$ is the root, nodes $N_t=\big\{ 2,3,4,5,6 \big\}$ is a set of players, and $c(s)$ is the minimum transportation cost of the Hamiltonian cycle consisting of $s \cup \{ 1 \}$ for any coalition $s \subseteq N_t$. The network structure is given in Figure $\ref{figure:TSPExample}$, where the values on the arcs represent the corresponding transportation costs.
+Consider a rooted TSP game where node $1$ is the root, nodes $N_t=\big\{ 2,3,4,5,6 \big\}$ is a set of players, and $c(S)$ is the minimum transportation cost of the Hamiltonian cycle consisting of $S \cup \{ 1 \}$ for any coalition $S \subseteq N_t$. The network structure is given in Figure $\ref{figure:TSPExample}$, where the values on the arcs represent the corresponding transportation costs.
 \end{example}
 \begin{figure}[H]
 \centering
@@ -240,7 +245,7 @@ Now, we stabilize the grand coalition by the S\&P instrument at different subsid
 \vglue5pt
 \begin{tabular}[!h]{c c c c c c c c c}
 %\hline
-%\multirow{1}{*}{} &\multicolumn{1}{c}{HG(\%)} &\multicolumn{1}{c}{TG(\%)}	&\multicolumn{1}{c}{$\bar{\omega}_{t}$(\%)}	&\multicolumn{1}{c}{$t_1$(s)}	&\multicolumn{1}{c}{$t_2$(s)}	&\multicolumn{1}{c}{$t_3$(s)}	&\multicolumn{1}{c}{Total time(s)}\\
+%\multirow{1}{*}{} &\multicolumn{1}{c}{HG(\%)} &\multicolumn{1}{c}{TG(\%)}	&\multicolumn{1}{c}{$\bar{\omega}_{t}$(\%)}	&\multicolumn{1}{c}{$t_1$(S)}	&\multicolumn{1}{c}{$t_2$(S)}	&\multicolumn{1}{c}{$t_3$(S)}	&\multicolumn{1}{c}{Total time(S)}\\
 \hline
 $\omega$   &0	&6	&12	&18	&24	&30	&36	&42\\
 \hline
@@ -261,7 +266,7 @@ In addition, $z(0)$ is equal to the least core value, $z^*$, and $\omega^*$, suc
 
 We can solve LP (\ref{eqn:SLC}) and derive all $z(\omega)$ and $\beta$ in Table \ref{table:example1} efficiently since there are only five players in the sample game.
 However, when there are numerous number of players, it would be hard to optimally solve LP (\ref{eqn:SLC}) for the rooted TSP game due to its exponential number of constraints.
-Note that, for each constraint in LP (\ref{eqn:SLC}), the computation of $c(s)$ is already hard in the TSP game (\citealt{woeginger2003exact}).
+Note that, for each constraint in LP (\ref{eqn:SLC}), the computation of $c(S)$ is already hard in the TSP game (\citealt{woeginger2003exact}).
 
 
 To apply the S\&P instrument to the IM game, \cite{leastcore2018} proposed two approaches (i.e., the CP and LP approaches) both of which can serve as approximation algorithms to solve LP $(\ref{eqn:SLC})$, i.e., $z(\omega)$, under certain conditions.
@@ -270,17 +275,17 @@ In the following section, we will develop an alternative approach to solve LP $(
 
 
 \section{Design of Heuristic Algorithms}\label{section:general}
-In this section, we first propose a generic framework to develop heuristic algorithms to solve LP (\ref{eqn:SLC}), assuming that we can obtain some upper and lower bounds for $c(s)$.
+In this section, we first propose a generic framework to develop heuristic algorithms to solve LP (\ref{eqn:SLC}), assuming that we can obtain some upper and lower bounds for $c(S)$.
 We then apply the well-known Lagrangian bounds to develop a practical approach for an approximate computation of the subsidized minimum penalty $z(\omega)$.
 
 
 \subsection{A Generic Framework for Heuristic Algorithms}
 
-For any $s \in S$, we denote $c_l(s)$ and $c_u(s)$, respectively, as the respective lower and upper bounds of $c(s)$. By respectively replacing $c(s)$ and $c(V)$ with $c_l(s)$ and $c_u(V)$, we can derive a restricted LP for $(\ref{eqn:SLC})$, expressed as
+For any $S \in \mathbb{S}$, we denote $c_l(S)$ and $c_u(S)$, respectively, as the respective lower and upper bounds of $c(S)$. By respectively replacing $c(S)$ and $c(V)$ with $c_l(S)$ and $c_u(V)$, we can derive a restricted LP for $(\ref{eqn:SLC})$, expressed as
 \begin{eqnarray}\label{eqn:aSLC}
 \begin{aligned}
 z_r(\omega) &= \min_{\beta,z}~ z\\
-s.t.~~\beta(s) \leq c_l(s&)+z,~\forall s \in S \setminus \big\{V\big\},\\
+S.t.~~\beta(S) \leq c_l(S&)+z,~\forall S \in \mathbb{S} \setminus \big\{V\big\},\\
 \beta(V)=&c_u(V)-\omega.
 \end{aligned}
 \end{eqnarray}
@@ -288,7 +293,7 @@ s.t.~~\beta(s) \leq c_l(s&)+z,~\forall s \in S \setminus \big\{V\big\},\\
 
 
 \begin{theorem}\label{thm:rb}
-The optimal value of LP $(\ref{eqn:aSLC})$ is the upper bound of the subsidized minimum penalty for an IM game $(V,c)$; that is $z_r(\omega) \geq z(\omega)$ for any given subsidy $\omega$.
+The optimal value of LP $(\ref{eqn:aSLC})$ is \textcolor{red}{an} upper bound of the subsidized minimum penalty for an IM game $(V,c)$; that is $z_r(\omega) \geq z(\omega)$ for any given subsidy $\omega$.
 \end{theorem}
 
 
@@ -300,35 +305,35 @@ Similar to \cite{leastcore2018}, we can derive some properties of the R-SPF and 
 The results are shown in Remark \ref{rem:convex}.
 
 \begin{remark}\label{rem:convex}
-Given any $c_u(V) \geq c(V)$ and $c_l(s) \leq c(s)$, $\forall s \in S \setminus V$, for the R-SPF $z_r(\omega)$, we have,\\
+Given any $c_u(V) \geq c(V)$ and $c_l(S) \leq c(S)$, \textcolor{red}{$\forall S \in \mathbb{S} \setminus V$}, for the R-SPF $z_r(\omega)$, we have,\\
 (i) the R-SPF $z_r(\omega)$ is strictly decreasing, piecewise linear, and convex in subsidy $\omega$, and\\
-(ii) for each linear segment of $z_r(\omega)$, its derivative $z'_r(\omega)$ is in the range $\big[ -\frac{v-1}{v}, -\frac{1}{v} \big] \subset \big[-1,0\big]$.
+(ii) for each linear segment of $z_r(\omega)$, its derivative $z'_r(\omega)$ is in the range $\big[ -\frac{v-1}{v}, -\frac{1}{v} \big] \subset \big[-1,0\big]$, \textcolor{red}{where $v$ represents the cardinal of coalition $V$}.
 \end{remark}
 
 
-Compared with LP $(\ref{eqn:SLC})$, we replace $c(s)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional combinatorial optimization techniques.
-Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(s)$ bounds.
+Compared with LP $(\ref{eqn:SLC})$, we replace $c(S)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional combinatorial optimization techniques.
+Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(S)$ bounds.
 In the following subsection, we develop a solution by applying Lagrangian bounds.
 
 
 
 \subsection{The Lagrangian Subsidized Minimum Penalty}\label{section:CGBAM}
 
-Following Theorem~\ref{thm:rb}, we first need to obtain the Lagrangian lower bounds for $\big\{c(s):\forall s \in S\big\}$.
-We can carry out a typical Lagrangian relaxation procedure by relaxing constraints $\{A'x \geq B'\gamma^s + D'\}$ in LP (\ref{eqn:orgc}) to the objective function with non-negative Lagrangian multipliers $\lambda$, and derive the Lagrangian characteristic function $c_{\lambda}(s)$ for an IM game $(V,c)$:
+Following Theorem~\ref{thm:rb}, we first need to obtain the Lagrangian lower bounds for $\big\{c(S):\forall S \in \mathbb{S}\big\}$.
+We can carry out a typical Lagrangian relaxation procedure by relaxing constraints $\{A'x \geq B'\gamma^S + D'\}$ in LP (\ref{eqn:orgc}) to the objective function with non-negative Lagrangian multipliers $\lambda$, and derive the Lagrangian characteristic function $c_{\lambda}(S)$ for an IM game $(V,c)$:
 \begin{eqnarray}\label{eqn:lagrangianfunction}
 \begin{aligned}
-c_{\lambda}(s) = \min_{x} \bigg\{ f(x)-\lambda A'x + \lambda B'\gamma^s + \lambda D':Ax \geq B\gamma^s + D, x \in \{0,1\}^{t \times 1} \bigg\}, \forall s \in S.
+c_{\lambda}(S) = \min_{x} \bigg\{ f(x)-\lambda A'x + \lambda B'\gamma^S + \lambda D':Ax \geq B\gamma^S + D, x \in \{0,1\}^{t \times 1} \bigg\}, \forall S \in \mathbb{S}.
 \end{aligned}
 \end{eqnarray}
-In LP (\ref{eqn:lagrangianfunction}), $\lambda$ is a non-negative row vector with dimension $e'$, that is $\lambda \in \R_{+}^{1 \times e'}$. In particular, for the grand coalition $V$, the LP expression $(\ref{eqn:lagrangianfunction})$ is
+In \textcolor{red}{ILP} (\ref{eqn:lagrangianfunction}), $\lambda$ is a non-negative row vector with dimension $e'$, that is $\lambda \in \R_{+}^{1 \times e'}$. In particular, for the grand coalition $V$, the \textcolor{red}{ILP} expression $(\ref{eqn:lagrangianfunction})$ is
 \begin{eqnarray*}\label{eqn:lagrangianfunctionN}
 \begin{aligned}
 c_{\lambda}(V) = \min_{x} \bigg\{ f(x)-\lambda A'x + \lambda B'\textbf{1}+ \lambda D':Ax \geq B\textbf{1} + D, x \in \{0,1\}^{t \times 1} \bigg\}.
 \end{aligned}
 \end{eqnarray*}
 
-As with usual Lagrangian relaxation, constraints $\{A'x \geq B'\gamma^s + D'\}$ can be chosen such that $c_{\lambda}(s)$ is relatively easy to solve, for example in (pseudo-)polynomial for any $s \in S$.
+As with usual Lagrangian relaxation, constraints $\{A'x \geq B'\gamma^S + D'\}$ can be chosen such that $c_{\lambda}(S)$ is relatively easy to solve, for example in (pseudo-)polynomial for any $S \in \mathbb{S}$.
 
 Since $c_{\lambda}(V)$ is a lower bound of $c(V)$ for any non-negative $\lambda$, to obtain the sharpest Lagrangian lower bound for $c(V)$, we need to solve the Lagrangian dual problem; that is we have to find the best Lagrangian multipliers $\lambda$ to maximize $c_{\lambda}(V)$:
 \begin{eqnarray*}\label{eqn:lagrangianfunctionmax}
@@ -337,21 +342,23 @@ d(V) = \max_{\lambda} \bigg\{ \min_{x} \big\{ f(x)-\lambda A'x + \lambda B'\text
 \end{aligned}
 \end{eqnarray*}
 
+\textcolor{red}{Add some propertiess of Lagrangian method here}
+
 Then, the sub-gradient method (e.g., see \citealt{Ahuja1993NetworkBook}) can be applied to derive the optimal Lagrangian multipliers $\lambda^*$ for $d(V)$. The following discussion applies to any $\lambda$, not necessarily $\lambda^*$, although usually $\lambda^*$ leads to better results.
 
 
 
-By substituting $c_l(s)$ with $c_{\lambda}(s)$ in LP $(\ref{eqn:aSLC})$, we can derive the associating Lagrangian subsidized minimum penalty problem as follows:
+By substituting $c_l(S)$ with $c_{\lambda}(S)$ in LP $(\ref{eqn:aSLC})$, we can derive the associating Lagrangian subsidized minimum penalty problem as follows:
 \begin{eqnarray}\label{eqn:laSLC}
 \begin{aligned}
 z_{\lambda}(\omega) = \min_{\beta,z} z~~&\\
-s.t.~~ \beta(s) \leq  c_{\lambda}(s) + z,~ \forall s &\in S \setminus V,\\
+S.t.~~ \beta(S) \leq  c_{\lambda}(S) + z,~ \forall S &\in \mathbb{S} \setminus V,\\
 -\beta(V) \leq -  c_u(V)+&\omega.
 \end{aligned}
 \end{eqnarray}
 
 Note that by showing the second constraint in (\ref{eqn:laSLC}) as an inequality, we can simplify our future computations. This transformation is feasible because, as in Remark $\ref{rem:convex}$, $z_{\lambda}(\omega)$ is decreasing with respect to $\omega$.
-From Theorem \ref{thm:rb}, %since $c_{\lambda}(s)$ is a lower bound on $c(s)$, we claim that
+From Theorem \ref{thm:rb}, %since $c_{\lambda}(S)$ is a lower bound on $c(S)$, we claim that
 the optimal $z_{\lambda}(\omega)$ to LP $(\ref{eqn:laSLC})$, or the Lagrangian subsidized minimum penalty, is an upper bound of the subsidized minimum penalty for the IM game $(V,c)$.
 In this case, given any subsidy $\omega$, the IM game $(V,c)$ can be balanced by letting the penalty deviate from the grand coalition to become $z_{\lambda}(\omega)$. % In addition, the corresponding Lagrangian $\omega$-subsidized least core cost allocation is given by optimal solution $\beta_{\lambda}(\ \cdot \ ,\omega)$.
 
@@ -359,20 +366,20 @@ In this case, given any subsidy $\omega$, the IM game $(V,c)$ can be balanced by
 Motivated by \cite{LRCA2016}, the remainder of this subsection shows how to compute $z_{\lambda}(\omega)$ with Lagrangian decomposition and column generation techniques.
 
 
-First, for any non-negative Lagrangian multipliers $\lambda$, we can decompose the Lagrangian characteristic function $c_{\lambda}$ into two sub-characteristic functions $c_{\lambda1}$ and $c_{\lambda2}$ such that $c_{\lambda}(s) = c_{\lambda1}(s) + c_{\lambda2}(s)$ under any $s \in S$, where
+First, for any non-negative Lagrangian multipliers $\lambda$, we can decompose the Lagrangian characteristic function $c_{\lambda}$ into two sub-characteristic functions $c_{\lambda1}$ and $c_{\lambda2}$ such that $c_{\lambda}(S) = c_{\lambda1}(S) + c_{\lambda2}(S)$ under any $S \in \mathbb{S}$, where
 \begin{eqnarray*}\label{eqn:subcf1}
 \begin{aligned}
-c_{\lambda1}(s) = \lambda  B'\gamma^s,
+c_{\lambda1}(S) = \lambda  B'\gamma^S,
 \end{aligned}
 \end{eqnarray*}
  and
  \begin{eqnarray*}\label{eqn:subcf2}
 \begin{aligned}
-c_{\lambda2}(s) = \min_x \bigg\{ f(x)-\lambda A'x  + \lambda D':Ax \geq B\gamma^s + D, x \in \{0,1\}^{t \times 1} \bigg\}.
+c_{\lambda2}(S) = \min_x \bigg\{ f(x)-\lambda A'x  + \lambda D':Ax \geq B\gamma^S + D, x \in \{0,1\}^{t \times 1} \bigg\}.
 \end{aligned}
 \end{eqnarray*}
 
-We define IM subgames 1 and 2 as $(V,c_{\lambda1})$ and $(V,c_{\lambda2})$, respectively. Note that the decomposition mode $(V,c_{\lambda1})$ is modular, that is $c_{\lambda1}(s_1)+c_{\lambda1}(s_2) = c_{\lambda1}(s_1 \cup s_2)$ for any two disjoint coalitions $s_1, s_2 \in S$. Now, we have an LP equivalent to $(\ref{eqn:laSLC})$, as shown in Lemma \ref{lemma:equivalentLP}.
+We define IM subgames 1 and 2 as $(V,c_{\lambda1})$ and $(V,c_{\lambda2})$, respectively. Note that the decomposition mode $(V,c_{\lambda1})$ is modular, that is $c_{\lambda1}(s_1)+c_{\lambda1}(s_2) = c_{\lambda1}(s_1 \cup s_2)$ for any two disjoint coalitions $s_1, s_2 \in \mathbb{S}$. Now, we have an LP equivalent to $(\ref{eqn:laSLC})$, as shown in Lemma \ref{lemma:equivalentLP}.
 
 
 \begin{lemma}\label{lemma:equivalentLP}
@@ -380,7 +387,7 @@ LP $(\ref{eqn:laSLC})$ has the same optimal objective function value as LP
 \begin{eqnarray}\label{eqn:l2aSLC}
 \begin{aligned}
 z_{\lambda}(\omega) &= -\max_{\beta,z} -z\\
-s.t. ~~ \beta(s) - z &\leq  c_{\lambda2}(s),~ \forall s \in S \setminus V,\\
+S.t. ~~ \beta(S) - z &\leq  c_{\lambda2}(S),~ \forall S \in \mathbb{S} \setminus V,\\
  -\beta(V) \leq  -&c_u(V) + \omega  + c_{\lambda1}(V).
 \end{aligned}
 \end{eqnarray}
@@ -391,13 +398,13 @@ Next, we deal with the problems arising from the exponential number of constrain
 By applying the column generation technique, we can solve $(\ref{eqn:l2aSLC})$ via its dual problem:
 \begin{eqnarray}\label{eqn:master}
 \begin{aligned}
-\min_{\mu} \sum_{s \in S \setminus V} c_{\lambda2}(s&)\mu_s + \big[ \omega  + c_{\lambda1}(V) -c_u(V) \big]\mu_V,\\
-s.t.~~\sum_{s \in S \setminus V}& \gamma_k^s \mu_s - \mu_V = 0,~\forall k \in V,\\
--&\sum_{s \in S \setminus V} \mu_s = -1,\\
-&\mu_s \geq 0, ~\forall s \in S,
+\min_{\mu} \sum_{S \in \mathbb{S} \setminus V} c_{\lambda2}(S&)\mu_s + \big[ \omega  + c_{\lambda1}(V) -c_u(V) \big]\mu_V,\\
+S.t.~~\sum_{S \in \mathbb{S} \setminus V}& \gamma_k^S \mu_s - \mu_V = 0,~\forall k \in V,\\
+-&\sum_{S \in \mathbb{S} \setminus V} \mu_s = -1,\\
+&\mu_s \geq 0, ~\forall S \in \mathbb{S},
 \end{aligned}
 \end{eqnarray}
-where $\{ \mu_s:\forall s \in S \} \in \R^{2^v-1}$ are the dual variables.
+where $\{ \mu_s:\forall S \in \mathbb{S} \} \in \R^{2^v-1}$ are the dual variables.
 We summarize the procedures for solving the Lagrangian subsidized minimum penalty $z_{\lambda}(\omega)$ in Algorithm \ref{alg:SPC}.
 
 \renewcommand{\baselinestretch}{1.5}
@@ -405,22 +412,22 @@ We summarize the procedures for solving the Lagrangian subsidized minimum penalt
 \caption{LRB Algorithm to Compute $z_{\lambda}(\omega)$}
 \label{alg:SPC}
 \begin{description}
-\item[Step 1.] For an IM game $(V,c)$, compute the Lagrangian bounds $c_{\lambda}(s)$ for $c(s)$, to obtain LP (\ref{eqn:laSLC}).
+\item[Step 1.] For an IM game $(V,c)$, compute the Lagrangian bounds $c_{\lambda}(S)$ for $c(S)$, to obtain LP (\ref{eqn:laSLC}).
 
-\item[Step 2.] Decompose $c_{\lambda}(s)$ into $c_{\lambda 1}(s)$ and $c_{\lambda 2}(s)$, and derive LP (\ref{eqn:l2aSLC}) and its dual LP $(\ref{eqn:master})$.
+\item[Step 2.] Decompose $c_{\lambda}(S)$ into $c_{\lambda 1}(S)$ and $c_{\lambda 2}(S)$, and derive LP (\ref{eqn:l2aSLC}) and its dual LP $(\ref{eqn:master})$.
 
-\item[Step 3.] Start from the restricted master problem of $(\ref{eqn:master})$, where the restricted coalition set is $S' \subset S$, with a polynomial number of elements, and compute its optimal dual solution $\pi^{*} \in \R^{v+1}$.
-\item[Step 4.] Find a coalition $s^*$ with the minimum negative cost by solving the pricing problem,
+\item[Step 3.] Start from the restricted master problem of $(\ref{eqn:master})$, where the restricted coalition set is $\mathbb{S}' \subset \mathbb{S}$, with a polynomial number of elements, and compute its optimal dual solution $\pi^{*} \in \R^{v+1}$.
+\item[Step 4.] Find a coalition $S^*$ with the minimum negative cost by solving the pricing problem,
 \begin{eqnarray}\label{eqn:pricing}
-\min_{s\in S\setminus S'} c_{\lambda2}(s) - \sum_{ k \in V} \gamma^s_k \pi_{k}^{*} + \pi_{v+1}^*.
+\min_{S\in \mathbb{S}\setminus \mathbb{S}'} c_{\lambda2}(S) - \sum_{ k \in V} \gamma^s_k \pi_{k}^{*} + \pi_{v+1}^*.
 \end{eqnarray}
-\item[Step 5.] Following the duality theory, if there is a $\bar{s}$ with negative value of $(\ref{eqn:pricing})$, add the $\bar{s}$ into $S'$, and go back to step 3; otherwise (\ref{eqn:l2aSLC}) is optimally solved with its dual problem (\ref{eqn:master}), go to step 6.
+\item[Step 5.] Following the duality theory, if there is a $\bar{S}$ with negative value of $(\ref{eqn:pricing})$, add the $\bar{S}$ into $\mathbb{S}'$, and go back to step 3; otherwise (\ref{eqn:l2aSLC}) is optimally solved with its dual problem (\ref{eqn:master}), go to step 6.
 
-\item[Step 6.] From the updated restricted coalition family $S'$ and its corresponding characteristic function values $\{c_{\lambda2}(s):\forall s \in S' \}$, the following LP gives the optimal Lagrangian subsidized minimum penalty:
+\item[Step 6.] From the updated restricted coalition family $\mathbb{S}'$ and its corresponding characteristic function values $\{c_{\lambda2}(S):\forall S \in \mathbb{S}' \}$, the following LP gives the optimal Lagrangian subsidized minimum penalty:
 \begin{eqnarray}\label{eqn:alpha2}
 \begin{aligned}
 z_{\lambda}(\omega) = &\min_{\beta,z} z\\
-s.t.~~ \beta(s) - z \leq  c_{\lambda2}&(s),~ \forall s \in S' \setminus V,\\
+S.t.~~ \beta(S) - z \leq  c_{\lambda2}&(S),~ \forall S \in \mathbb{S}' \setminus V,\\
 -\beta(V) \leq  -c_u(V) &+ \omega  + c_{\lambda1}(V).
 \end{aligned}
 \end{eqnarray}
@@ -429,7 +436,7 @@ s.t.~~ \beta(s) - z \leq  c_{\lambda2}&(s),~ \forall s \in S' \setminus V,\\
 \end{algorithm}
 
 
-As we know, in column generation, when the pricing problem is hard to solve, one can take a compromised approach and find an $\bar s$ with a negative value of $(\ref{eqn:pricing})$, which will suffice till the last iteration.
+As we know, in column generation, when the pricing problem is hard to solve, one can take a compromised approach and find an $\bar S$ with a negative \textcolor{red}{reduced cost}, which will suffice till the last iteration.
 However, this compromised approach is problem specific.
 In Section \ref{section:TSP}, we show how to efficiently deal with the pricing problem in a rooted TSP game.
 We refer to $z_{\lambda}(\omega)$, a function of $\omega$, as the Lagrangian R-SPF (LR-SPF).
@@ -449,15 +456,15 @@ We propose a method to calculate the lower bound $z_{k}(\omega)$, also called th
 \begin{eqnarray}\label{eqn:klevel}
 \begin{aligned}
 z_k(\omega) = \min_{\beta,z} &z\\
-s.t.~~~\beta(s) \leq c_{u}(s)+z,~\forall s \in& S \setminus V \text{~and~} |s| \leq k,\\
-\beta(s) \leq c_{u}(s)+z_,~\forall s \in S \setminus V& \text{~and~} |s| > v-k,\\
-\beta(s) \leq c_{u}(s)+z_,~\forall& s \in S^{'\omega}_{\lambda},\\
+S.t.~~~\beta(S) \leq c_{u}(S)+z,~\forall S \in& \mathbb{S} \setminus V \text{~and~} |S| \leq k,\\
+\beta(S) \leq c_{u}(S)+z_,~\forall S \in \mathbb{S} \setminus V& \text{~and~} |S| > v-k,\\
+\beta(S) \leq c_{u}(S)+z_,~\forall& S \in \mathbb{S}^{'\omega}_{\lambda},\\
 \beta(V)=c_{\lambda}(V)&-\omega.
 \end{aligned}
 \end{eqnarray}
 
-In LP $(\ref{eqn:klevel})$, $|s|$ represents the number of players in coalition $s$, and the coalition set $S^{\omega}_{\lambda}$ is a subset of the restricted coalition family $S'$ derived at the end of the LRB algorithm. For a given $k$, LP $(\ref{eqn:klevel})$ includes coalitions with no more than $k$ or no less than $v+1-k$ players, rendering the number of constraints in the order of $O(v^k)$.
-To further tighten the lower bound, we add constraints $\big\{\beta(s) \leq c_{u}(s)+z_,~\forall s \in S^{'\omega}_{\lambda} \big\}$ to (\ref{eqn:klevel}), where $S^{'\omega}_{\lambda} = \big\{ s \in S': \beta_{\lambda}(s) - z_{\lambda}(\omega) =  c_{\lambda2}(s) \big\}$, since constraints $\big\{\beta(s) \leq c(s)+z_,~\forall s \in S^{'\omega}_{\lambda} \big\}$ are more likely to be tight when solving LP (\ref{eqn:SLC}).
+In LP $(\ref{eqn:klevel})$, $|S|$ represents the number of players in coalition $S$, and the coalition set $\mathbb{S}^{\omega}_{\lambda}$ is a subset of the restricted coalition family $\mathbb{S}'$ derived at the end of the LRB algorithm. For a given $k$, LP $(\ref{eqn:klevel})$ includes coalitions with no more than $k$ or no less than $v+1-k$ players, rendering the number of constraints in the order of $O(v^k)$.
+To further tighten the lower bound, we add constraints $\big\{\beta(S) \leq c_{u}(S)+z_,~\forall S \in \mathbb{S}^{'\omega}_{\lambda} \big\}$ to (\ref{eqn:klevel}), where $\mathbb{S}^{'\omega}_{\lambda} = \big\{ S \in \mathbb{S}': \beta_{\lambda}(S) - z_{\lambda}(\omega) =  c_{\lambda2}(S) \big\}$, since constraints $\big\{\beta(S) \leq c(S)+z_,~\forall S \in \mathbb{S}^{'\omega}_{\lambda} \big\}$ are more likely to be tight when solving LP (\ref{eqn:SLC}).
 
 
 \begin{lemma}\label{lemma:lower}
@@ -474,7 +481,7 @@ In this section, we illustrate the LRB algorithm on the rooted TSP game, compute
 \subsection{Game Definition}
 The TSP game examined here is symmetric and rooted; that is the distances between two cities are the same in both directions, and there is a depot city.
 There is a complete undirected graph $G = (N_p \cup \{1\},E)$ with $N_p \cup \{1\}$ representing the city sites, $E$ being the set of edges linking these cities and city `1' being the depot city. Each edge $\{i,j\} \in E$ has a unit transportation cost of $c_{ji} = c_{ij} > 0$.
-For a given coalition $s \in N_p$, the goal is to find a Hamiltonian circuit on cities $s \cup \{1\}$ with minimum total transportation cost. The notations used in the rooted TSP game are listed in Table~\ref{table:TSnotation}.
+For a given coalition $S \in N_p$, the goal is to find a Hamiltonian circuit on cities $S \cup \{1\}$ with minimum total transportation cost. The notations used in the rooted TSP game are listed in Table~\ref{table:TSnotation}.
 \begin{table}[H]
 \tabcolsep=25pt
 %\small
@@ -485,98 +492,98 @@ For a given coalition $s \in N_p$, the goal is to find a Hamiltonian circuit on 
 \multicolumn{1}{c}{$N$} &\multicolumn{1}{l}{Set of city sites, $N=\left\{1,2,...,n\right\}$ with city $1$ being the depot.}\\
 \multicolumn{1}{c}{$N_t$} &\multicolumn{1}{l}{Set of players, $N_t=\left\{2,3,...,n\right\}$.}\\
 \multicolumn{1}{c}{$c_{ij}$} &\multicolumn{1}{l}{Cost to travel from city $i$ to city $j$, $\forall \{i,j\} \in N^2$.}\\
-\multicolumn{1}{c}{$S$} &\multicolumn{1}{l}{Feasible player coalition set, $S = 2^{N_t} \setminus \emptyset$.}\\
-\multicolumn{1}{c}{$s$} &\multicolumn{1}{l}{A feasible player coalition, $s \in S$.}\\
-\multicolumn{1}{c}{$\gamma^s$} &\multicolumn{1}{l}{Incidence vector $\left[ \gamma^{s}_2,\gamma^{s}_3,...,\gamma^{s}_{n} \right]^T$, where $\gamma^{s}_j=1$, if $j \in s$, and $\gamma^{s}_j=0$, otherwise.}\\
+\multicolumn{1}{c}{$\mathbb{S}$} &\multicolumn{1}{l}{Feasible player coalition set, $\mathbb{S} = 2^{N_t} \setminus \emptyset$.}\\
+\multicolumn{1}{c}{$S$} &\multicolumn{1}{l}{A feasible player coalition, $S \in \mathbb{S}$.}\\
+\multicolumn{1}{c}{$\gamma^S$} &\multicolumn{1}{l}{Incidence vector $\left[ \gamma^{S}_2,\gamma^{S}_3,...,\gamma^{S}_{n} \right]^T$, where $\gamma^{S}_j=1$, if $j \in S$, and $\gamma^{S}_j=0$, otherwise.}\\
 \hline
 \end{tabular}
 \end{table}
 
 \begin{definition}\label{defi:ug}
-A rooted TSP game is defined as $(N_t,c_{t})$, with the player set $N_t$ and characteristic function $c_{t}(s)$ determined by integer linear program (ILP),
+A rooted TSP game is defined as $(N_t,c_{t})$, with the player set $N_t$ and characteristic function $c_{t}(S)$ determined by integer linear program (ILP),
 \begin{equation*}\label{eqn:tsobjective}
-c_{t}(s) = \min_{x} \sum_{i \in N} \sum_{j \in N} c_{ij}x_{ij}
+c_{t}(S) = \min_{x} \sum_{i \in N} \sum_{j \in N} c_{ij}x_{ij}
 \end{equation*}
 \begin{equation} \label{eqn:tscon1}
-s.t.~~\sum_{i \in N}x_{ij} + \sum_{i \in N}x_{ji} = 2\gamma_j^{s\cup\{1\}}, ~\forall j \in N,
+S.t.~~\sum_{i \in N}x_{ij} + \sum_{i \in N}x_{ji} = 2\gamma_j^{S\cup\{1\}}, ~\forall j \in N,
 \end{equation}
 \begin{equation}\label{eqn:tscon3}
-\sum_{i \in \varphi} \sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, \forall \varphi \subset 2^{s \cup \{1\}} \setminus \emptyset,
+\sum_{i \in \varphi} \sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, \forall \varphi \subset 2^{S \cup \{1\}} \setminus \emptyset,
 \end{equation}
 \begin{equation}\label{eqn:tscon2}
-\sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1,
+\sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,
 \end{equation}
 \begin{equation}\label{eqn:tscon4}
-x_{ij} \leq \frac{1}{2}(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}),~\forall i \in N,~ j \in N,
+x_{ij} \leq \frac{1}{2}(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N,~ j \in N,
 \end{equation}
 \begin{equation}\label{eqn:tscon5}
 x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{equation}
 \end{definition}
 
-In the above ILP, constraints $(\ref{eqn:tscon1})$ are known as degree equations, which require the degree of a city to be `2' on the final trip if the city is in $s \cup \{1\}$; otherwise, the degree should be `0'. Constraints $(\ref{eqn:tscon3})$ are known as subtour elimination constraints ensuring that feasible tours should cover all cities in $s \cup \{1\}$. Constraints $(\ref{eqn:tscon2})$ and $(\ref{eqn:tscon4})$ are redundant due to $(\ref{eqn:tscon1})$, but they will be helpful in computing the Lagrangian lower bound and Lagrangian subsidized minimum penalty for the rooted TSP game.
+In the above ILP, constraints $(\ref{eqn:tscon1})$ are known as degree equations, which require the degree of a city to be `2' on the final trip if the city is in $S \cup \{1\}$; otherwise, the degree should be `0'. Constraints $(\ref{eqn:tscon3})$ are known as subtour elimination constraints ensuring that feasible tours should cover all cities in $S \cup \{1\}$. Constraints $(\ref{eqn:tscon2})$ and $(\ref{eqn:tscon4})$ are redundant due to $(\ref{eqn:tscon1})$, but they will be helpful in computing the Lagrangian lower bound and Lagrangian subsidized minimum penalty for the rooted TSP game.
 
 In view of Definition~\ref{defi:ORG}, the rooted TSP game $ (N_t,c_{t})$ is an IM game $(V,c)$ with $V=N_t$ and $c = c_{t}$. The specific expressions of matrices $C$, $A$, $A'$, $B$, $B'$, $D$, and $D'$ can be obtained by transforming $c_{t}$ to a matrix format.
 
 
 
 \subsection{Computation of the Lagrangian Subsidized Minimum Penalty}\label{section:LRBTSP}
-In $c_{t}(s)$, by relaxing constraints $\big\{ \sum_{i \in N}x_{ij} + \sum_{i \in N}x_{ji} = 2\gamma_j^s: j \in N_t \big\}$ to the objective of Lagrangian multipliers $\sigma$, we can derive the Lagrangian characteristic function for the rooted TSP game as
+In $c_{t}(S)$, by relaxing constraints $\big\{ \sum_{i \in N}x_{ij} + \sum_{i \in N}x_{ji} = 2\gamma_j^S: j \in N_t \big\}$ to the objective of Lagrangian multipliers $\sigma$, we can derive the Lagrangian characteristic function for the rooted TSP game as
 \begin{eqnarray}\label{eqn:lrtscharacterristic}
 \begin{aligned}
-c_{\sigma}(s) = \min_{x} \sum_{i \in N} \sum_{j \in N} &\big(c_{ij} + \sigma_i + \sigma_j \big)x_{ij} - 2\sum_{j \in N_t} \sigma_j\gamma_j^s ~~~~(Let~\sigma_1 = 0) \\
-&s.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
-\sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{s \cup \{1\}} \setminus \emptyset,\\
-&~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1,\\
-x_{ij} \leq \frac{1}{2}&(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}),~\forall i \in N, ~j \in N,\\
+c_{\sigma}(S) = \min_{x} \sum_{i \in N} \sum_{j \in N} &\big(c_{ij} + \sigma_i + \sigma_j \big)x_{ij} - 2\sum_{j \in N_t} \sigma_j\gamma_j^S ~~~~(Let~\sigma_1 = 0) \\
+&S.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
+\sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{S \cup \{1\}} \setminus \emptyset,\\
+&~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,\\
+x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, ~j \in N,\\
 &x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{aligned}
 \end{eqnarray}
 
-ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1 \big\}$ and $\big\{ x_{ij} \leq \frac{1}{2}(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}):\forall i \in N, j \in N \big\}$ can improve the Lagrangian lower bound for $c(N_t)$.
+ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1 \big\}$ and $\big\{ x_{ij} \leq \frac{1}{2}(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}):\forall i \in N, j \in N \big\}$ can improve the Lagrangian lower bound for $c(N_t)$.
 By dividing $c_{\sigma}$ into two parts, we can define the rooted TSP sub-games 1 and 2 as $(N_t,c_{\sigma1})$ and $(N_t,c_{\sigma2})$, respectively.
 
-Sub-game 1 is modular, where the expression of $c_{\sigma1}(s)$ is
+Sub-game 1 is modular, where the expression of $c_{\sigma1}(S)$ is
 \begin{equation*}\label{eqn:tssub1}
-c_{\sigma1}(s) = - 2\sum_{j \in N_t} \sigma_j\gamma_j^s,
+c_{\sigma1}(S) = - 2\sum_{j \in N_t} \sigma_j\gamma_j^S,
 \end{equation*}
-and the specific expression of $c_{\sigma2}(s)$ is
+and the specific expression of $c_{\sigma2}(S)$ is
 \begin{eqnarray*}\label{eqn:tssub2}
 \begin{aligned}
-c_{\sigma2}(s) &= \min_{x} \sum_{i \in N} \sum_{j \in N} \big(c_{ij} + \sigma_i + \sigma_j \big)x_{ij},\\
-&s.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
-\sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{s \cup \{1\}} \setminus \emptyset,\\
-&~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |s|+1,\\
-x_{ij} \leq \frac{1}{2}&(\gamma_i^{s\cup\{1\}}+\gamma_j^{s\cup\{1\}}),~\forall i \in N, j \in N,\\
+c_{\sigma2}(S) &= \min_{x} \sum_{i \in N} \sum_{j \in N} \big(c_{ij} + \sigma_i + \sigma_j \big)x_{ij},\\
+&S.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
+\sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{S \cup \{1\}} \setminus \emptyset,\\
+&~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,\\
+x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, j \in N,\\
 &x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{aligned}
 \end{eqnarray*}
 
 In the literature, $c_{\sigma2}(N_t)$ is called a `1-tree problem' (e.g. \citealt{held1971traveling}).
-Similarly, we refer to $c_{\sigma2}(s)$ as a `1-s tree problem' with a subgraph $G=(N_t\cup\{1\},E)$ consisting of a tree on cities $s$ and two distinct edges at city 1 linked to $s$, and minimum transportation cost.
-To solve the 1-$s$ tree problem polynomially, we need to first construct a minimum spanning tree on cities $s$ and then add two edges linked to city 1 with the smallest transportation cost.
+Similarly, we refer to $c_{\sigma2}(S)$ as a `1-S tree problem' with a subgraph $G=(N_t\cup\{1\},E)$ consisting of a tree on cities $S$ and two distinct edges at city 1 linked to $S$, and minimum transportation cost.
+To solve the 1-$S$ tree problem polynomially, we need to first construct a minimum spanning tree on cities $S$ and then add two edges linked to city 1 with the smallest transportation cost.
 
-For ease of exposition, we rewrite $c_{\sigma2}(s)$ in an equivalent expression as
+For ease of exposition, we rewrite $c_{\sigma2}(S)$ in an equivalent expression as
 \begin{eqnarray*}\label{eqn:tssub2tree}
 \begin{aligned}
-c_{\sigma2}(s) = \min_{x} \sum_{i \in N} \sum_{j \in N} &c'_{ij}x_{ij}~~(c'_{ij} = c_{ij} + \sigma_i + \sigma_j)\\
-s.t.~~&\text{$x$ is a 1-$s$ tree}.
+c_{\sigma2}(S) = \min_{x} \sum_{i \in N} \sum_{j \in N} &c'_{ij}x_{ij}~~(c'_{ij} = c_{ij} + \sigma_i + \sigma_j)\\
+S.t.~~&\text{$x$ is a 1-$S$ tree}.
 \end{aligned}
 \end{eqnarray*}
 
 Now, we apply the LRB algorithm and compute the Lagrangian subsidized minimum penalty $z_{\sigma}(\omega)$ for the rooted TSP game.
 For this particular application of LRB algorithm, we omit all the detailed descriptions and analyse only its hardest part, the corresponding pricing problem.
-Specifically, this pricing problem can find the coalition $s \in N_t$ with the minimum negative cost:
+Specifically, this pricing problem can find the coalition $S \in N_t$ with the minimum negative cost:
 \begin{eqnarray}\label{eqn:tspricinglcv}
 \begin{aligned}
-\min_{s \in N_t} \sum_{i \in N} &\sum_{j \in N} c'_{ij}x_{ij} - \sum_{j \in N_t} \gamma_j^s \pi_j^* + \pi_{n+1}^*\\
-&s.t.~~\text{$x$ is a 1-$s$ tree},
+\min_{S \in N_t} \sum_{i \in N} &\sum_{j \in N} c'_{ij}x_{ij} - \sum_{j \in N_t} \gamma_j^S \pi_j^* + \pi_{n+1}^*\\
+&S.t.~~\text{$x$ is a 1-$S$ tree},
 \end{aligned}
 \end{eqnarray}
 where $\pi^*$ gives the optimal dual solution to the corresponding master problem defined in LP $(\ref{eqn:master})$. We denote the resulting Lagrangian subsidized minimum penalty for the rooted TSP game as $z_{\sigma}(\omega)$.
 
 
-As stated in the description of Algorithm \ref{alg:SPC}, it is hard to optimally solve ILP $(\ref{eqn:tspricinglcv})$, but we can still apply the LRB algorithm before it is completed, because we only need to find column $\bar{s}$ with a minimum negative cost to continue the algorithm.
+As stated in the description of Algorithm \ref{alg:SPC}, it is hard to optimally solve ILP $(\ref{eqn:tspricinglcv})$, but we can still apply the LRB algorithm before it is completed, because we only need to find column $\bar{S}$ with a \textcolor{red}{\st{minimum}} negative cost to continue the algorithm.
 
 
 To further enhance computational efficiency, we adopt the Minimum Adjacency Test (see \citealt{duin1987some,ljubic2006algorithmic}) and reduce the magnitude of the problem $(\ref{eqn:tspricinglcv})$.
@@ -646,7 +653,7 @@ To further show the effectiveness and efficiency of applying the LRB algorithm t
 \tabcolsep=17pt
 %\small
 \renewcommand\arraystretch{1.0}
-\caption{\label{table:detailed20}Computational results of the LBR algorithms effectiveness and efficiency}
+\caption{\label{table:detailed20}Computational results of the LBR algorithmS effectiveness and efficiency}
 \vglue5pt
 \begin{tabular}[!h]{c c c c c c c c c}
 \hline
@@ -714,9 +721,9 @@ This work is partially supported by the National Natural Science Foundation of C
 \section*{Appendix}
 \noindent \textbf{Proof of Theorem \ref{thm:rb}.}\\
 The proof is straightforward.
-Denote an optimal solution for LP $(\ref{eqn:aSLC})$ as $\big[\beta_r(\ \cdot \ ,\omega),z_r(\omega)\big]$. Now, we consider vector $\big[\bar{\beta}_r(\ \cdot \ ,\omega),z_r(\omega)\big]$, where $\bar{\beta}_r(k,\omega) = \beta_r(k,\omega) - \big(c_u(V)-c(V)\big)/v$, for all $k \in V$. Then, for each $s \in S \setminus V$, we have
+Denote an optimal solution for LP $(\ref{eqn:aSLC})$ as $\big[\beta_r(\ \cdot \ ,\omega),z_r(\omega)\big]$. Now, we consider vector $\big[\bar{\beta}_r(\ \cdot \ ,\omega),z_r(\omega)\big]$, where $\bar{\beta}_r(k,\omega) = \beta_r(k,\omega) - \big(c_u(V)-c(V)\big)/v$, for all $k \in V$. Then, for each $S \in \mathbb{S} \setminus V$, we have
 \begin{equation*}
-\bar{\beta}_r(s,\omega)  = \beta_r(s,\omega) - \frac{|s|\big[c_u(V)-c(V)\big]}{v} \leq \beta_r(s,\omega) \leq c_l(s)+ z_r(\omega) \leq c(s) + z_r(\omega).
+\bar{\beta}_r(S,\omega)  = \beta_r(S,\omega) - \frac{|S|\big[c_u(V)-c(V)\big]}{v} \leq \beta_r(S,\omega) \leq c_l(S)+ z_r(\omega) \leq c(S) + z_r(\omega).
 \end{equation*}
 
 Furthermore, since $\bar{\beta}_r(V,\omega) = \beta_r(V,\omega) - \frac{v\big[c_u(V)-c(V)\big]}{v} = c(V)-\omega$, we argue that $\big[ \bar{\beta}_r(\ \cdot \ ,\omega),z_r(\omega) \big]$ is feasible to LP $(\ref{eqn:SLC})$.
@@ -729,10 +736,10 @@ Thus, $z_r(\omega)$ is an upper bound of $z(\omega)$.
 From the strong duality of LP $(\ref{eqn:aSLC})$, we have
 \begin{eqnarray}\label{eqn:DualSLC}
 \begin{aligned}
-z_r(\omega) = \max_{\rho}~ \rho_v \big[ c_u(V)-\omega \big] &- \sum_{s \in S \setminus \{V\}} \rho_s c_l(s)\\
-s.t.~~\sum_{s \in S \setminus \{V\}} \rho_s = &1,\\
-\sum_{s \in S \setminus \{V\}: k \in s} \rho_s - \rho_v = 0,&~\forall k \in V,\\
-\rho_s \geq 0,~\forall s \in& S.
+z_r(\omega) = \max_{\rho}~ \rho_v \big[ c_u(V)-\omega \big] &- \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s c_l(S)\\
+S.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = &1,\\
+\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s - \rho_v = 0,&~\forall k \in V,\\
+\rho_s \geq 0,~\forall S \in& \mathbb{S}.
 \end{aligned}
 \end{eqnarray}
 Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$.
@@ -741,23 +748,23 @@ Moreover, since the slope $-\rho_v$ of each straight line constructing $z_r(\ome
 
 From the constraints in LP $(\ref{eqn:DualSLC})$, we have
 $$
-1 = \sum_{s \in S \setminus \{V\}} \rho_s \leq \sum_{k \in V}\sum_{s \in S \setminus \{V\}: k \in s} \rho_s \leq (v-1)\sum_{s \in S \setminus \{V\}} \rho_s = v-1.
+1 = \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s \leq \sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s \leq (v-1)\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = v-1.
 $$
-Note that $\sum_{k \in V}\sum_{s \in S \setminus \{V\}: k \in s} \rho_s = v\rho_v$; therefore, we have $1 \leq v\rho_v \leq v-1$, that is $-(v-1)/v\leq -\rho_v \leq -1/v$.
+Note that $\sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s = v\rho_v$; therefore, we have $1 \leq v\rho_v \leq v-1$, that is $-(v-1)/v\leq -\rho_v \leq -1/v$.
 \qed
 
 
 
 \noindent \textbf{Proof of Lemma \ref{lemma:equivalentLP}.}\\
-Denote an optimal solution of $(\ref{eqn:laSLC})$ as $\big[ \beta_{\lambda}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$. Now, the vector $\big[ \bar{\beta}_{\lambda}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$ with $\big\{\bar{\beta}_{\lambda}(k,\omega) = \beta_{\lambda}(k,\omega) - c_{\lambda1}(k):\forall k \in V\big\}$ is clearly a feasible solution for $(\ref{eqn:l2aSLC})$ since first, for all $s \in S \setminus V$,
+Denote an optimal solution of $(\ref{eqn:laSLC})$ as $\big[ \beta_{\lambda}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$. Now, the vector $\big[ \bar{\beta}_{\lambda}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$ with $\big\{\bar{\beta}_{\lambda}(k,\omega) = \beta_{\lambda}(k,\omega) - c_{\lambda1}(k):\forall k \in V\big\}$ is clearly a feasible solution for $(\ref{eqn:l2aSLC})$ since first, for all $S \in \mathbb{S} \setminus V$,
 \begin{equation*}
-\bar{\beta}_{\lambda}(s,\omega) - z_{\lambda}(\omega) = \beta_{\lambda}(s,\omega) - z_{\lambda}(\omega) - c_{\lambda1}(s) \leq c_{\lambda}(s) - c_{\lambda1}(s) = c_{\lambda2}(s),
+\bar{\beta}_{\lambda}(S,\omega) - z_{\lambda}(\omega) = \beta_{\lambda}(S,\omega) - z_{\lambda}(\omega) - c_{\lambda1}(S) \leq c_{\lambda}(S) - c_{\lambda1}(S) = c_{\lambda2}(S),
 \end{equation*}
 and second,
 \begin{equation*}
 -\bar{\beta}_{\lambda}(V,\omega) = -\beta_{\lambda}(V,\omega) + c_{\lambda1}(V) \leq -c_{u}(V) + \omega + c_{\lambda1}(V),
 \end{equation*}
-where $\sum_{k \in s}\bar{\beta}_{\lambda}(k,\omega) = \bar{\beta}_{\lambda}(s,\omega)$ because of the modularity of IM sub-game 1  $(V,c_{\lambda1})$.
+where $\sum_{k \in S}\bar{\beta}_{\lambda}(k,\omega) = \bar{\beta}_{\lambda}(S,\omega)$ because of the modularity of IM sub-game 1  $(V,c_{\lambda1})$.
 
 Similarly, given the optimal solution $\big[ \beta_{\lambda2}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$ of $(\ref{eqn:l2aSLC})$, we can show that vector $\big[ \bar{\beta}_{\lambda2}(\ \cdot \ ,\omega), z_{\lambda}(\omega) \big]$ with $\big\{\bar{\beta}_{\lambda2}(k,\omega) = \beta_{\lambda2}(k,\omega) + c_{\lambda1}(k):\forall k \in V\big\}$ is feasible for $(\ref{eqn:laSLC})$. Hence, the optimal objective values $z_{\lambda}(\omega)$ of LPs $(\ref{eqn:l2aSLC})$ and $(\ref{eqn:laSLC})$ are the same.
 \qed
@@ -773,7 +780,7 @@ In addition, from Remark \ref{rem:convex}, the LR-SPF $z_{\lambda}(\omega)$ is c
 \noindent \textbf{Proof of Lemma \ref{lemma:lower}.}\\
 The proof is straightforward.
 As for the proof of Theorem \ref{thm:rb}, we show that
-$$z_{l}(\omega) = \min_{\beta,z} \big\{ z \in \R:\beta(V)=c_\lambda(V)-\omega \mbox{ and } \beta(s) \leq c_u(s)+z, \forall s \in S \setminus V \big\},$$
+$$z_{l}(\omega) = \min_{\beta,z} \big\{ z \in \R:\beta(V)=c_\lambda(V)-\omega \mbox{ and } \beta(S) \leq c_u(S)+z, \forall S \in \mathbb{S} \setminus V \big\},$$
 is a lower bound of $z(\omega)$.
 In addition, we argue that $z_k(\omega) \leq z_{l}(\omega)$, since the latter feasible region is a subset of the former one.
 Therefore, we have $z_k(\omega)\leq z_{l}(\omega) \leq z(\omega)$.

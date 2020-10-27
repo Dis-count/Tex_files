@@ -1,0 +1,428 @@
+\documentclass[11pt]{article}
+
+\usepackage{threeparttable}
+\usepackage{subfig}
+\usepackage{pdfpages}
+\usepackage{amsfonts,amsthm,amssymb,amsmath}
+\usepackage{graphicx,mathrsfs}
+\usepackage{multirow}
+\usepackage{float}
+%\usepackage{tikz}
+%\usetikzlibrary{arrows}
+\usepackage[hidelinks=true]{hyperref}
+\usepackage{natbib}
+\bibliographystyle{chicago}
+%
+% page format
+\usepackage[top=0.81in,bottom=0.81in,left=0.81in,right=0.81in%,a4paper
+]{geometry}
+\linespread{1.3}
+\setlength{\parskip}{3.6pt}
+
+%% for cross reference in paper
+%\usepackage{hyperref}
+%\hypersetup{colorlinks,citecolor=black,filecolor=black,%
+%  linkcolor=black,urlcolor=black}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}{Proposition}
+\newtheorem{assu}{Assumption}
+\newtheorem{definition}{Definition}%[section]
+\newtheorem{lemma}{Lemma}
+\newtheorem{coro}{Corollary}
+\newtheorem{example}{Example}
+\newtheorem{fact}{Fact}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{alg}{Algorithm}
+\newtheorem{rem}{Remark}
+\newtheorem{fig}{Figure}
+
+\newcommand{\rv}{random variable}
+\newcommand{\bE}{\bf E}
+\renewcommand{\Box}{\bigboxvoid}
+\newcommand{\qeds}{$\qedsymbol $}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\cc}{\mathbb{c}}
+
+ %Natbib setup for author-year style
+
+\title{\textbf{Authors' Reply\\Simultaneous Penalization and Subsidization\\
+for Stabilizing Grand Coalitions\\ in Unbalanced Cooperative Games}}
+\author{Lindong Liu, Xiangtong Qi, Zhou Xu}
+\date{}
+\begin{document}
+\maketitle
+%\begin{center}
+%{\bf \LARGE \linespread{1.6}{
+%Authors' Reply\\}}
+%\vspace{-1mm}
+%{\bf \LARGE \linespread{1.6}{
+%Stabilizing Grand Coalitions in Unbalanced Cooperative\\}}
+%\vspace{-1mm}
+%{\bf \LARGE \linespread{1.6}{
+%Games by Simultaneously Penalizing and Subsidizing\\}}
+%\vspace{2mm}
+%{\normalsize Lindong Liu, Xiangtong Qi, Zhou Xu}
+%\vspace{4mm}
+%\end{center}
+\noindent 
+We would like to thank the Associate Editor and the reviewers for the encouraging and detailed comments on the paper. We have carefully studied all the comments and addressed them in our manuscript. The paper has therefore been substantially revised.
+Our revision follows the   guidance that ``the discussion on TSP game, and more generally the case when computing $c(s)$ itself is hard, diverges the contribution of the paper" and ``the revision should focus on strengthening the contributions of the first part of the paper." To this end, we have made the following major changes.
+
+
+First, regarding the proofs of the structural properties of the penalty-subsidy tradeoff function, we now have a much simpler proof which was suggested by the Associate Editor, and for which we are very grateful.
+
+Second, regarding constructing the tradeoff function over the entire effective domain, we add a new approximation algorithm with a guaranteed error bound.
+
+
+Third, regarding computing the tradeoff between penalty and subsidy at a specific point, we remove the Lagrangian relaxation heuristic method, and design two new solution approaches that are more theoretically sound, and that can find the exact solutions for some games \textcolor{magenta}{of which $c(s)$ are solvable.}
+
+
+Fourth, regarding the demonstration games, we replace the TSP game with machine scheduling games. Indeed, we obtain some interesting properties by studying the special structures of these games.
+ 
+There is another change mainly for the convenience of presentation. For the tradeoff function, we now define it as $\omega(z)$ instead of $z(\omega)$. Because of the one-to-one mapping between penalty $z$ and subsidy $\omega$, all main results still hold.
+ 
+In making the revision, we have invited another colleague to join the work. He made a substantial contribution to the above second, third and fourth major changes, and is now added as a co-author.
+
+Please find below our point-by-point reply to the Associate Editor and each of the reviewers. To facilitate reading, the original comments are in {\it italics}.
+
+
+%We would like to thank the associate editor and reviewers for the encouraging and detailed comments on the paper. 
+%We have carefully studied all the comments and addressed them in our revision. 
+%In this reply, we first summarize several major changes we have made, and then give the specific details.
+%
+%
+%First, we agree with the reviewer and the associate editor that: the original paper is already heavily technical and there is no need to address the ideas on the TSP game, where the coalitions' costs are NP-hard to solve by themselves; the revision should focus on strengthening the main contributions in the first part of the paper.
+%Therefore, we make two major changes as shown in the next two paragraphs.
+%
+%
+%To strengthen the main contributions of our work, we have revised our paper as follows: (1) besides the IPC algorithm, we develop an approximation algorithm in Section 3.2.2 that generates a good upper bound for function $\omega(z)$;
+%%This algorithm serves as a supplement when the IPC algorithm is time consuming to construct the exact function $\omega(z)$; 
+%(2) compared with the original paper, we have deeper results on the computational complexity of $\omega(z)$ and its associating optimization problem as shown in Appendix EC.10; 
+%(3) rather than the Lagrangian relaxation based heuristic method, we come up with two new solution approaches in Sections 4.2 and 4.3 that can compute $\omega(z)$ both exactly and approximately.
+%
+%
+%
+%Second, to demonstrate our ideas, we choose the Parallel Machines Scheduling game (see, \citealt{schulz2010sharing,schulz2013approximating}) as the new objective, whose coalitions' costs are easier to obtain compared with the TSP game discussed in the original paper.
+%As predicted by the associate editor, by utilizing the special structure of the characteristic function in the machine scheduling game, we are able to derive more and deeper theoretical results about $\omega(z)$ in Section 5.
+%
+%
+%Third, as suggested by one of the reviewers, in order to reach a larger group of readers, the structural properties of function $\omega(z)$ (Theorems 1, 2 and 3 in the current paper) are now proved by using linear programming duality.
+%We need to point out that the proofs are kindly provided by the associate editor in his review report.
+%We cannot be more grateful for this.
+%
+%
+%Forth, instead of the subsidy-penalty function $z(\omega)$, we now use the penalty-subsidy function $\omega(z)$ to evaluate the trade off between penalty and subsidy levels in the concept of simultaneously penalizing and subsidizing.
+%The previous results such as the structural properties and the applicability of the IPC algorithm are still true.
+%In addition, we are able to obtain more and deeper theoretical results as suggested by the associate editor.
+%Using $\omega(z)$ is more convenient for us to facilitate discussion.
+%
+%
+%In making the revision, we have invited another colleague to join the work. He made a substantial contribution to the above third and forth major changes, such as proposing the solution approaches to compute $\omega(z)$ and analyzing the computational complexity. He is now added as a co-author.
+%
+%Please find below our point-by-point reply to the associate editor and each of the reviewers. To facilitate reading, the original comments are in {\it italics}.
+
+%\vspace{10mm}
+
+\newpage
+
+\noindent \textbf{\large Reply to Associate Editor}
+\\[3mm] 
+Thank you very much for processing our submission efficiently and providing guidance for the revision.
+We are especially grateful for the simple proofs that you suggested.
+The issues raised in your report are addressed as follows:
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{
+Question 1.}
+When trying to address one issue raised by one of the referees about the proof of Lemma 2 and
+Lemma 3, I came up with simple proofs for several key results in Section 2 and Section 3 by using
+linear programming duality. I find the proofs are quite straightforward. I include the derivations
+below.}
+\\[2mm]
+\noindent \textbf{Reply 1.}
+Thank you so much for providing simpler proofs.
+We have adopted your proofs.
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 2.} 
+On the other hand, I also agree with one of the referees that the discussion on TSP game, and more generally the case when computing $c(s)$ itself is hard, diverges the contribution of the paper. (And the contributions rely on known techniques for such games.) I believe the revision should focus on strengthening the contributions of the first part of the paper.}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+We fully agree with the comment, and have focused more on theoretical results instead of solving a particular game by heuristics. Please refer to the major changes (2)-(4) for details.
+%Or\\
+%Thanks for pointing this out.
+%This suggestion leads to some major improvements to our revision which are summarized in the second and third major changes described in the first page of this reply.
+%We now list these improvements here: (1) we develop an approximation algorithm in Section 3.2.2 as a supplement of the IPC algorithm to efficiently generate a good upper bound for function $\omega(z)$; (2) we provide some complexity analyses on computing the value of $\omega(z)$ and the associating optimization problem under any penalty $z$ in Appendix EC.2; (3) rather than the original Lagrangian relaxation based heuristic method to calculate an upper bound for $\omega(z)$ under given $z$, we come up with two solution approaches in Sections 4.1 and 4.2 that can serve as both exact and approximate methods in the computation; (4) we replace the TSP game, demonstration example of our ideas, with the Parallel Machines Scheduling game whose coalitions' costs are easier to obtain, so that we can derive some more interesting results accordingly in Section 5.
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 3.} 
+If this were my own paper, I would try to identify interesting games for which one could utilize the structure of the cost function c to derive more, perhaps deeper, theoretical results about $z(\omega)$.}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+Thank you for your suggestion. We believe that  your suggestion will lead to many interesting studies.
+In the revision we have studied parallel machine scheduling games to demonstrate the applicability of the proposed model, algorithms, and solution approaches.
+As a result of studying the special structure of these games, we are indeed able to derive some deeper results.
+For example, as shown in Section 5.1, we can compute the exact value of $\omega(z)$ by a polynomial-time solvable linear program under any penalty $z$; moreover, we are able to obtain an upper bound for the number of breakpoints on function $\omega(z)$ (Theorem 7).
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+\noindent \textbf{\large Reply to Reviewer 1}
+\\[3mm]
+Thank you for your comments, especially for pointing out that we should focus on the main contributions of our paper by assuming that the coalitions' costs are known. We have adopted your suggestions and revised our paper accordingly. The main issues raised in your report are addressed as follows:
+\\[4mm]
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 1.} 
+I just wonder if it is possible to prove the same results by more ordinary tools in Linear Algebra. It is worth trying to do so in order to reach a larger group of readers.}
+\\[2mm]
+\noindent \textbf{Reply 1.}
+The Associate Editor kindly provided simpler proofs for these results.
+The new proofs are derived based on linear programming dualities, which should be familiar to most of the readers.
+Please refer to the proofs of Theorems 1, 2 and 3 in the revised paper for the details.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 2.} 
+Having said that I find the TSP game instance presented in
+pages 8-9 neat in order to explain the motivation of your scheme, but I would have preferred if later while analyzing your cost allocation mechanism, you just assume that the costs of the various coalitions are known (by a black-box) and without having to use lower and upper bounds. Instead, you could have used in page 8 an unbalanced game where the cost of each coalition is simple to obtain by some characterizing parameters of the players.}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+Thanks a lot for your suggestion.
+We have replaced the TSP game instance with a single machine scheduling game (Example 1 in the revised manuscript) whose coalitions' costs are easy to calculate.
+In addition, we have chosen the parallel machine scheduling games instead of the TSP games for implementation.
+By adopting your suggestion, we are able to derive  deeper results such as (1) the polynomial solvability of $\omega(z)$ under arbitrary $z$; (2) a polynomial upper bound for the number of breakpoints on function $\omega(z)$ (Theorem 7).
+The details are shown in Section 5.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 3.}
+In your revision please shorten the paper to no more than 25 pages $+$ Appendix, while focusing on your main contribution. This is essential in order to highlight the main results.
+}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+%The main contributions are strengthened as explained in the first page of this reply.
+\textcolor{blue}{We have shortened our paper to 25 pages; at the same time,  the results are now more enriched and the presentation is more compact.}
+\\[4mm]
+%\textcolor{blue}{
+%The main contributions are strengthened as explained in the first page of this reply.
+%We have tried our best to shorten the paper.
+%There are 25 pages (excluding the reference) in the main part of the revision, while the results are more enriched and compact.
+%We hope this is acceptable.}
+%\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 4.}
+Please seek the help of an English proof-reader to improve the phrasing and style.
+}
+\\[2mm]
+\noindent \textbf{Reply 4.}
+We have hired a professional editor to proof-read the revised manuscript.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 5.}
+It is quite common to denote sets (coalition) by capital letters. You use $s \in S \setminus V$ for a proper coalition. Instead, you can use $S$ for a coalition where $S \subsetneq V$.
+}
+\\[2mm]
+\noindent \textbf{Reply 5.}
+We realize that it is more common to denote coalitions by capital letters.
+However, we keep the original notations since we use $S$ to represent the set of coalitions such as the maximally unsatisfied coalitions set $S^{\beta z}$ (Section 3.1) and the restricted coalition set $S'$ (Section 4.1). 
+%
+%
+%
+
+
+
+
+
+
+%\vspace{10mm}
+\newpage
+
+\noindent \textbf{\large Reply to Reviewer 2}
+\\[3mm] 
+We appreciate your detailed comments made directly on the manuscript. 
+We have corrected all the typos and grammatical errors that you pointed out and carefully studied the technical concerns you raised.
+Because the second part of the paper has been rewritten, we will only address your comments on the first part.
+Nevertheless, we find your other comments also very helpful for our further study.
+%As stated in the first two pages, we have made some major changes to the paper structure to strengthen the main contributions of our work.
+%Sections 4 and 5 in the original paper are replaced.
+%In this report, we will focus on responding to the comments which still mater in the current paper.
+%Your other comments will be great helpful in our further study. Thanks a lot for your work.
+\\[4mm] 
+%
+%
+%
+%
+\noindent \textit{\textbf{Question 1.}
+Page 3: The authors should clarify what they mean by ``social opportunity" in this context. Page 5: Similar to my previous comment: The authors should clarify what they mean by ``social opportunity" in this context.
+}
+\\[2mm]
+\noindent \textbf{Reply 1.}
+Our intention is to point out that providing subsidy is at the cost of sacrificing  external resources.
+We have changed the wording to avoid any ambiguity, please see line X of page X and line X of page X, respectively.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 2.}
+Page 4: The authors should note that the $\gamma$-core also can be interpreted as a coalition-penalizing solution concept by scaling the constraints that define the
+$\gamma$-core appropriately.
+}
+\\[2mm]
+\noindent \textbf{Reply 2.}
+Thank you for pointing this out.
+It is true that the $\gamma$-core can also be interpreted as a coalition-penalization solution concept.
+With the solution of $\gamma$-core, the penalty level to any coalition can be set at $(1/\gamma-1)$ times the coalition's cost, such that the grand coalition is stabilized.
+Please see line X of page X in the revised manuscript.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 3.}
+Page 4: The authors need to argue this more carefully, since I believe in principle, one could argue the opposite in a reasonable way as well.
+}
+\\[2mm]
+\noindent \textbf{Reply 3.}
+We realize that this claim, the issue of the potentials of real world applications to the three mentioned concepts, may be misleading.
+In fact, each concept has its own suitable range of applications.
+We only focus on the concepts of penalization and subsidization,
+utilizing their complementary roles to develop a new instrument.
+%We have revised our wordings in line X of page X in the revised manuscript.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 4.}
+Page 4: The authors should note that there is quite a bit of literature, especially in the CS community, on finding the best possible $\gamma$ for the $\gamma$-core of various combinatorial optimization games. This is usually in work that finds cross-monotonic cost sharing methods (or population monotonic allocation schemes) for the design of cost sharing mechanisms. Much of this was prior to the ``introduction" of the cost of stability by \cite{bachrach2009cost}.
+}
+\\[2mm]
+\noindent \textbf{Reply 4.}
+We agree that we need to recognize such work to make the literature complete.
+We have carefully reorganized the literature review and addressed these issues in line X of page X in the revised manuscript.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 5.}
+Page 5: The authors should specify what they mean by ``efficiency" here: Economic efficiency? Computational efficiency? Or simply, effectiveness?
+}
+\\[2mm]
+\noindent \textbf{Reply 5.}
+This should be ``economic efficiency". Thanks for pointing this out.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 6.}
+Page 5: The authors should be more specific on what they mean by ``entire feasible region" - I assume they mean the effective domain of the function?
+}
+\\[2mm]
+\noindent \textbf{Reply 6.}
+Yes, our focus is the ``effective domain" of the function.
+We have adopted this term all through the revised manuscript.
+Thanks a lot for your suggestion.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 7.}
+Page 7: This ($c(V)-\alpha^*(V)$ is non-negative) doesn't appear to be true - what if the grand coalition can recover more than $c(V)$ under a stable allocation? (In other words, what if finding an allocation in the core is ``too easy"?)
+}
+\\[2mm]
+\noindent \textbf{Reply 7.}
+According to the definitions of core (\citealt{Jain2007CostSharing}) and optimal cost allocation (\citealt{Caprara2010LPB}), the total shared cost $\alpha(V)$ is required to be no larger than $c(V)$, therefore, the minimum subsidy $\omega^* = c(V) - \alpha^*(V)$ is non-negative.
+If the constraint $\alpha(V) \leq c(V)$ is removed, $\omega^*$ might be negative and its absolute value can be interpreted as the amount of profit that the central authority can extract from the grand coalition without affecting its stability.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 8.}
+Page 9: The authors need to clarify this statement: by ``for example", do the authors mean that (10, 10, 10, 10, 10) is a stable cost allocation, or just a way of splitting the cost of 50?
+}
+\\[2mm]
+\noindent \textbf{Reply 8.}
+In our current example, the resulting optimal cost allocation $[20; 18; 14; 8]$ is unique.
+We have pointed this out in the revised manuscript in line X of page X.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 9.}
+Page 9: I believe a graph of these values would be more useful.
+}
+\\[2mm]
+\noindent \textbf{Reply 9.}
+The exact PSF curve is shown later in Figure 1 on page X when we demonstrate the IPC algorithm in Example 1. We have explicitly mentioned this in the paper.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 10.}
+Page 14: The authors need to clarify this statement - as stated and in its current context, it seems like Algorithm 1 iteratively computes an upper and a lower bound on $z(\omega)$. However, the algorithm described in Algorithm 1 doesn't seem to explicitly compute an iterative upper bound on $z(\omega)$. The authors need to a better job linking the discussion preceding the description of this algorithm into a proof of correctness.
+}
+\\[2mm]
+\noindent \textbf{Reply 10.}
+Thanks a lot for your comments.
+You are right that the upper bound is not updated in each iteration. We further realize that we actually do not need an iterative upper bound to derive the exact PSF $\omega(z)$ when applying the IPC algorithm.
+We have refined the description of the IPC algorithm and concluded its correctness in Theorem 4.
+Please see the details on page X.
+\\[4mm]
+%
+%
+%
+\noindent \textit{\textbf{Question 11.}
+Page 28: The authors seem to be overstating the impact of their results - I would argue that the results in this manuscript do not support this statement as written.
+}
+\\[2mm]
+\noindent \textbf{Reply 11.}
+Sorry for such an aggressive claim. We have removed this claim, and simply point out that our work is of both theoretical value and practical importance.
+\\[4mm]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\bibliographystyle{ormsv080}
+\bibliography{BibLeastCore11-29-2015}
+%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%
