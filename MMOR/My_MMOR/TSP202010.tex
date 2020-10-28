@@ -156,7 +156,7 @@ Therefore, following the S\&P idea and stabilizing the grand coalition in unbala
 By broadly focusing on the integer minimization (IM) game, \cite{leastcore2018} developed the cutting plane (CP) and linear programming (LP) approaches based on the CP method and LP duality theory, respectively, to compute $\omega(z)$ for a given $z$.
 The two approaches are effective under certain situations: the CP approach is effective when the corresponding separation problem is computationally tractable, and the LP approach is effective when the associating convex polyhedron is well identified.
 However, computing the subsidized minimum penalty $z(\omega)$ for any given $\omega$ is in general hard due to the following reasons.
-First, LP (\ref{eqn:SLC}) is a \textcolor{red}{linear program involving an exponential number of constraints.}
+First, LP (\ref{eqn:SLC}) is a \textcolor{red}{linear programming problem involving an exponential number of constraints.}
 Second, the characteristic function $c(S)$ is intractable in some IM games, such as machine scheduling (\citealt{leastcore2018}), facility location (\citealt{Kolen1983FL,Goemans2000FL,Puerto2011}), and travelling salesman (TSP) (\citealt{tamir1989core,kimms2016core}).
 
 
@@ -169,13 +169,8 @@ Compared with the CP approach in \cite{leastcore2018}, this framework is efficie
 
 
 Second, following the heuristic framework, we introduce the well-known Lagrangian bounds and develop an algorithm based on Lagrangian relaxation (LRB algorithm) for computing $z(\omega)$.
-Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, for many integer linear programmings, Lagrangian bounds
-
-\textcolor{red}{add integrality property}
-
-are sharper than linear relaxation bounds.
+Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, \textcolor{red}{for those integer linear programmings which do not fulfill the integrality property,} Lagrangian bounds are sharper than linear relaxation bounds.
 Furthermore, the LRB algorithm is able to deal with nonlinear situations while the LP approach is not.
-
 
 Third, we implement our ideas in the rooted TSP games.
 The result indicates the the effectiveness and efficiency of the LRB algorithm in computing $z(\omega)$, associating with a fair cost allocation.
@@ -213,7 +208,9 @@ where constraints in $(\ref{eqn:orgc})$ are divided into two parts for the usage
 
 It is known that many IM games are unbalanced, i.e., the associating grand coalition is unstable.
 As described in Introduction, the S\&P instrument is proposed by \cite{leastcore2018} to stabilize the grand coalition, where an amount of subsidy, $\omega$, is provided to the grand coalition and an amount of penalty, $z(\omega)$, is imposed to the deviating sub-coalitions.
-The key problem for the S\&P instrument is computing the subsidized minimum penalty $z(\omega)$ for any given subsidy $\omega$, where the resulting combinatorial optimization problem is
+The key problem for the S\&P instrument is computing the subsidized minimum penalty $z(\omega)$ for any given subsidy $\omega$, where the resulting
+\textcolor{red}{need to revised}
+ combinatorial optimization problem is
 \begin{eqnarray*}
 \begin{aligned}
 z(\omega) = \min_{\beta,z} \bigg\{ z \in \R:\beta(V)=c(V)-\omega \mbox{ and } \beta(S) \leq c(S)+z,~\forall S \in \mathbb{S} \setminus \{V\} \bigg\}.
@@ -311,10 +308,11 @@ Given any $c_u(V) \geq c(V)$ and $c_l(S) \leq c(S)$, \textcolor{red}{$\forall S 
 \end{remark}
 
 
-Compared with LP $(\ref{eqn:SLC})$, we replace $c(S)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional combinatorial optimization techniques.
+Compared with LP $(\ref{eqn:SLC})$, we replace $c(S)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional
+\textcolor{red}{\st{combinatorial optimization}}
+techniques.
 Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(S)$ bounds.
 In the following subsection, we develop a solution by applying Lagrangian bounds.
-
 
 
 \subsection{The Lagrangian Subsidized Minimum Penalty}\label{section:CGBAM}
@@ -456,8 +454,7 @@ We propose a method to calculate the lower bound $z_{k}(\omega)$, also called th
 \begin{eqnarray}\label{eqn:klevel}
 \begin{aligned}
 z_k(\omega) = \min_{\beta,z} &z\\
-S.t.~~~\beta(S) \leq c_{u}(S)+z,~\forall S \in& \mathbb{S} \setminus V \text{~and~} |S| \leq k,\\
-\beta(S) \leq c_{u}(S)+z_,~\forall S \in \mathbb{S} \setminus V& \text{~and~} |S| > v-k,\\
+s.t.~~~\textcolor{red}{\beta(S) \leq c_{u}(S)+z_,~\forall S \in \mathbb{S} \setminus V& \textcolor{red}{{~when~} |S| \leq k \text{~or~} |S| > v-k }},\\
 \beta(S) \leq c_{u}(S)+z_,~\forall& S \in \mathbb{S}^{'\omega}_{\lambda},\\
 \beta(V)=c_{\lambda}(V)&-\omega.
 \end{aligned}
@@ -513,15 +510,33 @@ S.t.~~\sum_{i \in N}x_{ij} + \sum_{i \in N}x_{ji} = 2\gamma_j^{S\cup\{1\}}, ~\fo
 \begin{equation}\label{eqn:tscon2}
 \sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,
 \end{equation}
-\begin{equation}\label{eqn:tscon4}
-x_{ij} \leq \frac{1}{2}(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N,~ j \in N,
-\end{equation}
+% \begin{equation}\label{eqn:tscon4}
+% \textcolor{red}{
+% x_{ij} \leq \gamma_i^{S\cup\{1\}}, x_{ij} \leq \gamma_j^{S\cup\{1\}},~\forall i \in N,~ j \in N,
+% }
+% \end{equation}
+\begin{eqnarray}\label{eqn:tscon4}
+\begin{aligned}
+\textcolor{red}{
+x_{ij} \leq \gamma_i^{S\cup\{1\}},~\forall i \in N,~ j \in N,}\\
+\textcolor{red}{x_{ij} \leq \gamma_j^{S\cup\{1\}},~\forall i \in N,~ j \in N,}}
+\end{aligned}
+\end{eqnarray}
+% \begin{equation*}
+% \textcolor{red}{
+% x_{ij} \leq \gamma_i^{S\cup\{1\}}, x_{ij} \leq \gamma_j^{S\cup\{1\}},~\forall i \in N,~ j \in N,
+% }
+% \end{equation*}
 \begin{equation}\label{eqn:tscon5}
 x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{equation}
 \end{definition}
 
-In the above ILP, constraints $(\ref{eqn:tscon1})$ are known as degree equations, which require the degree of a city to be `2' on the final trip if the city is in $S \cup \{1\}$; otherwise, the degree should be `0'. Constraints $(\ref{eqn:tscon3})$ are known as subtour elimination constraints ensuring that feasible tours should cover all cities in $S \cup \{1\}$. Constraints $(\ref{eqn:tscon2})$ and $(\ref{eqn:tscon4})$ are redundant due to $(\ref{eqn:tscon1})$, but they will be helpful in computing the Lagrangian lower bound and Lagrangian subsidized minimum penalty for the rooted TSP game.
+In the above ILP, constraints $(\ref{eqn:tscon1})$ are known as degree equations, which require the degree of a city to be `2' on the final trip if the city is in $S \cup \{1\}$; otherwise, the degree should be `0'.
+
+
+Constraints $(\ref{eqn:tscon3})$ are known as subtour elimination constraints
+\textcolor{red}{which were developed by \cite{dantzig1954solution},} ensuring that feasible tours should cover all cities in $S \cup \{1\}$. Constraints $(\ref{eqn:tscon2})$ and $(\ref{eqn:tscon4})$ are redundant due to $(\ref{eqn:tscon1})$, but they will be helpful in computing the Lagrangian lower bound and Lagrangian subsidized minimum penalty for the rooted TSP game.
 
 In view of Definition~\ref{defi:ORG}, the rooted TSP game $ (N_t,c_{t})$ is an IM game $(V,c)$ with $V=N_t$ and $c = c_{t}$. The specific expressions of matrices $C$, $A$, $A'$, $B$, $B'$, $D$, and $D'$ can be obtained by transforming $c_{t}$ to a matrix format.
 
@@ -535,12 +550,15 @@ c_{\sigma}(S) = \min_{x} \sum_{i \in N} \sum_{j \in N} &\big(c_{ij} + \sigma_i +
 &S.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
 \sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{S \cup \{1\}} \setminus \emptyset,\\
 &~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,\\
-x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, ~j \in N,\\
+&\textcolor{red}{x_{ij} \leq \gamma_i^{S\cup\{1\}},~\forall i \in N,~ j \in N,}\\
+&\textcolor{red}{x_{ij} \leq \gamma_j^{S\cup\{1\}},~\forall i \in N,~ j \in N,}\\
+% x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, ~j \in N,\\
 &x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{aligned}
 \end{eqnarray}
 
-ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1 \big\}$ and $\big\{ x_{ij} \leq \frac{1}{2}(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}):\forall i \in N, j \in N \big\}$ can improve the Lagrangian lower bound for $c(N_t)$.
+ILP $(\ref{eqn:lrtscharacterristic})$ shows that the redundant constraints $\big\{ \sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1 \big\}$ and \textcolor{red}{$\big\{
+x_{ij} \leq \gamma_i^{S\cup\{1\}}, x_{ij} \leq \gamma_j^{S\cup\{1\}} :\forall i \in N, j \in N \big\}$} can improve the Lagrangian lower bound for $c(N_t)$.
 By dividing $c_{\sigma}$ into two parts, we can define the rooted TSP sub-games 1 and 2 as $(N_t,c_{\sigma1})$ and $(N_t,c_{\sigma2})$, respectively.
 
 Sub-game 1 is modular, where the expression of $c_{\sigma1}(S)$ is
@@ -554,7 +572,9 @@ c_{\sigma2}(S) &= \min_{x} \sum_{i \in N} \sum_{j \in N} \big(c_{ij} + \sigma_i 
 &S.t.~~\sum_{i \in N}x_{i1} + \sum_{i \in N}x_{1i} = 2,\\
 \sum_{i \in \varphi} &\sum_{j \in \varphi} x_{ij} \leq |\varphi| - 1, ~\forall \varphi \subset 2^{S \cup \{1\}} \setminus \emptyset,\\
 &~~~~~~\sum_{i \in N} \sum_{j \in N} x_{ij} = |S|+1,\\
-x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, j \in N,\\
+&\textcolor{red}{x_{ij} \leq \gamma_i^{S\cup\{1\}},~\forall i \in N,~ j \in N,}\\
+&\textcolor{red}{x_{ij} \leq \gamma_j^{S\cup\{1\}},~\forall i \in N,~ j \in N,}\\
+% x_{ij} \leq \frac{1}{2}&(\gamma_i^{S\cup\{1\}}+\gamma_j^{S\cup\{1\}}),~\forall i \in N, j \in N,\\
 &x_{ij} \in \{0,1\}, ~\forall i \in N, ~j \in N.
 \end{aligned}
 \end{eqnarray*}

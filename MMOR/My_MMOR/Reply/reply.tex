@@ -67,21 +67,20 @@ Implementations on Rooted Travelling Salesman Games}}
 %\vspace{4mm}
 %\end{center}
 \noindent
-We would like to thank the Associate Editor and the reviewers for the encouraging and detailed comments on the paper. We have carefully studied all the comments and addressed them in our manuscript. The paper has therefore been substantially revised.
-Our revision follows the  guidance that ``***" and ``***" To this end, we have made the following major changes.
+We would like to thank the Associate Editor and the reviewers for the encouraging and detailed comments on the paper. We have carefully studied all the comments and addressed them in our manuscript.
+In this reply, we summarize several major changes we have made, and then give the specific details.
 
 
 First, regarding the proofs of the structural properties of the penalty-subsidy tradeoff function, we now have a much simpler proof which was suggested by the Associate Editor, and for which we are very grateful.
 
 Second, regarding constructing the tradeoff function over the entire effective domain, we add a new approximation algorithm with a guaranteed error bound.
 
-
 Third, regarding computing the tradeoff between penalty and subsidy at a specific point, we remove the Lagrangian relaxation heuristic method, and design two new solution approaches that are more theoretically sound, and that can find the exact solutions for some games \textcolor{magenta}{of which $c(s)$ are solvable.}
 
 
 Fourth, regarding the demonstration games, we replace the TSP game with machine scheduling games. Indeed, we obtain some interesting properties by studying the special structures of these games.
 
-There is another change mainly for the convenience of presentation. For the tradeoff function, we now define it as $\omega(z)$ instead of $z(\omega)$. Because of the one-to-one mapping between penalty $z$ and subsidy $\omega$, all main results still hold.
+There is another change mainly for the convenience of presentation. For the **, we now define it as ** instead of **.
 
 Please find below our point-by-point reply to the Associate Editor and each of the reviewers. To facilitate reading, the original comments are in {\it italics}.
 
@@ -187,10 +186,10 @@ Thank you for your comments, especially for pointing out that we should focus on
 %
 %
 \noindent \textit{\textbf{Question 1.}
-Constraint #2 in problem (4). It appears from the next page that the equality can be replaced to >= inequality in this problem formulation. I would like the authors to expand the discussion of reasons for that being the case as the brief explanation on page 9 does not seem sufficient. Moreover, it looks like a good idea to do it right after introduction of problem (4), since in this case it becomes obvious that (4) is a restriction of (2) and therefore z_r(w) is an upper bound on z(w):
-$beta(s) <= c_l(s) + z <= c(s) + z$
-$beta(V) >= c_u(U) + z >= c(s) + z$
-}
+Constraint 2 in problem (4). It appears from the next page that the equality can be replaced to $>=$ inequality in this problem formulation. I would like the authors to expand the discussion of reasons for that being the case as the brief explanation on page 9 does not seem sufficient. Moreover, it looks like a good idea to do it right after introduction of problem (4), since in this case it becomes obvious that (4) is a restriction of (2) and therefore $z_r(w)$ is an upper bound on z(w):}
+% $beta(s) <= c_l(s) + z <= c(s) + z$
+% $beta(V) >= c_u(U) + z >= c(s) + z$
+
 \\[2mm]
 \noindent \textbf{Reply 1.}
 For the first part of.
@@ -214,9 +213,8 @@ For the consistance of general methods, we only mentioned a general method, i.e.
 %
 %
 \noindent \textit{\textbf{Question 3.}
-Proof of Theorem 1. This is probably a general question but it also directly affects the proof of Theorem 1. The vector of cost allocation beta is defined to be in R^v.
-I would like to see some discussion on why some individual cost allocation is allowed to be negative (implying a gain for a player, I guess) and how that is possible with existence of grand coalition. My concern is that beta components in the proof of Theorem 1 can become negative, but, again, I am not sure I understand the meaning of negative cost allocation.
-}
+Proof of Theorem 1. This is probably a general question but it also directly affects the proof of Theorem 1. The vector of cost allocation beta is defined to be in $R^v$.
+I would like to see some discussion on why some individual cost allocation is allowed to be negative (implying a gain for a player, I guess) and how that is possible with existence of grand coalition. My concern is that beta components in the proof of Theorem 1 can become negative, but, again, I am not sure I understand the meaning of negative cost allocation.}
 \\[2mm]
 \noindent \textbf{Reply 3.}
 %The main contributions are strengthened as explained in the first page of this reply.
@@ -232,8 +230,7 @@ The beta components in the proof indeed can be negative as you said, that is bec
 %
 %
 \noindent \textit{\textbf{Question 4.}
-Proof of Remark 1. I am not able to see "the point-wise maximum of a finite set of straight lines (hyperplanes, you mean?)" in defining the z_r(w) (19). Please clarity.
-}
+Proof of Remark 1. I am not able to see "the point-wise maximum of a finite set of straight lines (hyperplanes, you mean?)" in defining the $z_r(w)$ (19). Please clarity.}
 \\[2mm]
 \noindent \textbf{Reply 4.}
 In the objective function of LP(19), $z_r(\omega)$ is only related to $\omega$ and $c_u(V), c_l(s)$ can be calculated and have no relation with $\omega$. By deriving the $z_r(\omega)$, we can obtain the slope is $\max_\rho -\rho_v$, which is the maximum of the slopes of a finite set of straight lines.
@@ -242,7 +239,7 @@ In the objective function of LP(19), $z_r(\omega)$ is only related to $\omega$ a
 %
 %
 \noindent \textit{\textbf{Question 5.}
-In the description of the Algorithm 1, how is the initial restricted coalition set is constructed? For example, it is not clear what the first step means means if no initial set is defined. And also, I am not able to see how the initial values of Lagrangian coefficients lambda is constructed and how they change (if they do) during the algorithm. It would be great to add some clarifications.
+In the description of the Algorithm 1, how is the initial restricted coalition set is constructed? For example, it is not clear what the first step means means if no initial set is defined. And also, I am not able to see how the initial values of Lagrangian coefficients lambda is constructed and how they change (if they do) during the algorithm. It would be great to add some clarifications.}
 
 \\[2mm]
 \noindent \textbf{Reply 5.}
@@ -254,7 +251,7 @@ In fact,
 %
 %
 \noindent \textit{\textbf{Question 6.}
-The description of the TSP game is somewhat different from one can find in the literature. For example in Tamir (1989) the game was defined on an uncomplete graph, while here the game is defined on the complete graph. This affects all the models presented on page 13 and further. Probably both versions of the game exist, but I would like to understand why the descriptions are different.
+The description of the TSP game is somewhat different from one can find in the literature. For example in Tamir (1989) the game was defined on an uncomplete graph, while here the game is defined on the complete graph. This affects all the models presented on page 13 and further. Probably both versions of the game exist, but I would like to understand why the descriptions are different.}
 
 \\[2mm]
 \noindent \textbf{Reply 6.}
@@ -267,7 +264,7 @@ And we add another TSP game defined on a complete graph.
 Constraint (15): I am not sure why would one keep (15) in such an aggregated format when it is possible to disaggregate it to
 $x_{ij} <= \gamma_i$
 $x_{ij} <= \gamma_j$
-In terms of LP relaxation disaggregation gives a tighter bound and probably will lead to the improvement to Lagrangian relaxation just as well.
+In terms of LP relaxation disaggregation gives a tighter bound and probably will lead to the improvement to Lagrangian relaxation just as well.}
 \\[2mm]
 \noindent \textbf{Reply 7.}
 The disaggregation indeed gives a better bound when using LP relaxation.
@@ -278,24 +275,24 @@ For better understanding, we change the aggregated format to the disaggregated o
 
 
 \noindent \textit{\textbf{Question 8.}
-The symmetry of TSP game. I would like to attract the attention of the authors to the Dantzig Fulkerson Johnson (1954) paper, which originated the development of the TSP theory. Most importantly, the authors there also considered a symmetric TSP problem. If the problem is symmetric, one does not need as many binary variables as was introduced by authors. For example, on page 13 x_{ij} exists together with x_{ji} but direction of the travel is not important for symmetric problem therefore it is sufficient to introduce x_e for e being an edge or x_{ij} for i < j only. This is how the TSP problem was introduced in DFJ and this is something that can simplify many notations in this paper. Also, it will be probably a good idea to get rid of x_{ii} variables on page 13 and other optimization problems.
+The symmetry of TSP game. I would like to attract the attention of the authors to the Dantzig Fulkerson Johnson (1954) paper, which originated the development of the TSP theory. Most importantly, the authors there also considered a symmetric TSP problem. If the problem is symmetric, one does not need as many binary variables as was introduced by authors. For example, on page 13 $x_{ij}$ exists together with $x_{ji}$ but direction of the travel is not important for symmetric problem therefore it is sufficient to introduce $x_e$ for e being an edge or $x_{ij}$ for i < j only. This is how the TSP problem was introduced in DFJ and this is something that can simplify many notations in this paper. Also, it will be probably a good idea to get rid of $x_{ii}$ variables on page 13 and other optimization problems.}
 
 \\[2mm]
 \noindent \textbf{Reply 8.}
-When refering to a symmetric TSP problem, it is more convenient to introduce x_e or  x_{ij}.
+When refering to a symmetric TSP problem, it is more convenient to introduce $x_e$ or $x_{ij}$.
 
 However, the player is an important concept in the cooperative game.
 We have to express every single node in the TSP game.
 
 Otherwise the LP() constraint cannot be expressed.
 
-If we use the x_e to express the
+If we use the $x_e$ to express the
 we have to introduce other notations to express single node, which is obviously troublesome.
 \\[4mm]
 
 
 \noindent \textit{\textbf{Question 9.}
-I am a bit confused by Figure 2. Does it represent 4 different games? What exactly is on y axis and x axis, Penalty and Subsidy on y and x axis for all 4 figures? I suggest to add definitions of squared points and round points to the legend of the figure. Why is it that one figure gets two points and another gets 6 and they are evaluated at different levels of subsidy?
+I am a bit confused by Figure 2. Does it represent 4 different games? What exactly is on y axis and x axis, Penalty and Subsidy on y and x axis for all 4 figures? I suggest to add definitions of squared points and round points to the legend of the figure. Why is it that one figure gets two points and another gets 6 and they are evaluated at different levels of subsidy?}
 
 \\[2mm]
 \noindent \textbf{Reply 9.}
@@ -306,39 +303,54 @@ x axis and y axis represent penalty and subsidy respectively for all 4 subfigure
 
 
 \noindent \textit{\textbf{Question 10.}
-In regards to results of experiments in Table 3, what exactly was used and the upper bound \phi(N)? and finally a general remark on the lower bound construction z(w):
--- if we consider problem (4) as a restriction of (2), then it is also possible to create a relaxation of the problem in the similar was as problem (4) was constructed.
+In regards to results of experiments in Table 3, what exactly was used and the upper bound $\phi(N)$? and finally a general remark on the lower bound construction z(w):
+-- if we consider problem (4) as a restriction of (2), then it is also possible to create a relaxation of the problem in the similar was as problem (4) was constructed.}
 \\[2mm]
 \noindent \textbf{Reply 10.}
 Thanks for your problem. We forgot to mention $\phi(N)$.
 The upper bound $\phi(N)$ is what we use Lagrangian heuristic method to obtain.
-
 As we mentioned in Reply 1. LP(4) is not a restriction of LP(2). So we know what you concerned, we tried this before but it won't work. Thus we design a new method to obtain the upper and lower bound.
 
 \\[4mm]
 
 
-\noindent \textit{\textbf{Minor comments.}
+\noindent \textit{\textbf{Minor comments.}}
+
 1. Problem (2) in the paper is frequently called an LP problem or a combinatorial optimization problem (page 4, for example). I suggest to use one terminology approach for consistency. For example, page 8 "solve LP (4) with some conventional combinatorial optimization techniques" sounds confusing.
+
 2. Remark 1: probably, for any s in S \ V in the first line of the Remark?
+
 3. Page 8, line 58. Perhaps it is worth mentioning that this is due to Lagrangian being concave function.
+
 4. Page 10, line 60. Perhaps LP (4) instead of (2)?
+
 5. Page 10, line 26. Perhaps, it is better to replace forward reference (9) by "reduced cost".
+
 6. Page 13, I would suggest to make a reference to the Dantzig Fulkerson Johnson (1954) paper with respect to constraints (13), as these constraints are not given in TSP
 literature but are in fact result of development by those authors.
+
 7. I would suggest merging first two constraints in (11) as it is a bit confusing in its present form.
-8. Page 15, line 45. don't you need to remove the word 'minimum' here?
+
+8. Page 15, line 45. don't you need to remove the word 'minimum' here?}
 
 \\[2mm]
 
 \noindent \textbf{Reply.}
+
 1. We changed our expression use LP problem to avoid the confusion.
+
 2. We've revised.
+
 3. We added the concave property at the subgradient method.
+
 4.
+
 5. We've replaced (9) by reduced cost.
+
 6. We've added a reference to the Dantzig Fulkerson Johnson (1954) paper when introducing constraints (13).
+
 7. We've merged first two constraints.
+
 8. We've removed the word 'minimum'.
 \\[4mm]
 
@@ -383,8 +395,7 @@ For instance, in page 4 line 3, it is mentioned that (2) is a combinatorial
 optimization problem. However, (2) is a LP since in its description c is
 given and thus all constraints and variables are linear and continuous.
 The same confusion can be found at other places of the paper. Please
-clarify!
-}
+clarify!}
 \\[2mm]
 \noindent \textbf{Reply 2.}
 We changed our expression use LP problem to avoid the confusion.
@@ -447,7 +458,7 @@ Thanks a lot for your suggestion.
 To better illustrate the proposed methodology, it would be advisable
 to apply it not only to the rooted traveling salesman problem. I would
 suggest to add another class of combinatorial games, for instance loca-
-tion games, to the computational study.
+tion games, to the computational study.}
 \\[2mm]
 \noindent \textbf{Reply 7.}
 
