@@ -273,12 +273,16 @@ In the following section, we will develop an alternative approach to solve LP $(
 
 \section{Design of Heuristic Algorithms}\label{section:general}
 In this section, we first propose a generic framework to develop heuristic algorithms to solve LP (\ref{eqn:SLC}), assuming that we can obtain some upper and lower bounds for $c(S)$.
+\textcolor{red}{There are several specific methods, such as LP-based methods, which can be used to obtain the upper bound $c_u(V)$.}
+
 We then apply the well-known Lagrangian bounds to develop a practical approach for an approximate computation of the subsidized minimum penalty $z(\omega)$.
 
 
 \subsection{A Generic Framework for Heuristic Algorithms}
 
-For any $S \in \mathbb{S}$, we denote $c_l(S)$ and $c_u(S)$, respectively, as the respective lower and upper bounds of $c(S)$. By respectively replacing $c(S)$ and $c(V)$ with $c_l(S)$ and $c_u(V)$, we can derive a restricted LP for $(\ref{eqn:SLC})$, expressed as
+For any $S \in \mathbb{S}$, we denote $c_l(S)$ and $c_u(S)$, respectively, as the respective lower and upper bounds of $c(S)$. By respectively replacing $c(S)$ and $c(V)$ with $c_l(S)$ and $c_u(V)$, we can derive a restricted LP for $(\ref{eqn:SLC})$,
+\textcolor{red}{It is not restricted problem.}
+expressed as
 \begin{eqnarray}\label{eqn:aSLC}
 \begin{aligned}
 z_r(\omega) &= \min_{\beta,z}~ z\\
@@ -286,7 +290,6 @@ S.t.~~\beta(S) \leq c_l(S&)+z,~\forall S \in \mathbb{S} \setminus \big\{V\big\},
 \beta(V)=&c_u(V)-\omega.
 \end{aligned}
 \end{eqnarray}
-
 
 
 \begin{theorem}\label{thm:rb}
@@ -340,11 +343,12 @@ d(V) = \max_{\lambda} \bigg\{ \min_{x} \big\{ f(x)-\lambda A'x + \lambda B'\text
 \end{aligned}
 \end{eqnarray*}
 
-\textcolor{red}{Add some propertiess of Lagrangian method here}
+\textcolor{red}{According to the Lagrangian dual theory, $d(V)$ is a concave function, then}
+the sub-gradient method (e.g., see \citealt{Ahuja1993NetworkBook}) can be applied to derive the optimal Lagrangian multipliers $\lambda^*$ for $d(V)$.
+\textcolor{red}{Commonly, the initial value is
 
-Then, the sub-gradient method (e.g., see \citealt{Ahuja1993NetworkBook}) can be applied to derive the optimal Lagrangian multipliers $\lambda^*$ for $d(V)$. The following discussion applies to any $\lambda$, not necessarily $\lambda^*$, although usually $\lambda^*$ leads to better results.
-
-
+}
+The following discussion applies to any $\lambda$, not necessarily $\lambda^*$, although usually $\lambda^*$ leads to better results.
 
 By substituting $c_l(S)$ with $c_{\lambda}(S)$ in LP $(\ref{eqn:aSLC})$, we can derive the associating Lagrangian subsidized minimum penalty problem as follows:
 \begin{eqnarray}\label{eqn:laSLC}
@@ -356,6 +360,7 @@ S.t.~~ \beta(S) \leq  c_{\lambda}(S) + z,~ \forall S &\in \mathbb{S} \setminus V
 \end{eqnarray}
 
 Note that by showing the second constraint in (\ref{eqn:laSLC}) as an inequality, we can simplify our future computations. This transformation is feasible because, as in Remark $\ref{rem:convex}$, $z_{\lambda}(\omega)$ is decreasing with respect to $\omega$.
+\textcolor{red}{Explain why... I really don't know.}
 From Theorem \ref{thm:rb}, %since $c_{\lambda}(S)$ is a lower bound on $c(S)$, we claim that
 the optimal $z_{\lambda}(\omega)$ to LP $(\ref{eqn:laSLC})$, or the Lagrangian subsidized minimum penalty, is an upper bound of the subsidized minimum penalty for the IM game $(V,c)$.
 In this case, given any subsidy $\omega$, the IM game $(V,c)$ can be balanced by letting the penalty deviate from the grand coalition to become $z_{\lambda}(\omega)$. % In addition, the corresponding Lagrangian $\omega$-subsidized least core cost allocation is given by optimal solution $\beta_{\lambda}(\ \cdot \ ,\omega)$.
@@ -414,7 +419,9 @@ We summarize the procedures for solving the Lagrangian subsidized minimum penalt
 
 \item[Step 2.] Decompose $c_{\lambda}(S)$ into $c_{\lambda 1}(S)$ and $c_{\lambda 2}(S)$, and derive LP (\ref{eqn:l2aSLC}) and its dual LP $(\ref{eqn:master})$.
 
-\item[Step 3.] Start from the restricted master problem of $(\ref{eqn:master})$, where the restricted coalition set is $\mathbb{S}' \subset \mathbb{S}$, with a polynomial number of elements, and compute its optimal dual solution $\pi^{*} \in \R^{v+1}$.
+\item[Step 3.] Start from the restricted master problem of $(\ref{eqn:master})$,
+\textcolor{red}{for example, \{\{1\},\{2\},\ldots, \{v\}\}}
+where the restricted coalition set is $\mathbb{S}' \subset \mathbb{S}$, with a polynomial number of elements, and compute its optimal dual solution $\pi^{*} \in \R^{v+1}$.
 \item[Step 4.] Find a coalition $S^*$ with the minimum negative cost by solving the pricing problem,
 \begin{eqnarray}\label{eqn:pricing}
 \min_{S\in \mathbb{S}\setminus \mathbb{S}'} c_{\lambda2}(S) - \sum_{ k \in V} \gamma^s_k \pi_{k}^{*} + \pi_{v+1}^*.
@@ -762,6 +769,8 @@ S.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = &1,\\
 \rho_s \geq 0,~\forall S \in& \mathbb{S}.
 \end{aligned}
 \end{eqnarray}
+
+\textcolor{red}{In the objective function of LP(19), $z_r(\omega)$ is only related to $\omega$ and $c_u(V), c_l(s)$ can be calculated and have no connection with $\omega$. By deriving $z_r(\omega)$ with respect to $\omega$, we can obtain the slope is $\max_\rho -\rho_v$, which is the maximum of the slopes of a finite set of straight lines.}
 Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$.
 Thus, $z_r(\omega)$ is a piece-wise linear and convex function  $\omega$.
 Moreover, since the slope $-\rho_v$ of each straight line constructing $z_r(\omega)$ is negative ($\rho_v$ is clearly positive), the R-SPF $z_r(\omega)$ must be strictly decreasing in $\omega$.
