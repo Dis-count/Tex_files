@@ -345,8 +345,8 @@ d(V) = \max_{\lambda} \bigg\{ \min_{x} \big\{ f(x)-\lambda A'x + \lambda B'\text
 
 \textcolor{red}{According to the Lagrangian dual theory, $d(V)$ is a concave function, then}
 the sub-gradient method (e.g., see \citealt{Ahuja1993NetworkBook}) can be applied to derive the optimal Lagrangian multipliers $\lambda^*$ for $d(V)$.
-\textcolor{red}{Commonly, the initial value is
-
+\textcolor{red}{In the literature, the initial Lagrangian multipliers is set to 1, and transformation is
+$\lambda^{t+1} = \max\{ \lambda^t + \theta s^t, 0\}, t = t +1$
 }
 The following discussion applies to any $\lambda$, not necessarily $\lambda^*$, although usually $\lambda^*$ leads to better results.
 
