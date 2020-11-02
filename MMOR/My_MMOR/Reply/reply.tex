@@ -72,8 +72,11 @@ In this reply, we summarize several major changes we have made, and then give th
 
 
 First, regarding the proofs of the structural properties of the penalty-subsidy tradeoff function, we now have a much simpler proof which was suggested by the Associate Editor, and for which we are very grateful.
+%  lagrangian part
 
 Second, regarding constructing the tradeoff function over the entire effective domain, we add a new approximation algorithm with a guaranteed error bound.
+% (4) restricted  also include the proof of theorem
+
 
 Third, regarding computing the tradeoff between penalty and subsidy at a specific point, we remove the Lagrangian relaxation heuristic method, and design two new solution approaches that are more theoretically sound, and that can find the exact solutions for some games \textcolor{magenta}{of which $c(s)$ are solvable.}
 
@@ -142,17 +145,17 @@ Thank you for your comments, especially for pointing out that we should focus on
 \noindent \textit{\textbf{Question 1.}
 Constraint \# 2 in problem (4). It appears from the next page that the equality can be replaced to $>=$ inequality in this problem formulation. I would like the authors to expand the discussion of reasons for that being the case as the brief explanation on page 9 does not seem sufficient. Moreover, it looks like a good idea to do it right after introduction of problem (4), since in this case it becomes obvious that (4) is a restriction of (2) and therefore $z_r(w)$ is an upper bound on z(w):}
 
-$beta(s) <= c_l(s) + z <= c(s) + z$
+$\beta(s) <= c_l(s) + z <= c(s) + z$
 
-$beta(V) >= c_u(U) + z >= c(s) + z$
+$\beta(V) >= c_u(U) + z >= c(s) + z$
 
 \\[2mm]
 \noindent \textbf{Reply 1.}
 For the first part of this question, it is obvious that it is a relaxation.
 
 For the second part of this question.
-At first, this formula $beta(s) <= c_l(s) + z <= c(s) + z$ you wrote is correct, which indicates that $beta(s) <= c_l(s) + z$ in LP(4) is a restriction of $beta(s) <= c(s) + z$ in LP(2).
-However, we think there are some mistakes in the formula $beta(V) >= c_u(U) + z >= c(s) + z$. Firstly, $U$ should be a written error. Secondly, $beta(V)$ has no direct relation with $z$.
+At first, this formula $\beta(s) <= c_l(s) + z <= c(s) + z$ you wrote is correct, which indicates that $\beta(s) <= c_l(s) + z$ in LP(4) is a restriction of $\beta(s) <= c(s) + z$ in LP(2).
+However, we think there are some mistakes in the formula $\beta(V) >= c_u(U) + z >= c(s) + z$. Firstly, $U$ should be a written error. Secondly, $\beta(V)$ has no direct relation with $z$.
 In fact, according to the cooperative game theory, coalitional stability constraints refer to all subcoalitions $S \in \mathbb{S} \setminus \big\{V\big\}$ except the grand coalition $V$.
 Thus, the second condition in LP(4),
 $\beta(V)=c_u(V)-\omega$ i.e., the budget balance constraint is not a restriction of $\beta(V)=c(V)-\omega$ in LP(2).
@@ -217,7 +220,7 @@ The description of the TSP game is somewhat different from one can find in the l
 
 \\[2mm]
 \noindent \textbf{Reply 6.}
-In Tamir(1989), the author also mentioned the game can be defined on a complete graph. He defined the game on an uncomplete graph for the convenience's sake.
+In Tamir(1989), the author also mentioned the game can be defined on a complete graph. He defined the game on an uncomplete graph for the convenience's sake. In the TSP game we mentioned, use the complete graph can help us present the model clearly.
 % And we add another TSP game defined on a complete graph.
 \\[4mm]
 
@@ -241,14 +244,11 @@ The symmetry of TSP game. I would like to attract the attention of the authors t
 
 \\[2mm]
 \noindent \textbf{Reply 8.}
-When refering to a symmetric TSP problem, it is more convenient to introduce $x_e$ or $x_{ij}$.
-
+When it comes to a symmetric TSP problem, it is more convenient to introduce $x_e$ or $x_{ij}, i<j$.
 However, the player is an important concept in the cooperative game.
 We have to express every single node in the TSP game.
-
-Otherwise the notation $\gamma^{S}_j$ used in the rooted TSP game cannot be expressed.
-
-If we only use the $x_e$ or $x_{ij}, i<j$ to only express the edge in the TSP game, we have to introduce other notations to express single node, which is obviously troublesome.
+If we only use $x_e$ or $x_{ij}, i<j$ to express the edge in the TSP game, the notation $\gamma^{S}_j$ used in the rooted TSP game cannot be expressed. We have to introduce other notations to express single node, which is obviously troublesome.
+Thus, we use the expression $x_{ij}, i,j \in V$ in our manuscript.
 \\[4mm]
 
 
@@ -258,8 +258,13 @@ I am a bit confused by Figure 2. Does it represent 4 different games? What exact
 \\[2mm]
 \noindent \textbf{Reply 9.}
 Thanks for your suggestions.
-We add the legend of the figure and make a specific explanation on these 4 representives of games.
+We have added the legend of the figure and make a specific explanation on these 4 representives of games.
 x axis and y axis represent penalty and subsidy respectively for all 4 subfigures.
+Figure 2. represents four different situations. (a) represents that the slopes at the two points are equal, thus there is no breakpoint between them. (b) represents that the two lines passing the two points at the beginning and the end meets a point meanwhile the value of $z_\theta(\omega)$ at x-coordinate value of the point equals the value of y-coordinate of the point which indicates that this point is a breakpoint. (c) represents that the two lines passing the two points at the beginning and the end meets a point whose y-coordinate value is not equal to the third squared point's y-coordinate value, $z_\theta(\omega)$ at x-coordinate value of the point. The line passing the third squared point intersects the two lines passing the two points at the beginning and the end at the second and fourth squared points, respectively. The difference of (c) and (d) is that (d) has one more line intersection process than (c) at right half part.
+
+
+The exact PSF curve is shown later in Figure 1 on page X when we demonstrate the IPC algorithm in Example 1. We have explicitly mentioned this in the paper.
+
 \\[4mm]
 
 
@@ -298,24 +303,22 @@ literature but are in fact result of development by those authors.
 
 \noindent \textbf{Reply.}
 
-1. We changed our expression use LP problem to avoid the confusion.
+1. We have changed our expression use LP problem to avoid the confusion.
 
 2. We've revised.
 
-3. We added the concave property at the subgradient method.
+3. We have added the concave property before mentioning the sub-gradient method.
 
-4.
+4. Based on what we demonstrated in Reply 1, LP(4) is not a restriction of LP(2). And what we mean right here is eliminating some constraints of LP(2) to construct a lower bound of the subsidized minimum penalty. Thus, it is LP(2) in Page 10.
 
-5. We've replaced (9) by reduced cost.
+5. We've replaced (9) by 'reduced cost' to avoid the forward reference.
 
 6. We've added a reference to the Dantzig Fulkerson Johnson (1954) paper when introducing constraints (13).
 
-7. We've merged first two constraints.
+7. We've merged the first two constraints for the ease of understanding.
 
 8. We've removed the word 'minimum'.
 \\[4mm]
-
-
 
 %\vspace{10mm}
 \newpage
@@ -396,7 +399,8 @@ to $|V|$ but this has to be made explicit.
 }
 \\[2mm]
 \noindent \textbf{Reply 5.}
-We added that.
+
+We have pointed this out in the revised manuscript in line X of page X.
 \\[4mm]
 %
 %
@@ -428,13 +432,6 @@ How to add a computation?
 %
 %
 
-\noindent \textbf{Reply 8.}
-In our current example, the resulting optimal cost allocation $[20; 18; 14; 8]$ is unique.
-We have pointed this out in the revised manuscript in line X of page X.
-\\[4mm]
-%
-%
-%
 \noindent \textbf{Reply 9.}
 The exact PSF curve is shown later in Figure 1 on page X when we demonstrate the IPC algorithm in Example 1. We have explicitly mentioned this in the paper.
 \\[4mm]
@@ -448,12 +445,6 @@ We have refined the description of the IPC algorithm and concluded its correctne
 Please see the details on page X.
 \\[4mm]
 %
-%
-
-\noindent \textbf{Reply 11.}
-Sorry for such an aggressive claim. We have removed this claim, and simply point out that our work is of both theoretical value and practical importance.
-\\[4mm]
-
 
 
 %%%%%%%%%%%%%%%%%
