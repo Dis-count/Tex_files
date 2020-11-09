@@ -73,7 +73,8 @@ In this reply, we summarize several major changes we have made, and then give th
 
 First, regarding the equality in (4) is replaced to >= inequality in (6), we add a more detailed explanation. Meanwhile we explain that LP(4) is not a restriction of LP(2) in Reply 1 to Referee 1, maybe the term 'restricted LP' in page 7 caused the misunderstanding and we now use 'variant' to replace 'restricted'.
 
-Second, regarding the upper bound $c_u(V)$
+Second, regarding the upper bound $c_u(V)$, we forgot to mention how to obtain the upper bound.
+In fact, all the upper and lower bounds of $c(S)$ are obtained by the Lagrangian relaxation method to keep the consistency and continuity.
 
 Third, regarding the proofs of Theorem 1 and Remark 1, we now add a clarification on the negative cost allocation in Reply 3 to Referee 1 and another clarification on the meaning of "the point-wise maximum of a finite set of straight lines".
 
@@ -136,12 +137,12 @@ Based on the above analysis, LP(4) is not a restriction of LP(2), which can also
 When approximate problem (4) is introduced, it is not mentioned which upper bound $c_u(V)$ is used. Probably a discussion of upper bound possibilities will be good here.}
 \\[2mm]
 \noindent \textbf{Reply 2.}
-Thanks a lot for your suggestion.
-In fact, there are specific methods, such as LP-based methods, which can be used to obtain the upper bound $c_u(V)$. We add this clarification.
+Thanks a lot for your suggestion. We indeed forgot to mention the upper bound. In fact, all the upper and lower bounds of $c(S)$ are obtained by the Lagrangian relaxation method to keep the consistency and continuity. We add this clarification in page 7.
+
+% In fact, there are specific methods, such as LP-based methods, which can be used to obtain the upper bound $c_u(V)$.
 
 % We have explicitly mentioned this in the paper.
 
-We did not mention how to obtain the upper bound....
 % In order to be consistent with the general methods, we only mentioned a general method, i.e., Lagrangian heuristic to calculate the upper bound $c(V)$.
 \\[4mm]
 %
@@ -240,7 +241,9 @@ In regards to results of experiments in Table 3, what exactly was used and the u
 -- if we consider problem (4) as a restriction of (2), then it is also possible to create a relaxation of the problem in the similar was as problem (4) was constructed.}
 \\[2mm]
 \noindent \textbf{Reply 10.}
-Thanks for your question. We forgot to mention $\phi(N)$.
+Thanks for your question. We forgot to mention
+the upper bound as we said in Reply 2.
+The $\phi(N)$ is the upper bound $c_u(V)$ obtained by the Lagrangian relaxation method.
 % The upper bound $\phi(N)$ is what we use Lagrangian heuristic method to obtain.
 As we mentioned in Reply 1. LP(4) is not a restriction of LP(2). So we know what you concerned, we tried this before but it won't work. Thus we design new methods to obtain the upper and lower bound.
 
@@ -316,21 +319,19 @@ the notation to the standard to ease the readability of potential readers.}
 \\[2mm]
 \noindent \textbf{Reply 1.}
 Thanks a lot for your suggestion.
-We've changed the notation to the standard form all through the revised manuscript.
+We have changed the notation to the standard form all through the revised manuscript.
 \\[4mm]
 %
 %
 %
 \noindent \textit{\textbf{Question 2.}
 Some confusion appears, here and there, when referring to LP or MIP.
-For instance, in page 4 line 3, it is mentioned that (2) is a combinatorial
-optimization problem. However, (2) is a LP since in its description c is
+For instance, in page 4 line 3, it is mentioned that (2) is a combinatorial optimization problem. However, (2) is a LP since in its description c is
 given and thus all constraints and variables are linear and continuous.
-The same confusion can be found at other places of the paper. Please
-clarify!}
+The same confusion can be found at other places of the paper. Please clarify!}
 \\[2mm]
 \noindent \textbf{Reply 2.}
-We changed our expression with only using LP problem to avoid the confusion.
+We have changed our expression with only using LP problem to avoid the confusion.
 \\[4mm]
 %
 %
@@ -386,11 +387,11 @@ This should be MIP.
 \noindent \textit{\textbf{Question 7.}
 To better illustrate the proposed methodology, it would be advisable
 to apply it not only to the rooted traveling salesman problem. I would
-suggest to add another class of combinatorial games, for instance loca-
-tion games, to the computational study.}
+suggest to add another class of combinatorial games, for instance location games, to the computational study.}
 \\[2mm]
 \noindent \textbf{Reply 7.}
-How to add a computation?
+\textcolor{red}{How to add a computation?}
+% Maybe this method applied on another class of combinatorial game is time-consuming and beyond the scope of this manuscript.
 \\[4mm]
 %
 %
