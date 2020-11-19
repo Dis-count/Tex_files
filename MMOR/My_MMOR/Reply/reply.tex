@@ -53,22 +53,12 @@ Implementations on Rooted Travelling Salesman Games}}
 \date{}
 \begin{document}
 \maketitle
-%\begin{center}
-%{\bf \LARGE \linespread{1.6}{
-%Authors' Reply\\}}
-%\vspace{-1mm}
-%{\bf \LARGE \linespread{1.6}{
-%Stabilizing Grand Coalitions in Unbalanced Cooperative\\}}
-%\vspace{-1mm}
-%{\bf \LARGE \linespread{1.6}{
-%Games by Simultaneously Penalizing and Subsidizing\\}}
-%\vspace{2mm}
-%{\normalsize Lindong Liu, Xiangtong Qi, Zhou Xu}
-%\vspace{4mm}
-%\end{center}
+
 \noindent
 
-We would like to thank the Associate Editor and the Referees for the encouraging and detailed comments on the paper. We have carefully studied all the comments and addressed them in our manuscript.
+We would like to thank the Associate Editor and the Referees for the encouraging and detailed comments on the paper.
+We have carefully studied all the comments and addressed them in our manuscript.
+
 % In this reply, we summarize several major changes we have made, and then give the specific details.
 %
 % First, regarding the equality in (4) is replaced to >= inequality in (6), we add a more detailed explanation. Meanwhile we explain that LP(4) is not a restriction of LP(2) in Reply 1 to Referee 1, maybe the term 'restricted LP' in page 7 caused the misunderstanding and we now use 'variant' to replace 'restricted'.
@@ -89,7 +79,6 @@ We would like to thank the Associate Editor and the Referees for the encouraging
 
 Please find below our point-by-point reply to each of the Referees. To facilitate reading, the original comments are in {\it italics}.
 
-
 %\vspace{10mm}
 
 \newpage
@@ -106,28 +95,30 @@ Thank you very much for processing our submission efficiently and providing guid
 \noindent \textbf{\large Reply to Referee 1}
 \\[3mm]
 We appreciate your detailed comments made directly on the manuscript.
-We have carefully studied the technical concerts you raised.
-Thank you for your comments which are very helpful to enrich our manuscript, especially for pointing out the upper bound $c_u(V)$ we did not specify in our manuscript. We have adopted your suggestions and revised our paper accordingly. The main issues raised in your report are addressed as follows:
+We have carefully studied the technical concerns you raised.
+Thank you for your comments which are very helpful to enrich our manuscript, especially for pointing out the upper bound $c_u(V)$ we did not specify in our manuscript. We have adopted your suggestions and revised our paper accordingly. Besides that, one thing worth mentioning is that we have changed the notation of coalitions, $s$, to the standard form, $S$ according to the suggestion of the Referee 2.
+The main issues raised in your report are addressed as follows:
 \\[4mm]
 %
 %
 \noindent \textit{\textbf{Question 1.}
 Constraint \# 2 in problem (4). It appears from the next page that the equality can be replaced to $\geq$ inequality in this problem formulation. I would like the authors to expand the discussion of reasons for that being the case as the brief explanation on page 9 does not seem sufficient. Moreover, it looks like a good idea to do it right after introduction of problem (4), since in this case it becomes obvious that (4) is a restriction of (2) and therefore $z_r(w)$ is an upper bound on z(w):}
 
-$\beta(s) \leq c_l(s) + z \leq c(s) + z$
+$\beta(S) \leq c_l(S) + z \leq c(S) + z$
 
-$\beta(V) \geq c_u(U) + z \geq c(s) + z$
+$\beta(V) \geq c_u(V) + z \geq c(S) + z$
 
 \\[2mm]
 \noindent \textbf{Reply 1.}
 Thanks for mentioning that, we have added a more detailed explanation on page 9.
-Then we will explain that LP(4) is not a restriction of LP(2). Maybe the term 'restricted LP' in page 7 caused the misunderstanding and we now use 'variant' to replace 'restricted'.
+Then we will explain that LP(4) is not a restriction of LP(2). Maybe the term ``restricted LP" in page 7 caused the misunderstanding and we now use ``variant" to replace ``restricted".
 
-First of all, this formula $\beta(s) \leq c_l(s) + z \leq c(s) + z$ you wrote is correct, which indicates that $\beta(s) \leq c_l(s) + z$ in LP(4) is a restriction of $\beta(s) \leq c(s) + z$ in LP(2).
-However, we think there are some mistakes in the formula $\beta(V) \geq c_u(U) + z \geq c(s) + z$ you wrote. The first one is, $U$ should be a written error. The second one is, $\beta(V)$ has no direct relation with $z$.
+First of all, this formula $\beta(S) \leq c_l(S) + z \leq c(S) + z$ you wrote is correct, which indicates that $\beta(S) \leq c_l(S) + z$ in LP(4) is a restriction of $\beta(S) \leq c(S) + z$ in LP(2).
+% However, we think there are some mistakes in the formula $\beta(V) \geq c_u(U) + z \geq c(s) + z$ you wrote. The first one is, $U$ should be a written error. The second one is, $\beta(V)$ has no direct relation with $z$.
+However, we think there is a mistake in the formula $\beta(V) \geq c_u(V) + z \geq c(S) + z$ you wrote. That is $\beta(V)$ has no direct relation with $z$.
 In fact, according to the cooperative game theory, coalitional stability constraints refer to all subcoalitions $S \in \mathbb{S} \setminus \big\{V\big\}$ except the grand coalition $V$.
 Thus, the second constraint in (4), $\beta(V)=c_u(V)-\omega$ i.e., the budget balance constraint is not a restriction of $\beta(V)=c(V)-\omega$ in (2).
-Based on the above analysis, LP(4) is not a restriction of LP(2), which can also explain why we cannot get a relaxation of LP(2) if we switch the places of $c_l(s)$ and $c_u(s)$ you mentioned in Question 10.
+Based on the above analysis, LP(4) is not a restriction of LP(2), which can also explain why we cannot get a relaxation of LP(2) if we switch the places of $c_l(S)$ and $c_u(S)$ you mentioned in Question 10.
 % Maybe the 'restricted' word misleads you, so we deleted 'restricted word'.
 \\[4mm]
 %
@@ -354,7 +345,7 @@ there.
 }
 \\[2mm]
 \noinden \textbf{Reply 4.}
-This should be "an". Thanks for pointing this out.
+This should be ``an". Thanks for pointing this out.
 
 \\[4mm]
 %

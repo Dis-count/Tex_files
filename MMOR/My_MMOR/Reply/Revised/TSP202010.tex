@@ -311,8 +311,8 @@ Given any $c_u(V) \geq c(V)$ and $c_l(S) \leq c(S)$, \textcolor{red}{$\forall S 
 \end{remark}
 
 
-Compared with LP $(\ref{eqn:SLC})$, we replace $c(S)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional
-\textcolor{red}{\st{combinatorial optimization}} techniques.
+Compared with LP $(\ref{eqn:SLC})$, we replace $c(S)$ with its tractable upper or lower bound. Thus, we might be able to solve LP $(\ref{eqn:aSLC})$ with some conventional techniques.
+% \textcolor{red}{\st{combinatorial optimization}} 
 Theorem \ref{thm:rb} and Remark \ref{rem:convex} can be applied to any situation with different types of $c(S)$ bounds.
 In the following subsection, we develop a solution by applying Lagrangian bounds.
 
@@ -613,7 +613,7 @@ Specifically, this pricing problem can find the coalition $S \in N_t$ with the m
 where $\pi^*$ gives the optimal dual solution to the corresponding master problem defined in LP $(\ref{eqn:master})$. We denote the resulting Lagrangian subsidized minimum penalty for the rooted TSP game as $z_{\sigma}(\omega)$.
 
 
-As stated in the description of Algorithm \ref{alg:SPC}, it is hard to optimally solve ILP $(\ref{eqn:tspricinglcv})$, but we can still apply the LRB algorithm before it is completed, because we only need to find column $\bar{S}$ with a \textcolor{red}{\st{minimum}} negative cost to continue the algorithm.
+As stated in the description of Algorithm \ref{alg:SPC}, it is hard to optimally solve ILP $(\ref{eqn:tspricinglcv})$, but we can still apply the LRB algorithm before it is completed, because we only need to find column $\bar{S}$ with a negative cost to continue the algorithm.
 
 
 To further enhance computational efficiency, we adopt the Minimum Adjacency Test (see \citealt{duin1987some,ljubic2006algorithmic}) and reduce the magnitude of the problem $(\ref{eqn:tspricinglcv})$.
@@ -776,8 +776,9 @@ s.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = &1,\\
 \end{aligned}
 \end{eqnarray}
 
-\textcolor{red}{$z_r(\omega)$ in (19) is only related to $\omega$ meanwhile $c_u(V), c_l(s)$ can be calculated and have no relation with $\omega$. By deriving $z_r(\omega)$ with respect to $\omega$, we can obtain the slope is $\max_\rho -\rho_v$, which is the maximum of the slopes of a finite set of straight lines.} \textcolor{red}{\st{Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$.
-}}
+\textcolor{red}{$z_r(\omega)$ in (19) is only related to $\omega$ meanwhile $c_u(V), c_l(s)$ can be calculated and have no relation with $\omega$. By deriving $z_r(\omega)$ with respect to $\omega$, we can obtain the slope is $\max_\rho -\rho_v$, which is the maximum of the slopes of a finite set of straight lines.}
+% \textcolor{red}{\st{Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$.
+% }}
 Thus, $z_r(\omega)$ is a piece-wise linear and convex function  $\omega$.
 Moreover, since the slope $-\rho_v$ of each straight line constructing $z_r(\omega)$ is negative ($\rho_v$ is clearly positive), the R-SPF $z_r(\omega)$ must be strictly decreasing in $\omega$.
 
