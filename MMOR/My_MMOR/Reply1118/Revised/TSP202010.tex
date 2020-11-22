@@ -361,7 +361,7 @@ s.t.~~ \beta(S) \leq  c_{\lambda}(S) + z,~ \forall S &\in \mathbb{S} \setminus V
 Note that by showing the second constraint in (\ref{eqn:laSLC}) as an inequality, we can simplify our future computations.
 \textcolor{red}{
 This transformation is feasible and the explanation is shown below.
-Firstly, LP(4) is to find the minimum value, thus, we just need to limit $c_u(V)- \beta(V)$ which is equal to $\omega$ in (4), not to increase to realize the feasible transformation because $z_{\lambda}(\omega)$ is decreasing with respect to $\omega$ as in Remark $\ref{rem:convex}$. If $c_u(V)- \beta(V)$ can be larger than $\omega$ in a new feasible region, $z_{\lambda}(\omega)$ will be less than the original minimum one in LP(4), which violates the equivalence of transformation. In this way, $c_u(V)- \beta(V)$ need to be no larger than $\omega$, that is, $c_u(V)- \beta(V) \leq \omega$. After reformulating, we can obtain the second constraint in (6).}
+Firstly, LP(4) is to find the minimum value, thus, we just need to limit $c_u(V)- \beta(V)$ which is equal to $\omega$ in (4), not to increase to realize the feasible transformation because $z_{\lambda}(\omega)$ is decreasing with respect to $\omega$ as in Remark $\ref{rem:convex}$. If $c_u(V)- \beta(V)$ can be larger than $\omega$ in a new feasible region, $z_{\lambda}(\omega)$ will be less than the original minimum one in (4), which violates the equivalence of transformation. In this way, $c_u(V)- \beta(V)$ need to be no larger than $\omega$, that is, $c_u(V)- \beta(V) \leq \omega$. After reformulating, we can obtain the second constraint in (6).}
 
 From Theorem \ref{thm:rb}, %since $c_{\lambda}(S)$ is a lower bound on $c(S)$, we claim that
 the optimal $z_{\lambda}(\omega)$ to LP $(\ref{eqn:laSLC})$, or the Lagrangian subsidized minimum penalty, is an upper bound of the subsidized minimum penalty for the IM game $(V,c)$.
@@ -767,10 +767,10 @@ Thus, $z_r(\omega)$ is an upper bound of $z(\omega)$.
 From the strong duality of LP $(\ref{eqn:aSLC})$, we have
 \begin{eqnarray}\label{eqn:DualSLC}
 \begin{aligned}
-z_r(\omega) = \max_{\rho}~ \rho_V \big[ c_u(V)-\omega \big] &- \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_S c_l(S)\\
-s.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_S = &1,\\
-\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_S - \rho_V = 0,&~\forall k \in V,\\
-\rho_S \geq 0,~\forall S \in& \mathbb{S}.
+z_r(\omega) = \max_{\rho}~ \rho_v \big[ c_u(V)-\omega \big] &- \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s c_l(S)\\
+s.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = &1,\\
+\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s - \rho_v = 0,&~\forall k \in V,\\
+\rho_s \geq 0,~\forall S \in& \mathbb{S}.
 \end{aligned}
 \end{eqnarray}
 
@@ -779,13 +779,13 @@ s.t.~~\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_S = &1,\\
 % \textcolor{red}{\st{Consequently, $z_r(\omega)$ is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$.
 % }}
 Consequently, $z_r(\omega)$, \textcolor{red}{the maximum of the objective function,} is the point-wise maximum of a finite set of straight lines, each with a slope of $-\rho_v$. Thus, $z_r(\omega)$ is a piece-wise linear and convex function  $\omega$.
-Moreover, since the slope $-\rho_V$ of each straight line constructing $z_r(\omega)$ is negative ($\rho_V$ is clearly positive), the R-SPF $z_r(\omega)$ must be strictly decreasing in $\omega$.
+Moreover, since the slope $-\rho_v$ of each straight line constructing $z_r(\omega)$ is negative ($\rho_v$ is clearly positive), the R-SPF $z_r(\omega)$ must be strictly decreasing in $\omega$.
 
 From the constraints in LP $(\ref{eqn:DualSLC})$, we have
 $$
-1 = \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_S \leq \sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_S \leq (v-1)\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_S = v-1.
+1 = \sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s \leq \sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s \leq (v-1)\sum_{S \in \mathbb{S} \setminus \{V\}} \rho_s = v-1.
 $$
-Note that $\sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_S = v\rho_V$; therefore, we have $1 \leq v\rho_V \leq v-1$, that is $-(v-1)/v\leq -\rho_V \leq -1/v$.
+Note that $\sum_{k \in V}\sum_{S \in \mathbb{S} \setminus \{V\}: k \in S} \rho_s = v\rho_v$; therefore, we have $1 \leq v\rho_v \leq v-1$, that is $-(v-1)/v\leq -\rho_v \leq -1/v$.
 \qed
 
 
