@@ -166,9 +166,9 @@ This makes $z_r(\omega)$ be a point-wise maximum of straight lines $\rho_v \big[
 In the description of the Algorithm 1, how is the initial restricted coalition set is constructed? For example, it is not clear what the first step means means if no initial set is defined. And also, I am not able to see how the initial values of Lagrangian coefficients lambda is constructed and how they change (if they do) during the algorithm. It would be great to add some clarifications.}
 ~\\[2mm]
 \noindent \textbf{Reply 5.}
-Thanks a lot for your suggestion. For the first part of this question, the initial restricted coalition set can be selected arbitrarily according to the column generation technique. Commonly we select the set which we think can help to accelerate computation speed in our experiments. In our case, the restricted coalition set $S'$ is set to $\{\{1\},\{2\},\ldots, \{v\}\}$, which can also be other forms.
+Thanks a lot for your suggestion. For the first part of this question, the initial restricted coalition set can be selected arbitrarily according to the column generation technique. Commonly we select the set which we think can help to accelerate computation speed in our experiments. In our case, the restricted coalition set $S'$ is set to be $\{\{1\},\{2\},\ldots, \{v\}\}$, which can also be other forms.
 
-With regard to the initial values of Lagrangian coefficients, we set these values, $\lambda_0$, to a zero vector. And about how these values change during Algorithm 1, we have added the detailed clarification in our manuscript.
+With regard to the initial values of Lagrangian coefficients, we set these values, $\lambda_0$, to be a zero vector. And about how these values change during Algorithm 1, we have added the detailed clarification in our manuscript.
 
 All these revisions can be found on Page 9 meanwhile the concrete content about the sub-gradient method is also shown on the same page.
 \\[4mm]
