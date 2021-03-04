@@ -8,6 +8,9 @@
 % 使用 ctexart 文类，UTF-8 编码
 \documentclass[UTF8]{ctexart}
 \usepackage{cases}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
 \begin{document}
 This is the context of the article.
 这就是文章的所有内容。
@@ -15,5 +18,26 @@ This is the context of the article.
   1/q, & if $x = p/q \in \mathbb{Q}$;\\
   0 , & else.
 \end{numcases}
+
+\begin{algorithm}[h]\label{algoIPC}
+\caption{间断点计算(IPC)算法构造 PSPF 函数.}
+\begin{algorithmic}[1]
+
+  \item[步骤 1.] 初始化, 设置 $I^*=\{P_L,P_H\}$ 和 $\mathbb{I}= \{[P_L,P_H]\}$.
+  \item[步骤 2.] 如果 $\mathbb{I}$ 非空, 通过下面的步骤对 $I^*$ 和 $\mathbb{I}$ 进行更新:
+  \item[步骤 3.] 对 $I^*$ 中的值进行排序为 $P_0<P_1<\cdots<P_q$, 其中 $P_0 = P_L,P_q = P_H$, $q = |I^*|-1$。
+  \item[步骤 4.] 从 $\mathbb{I}$ 中选择任意区间, 标记为 $[P_{k-1},P_{k}]$ 其中 $k$ 满足 $1\leq k \leq q$。
+  \item[步骤 5.] 构造两个线性函数 $ R_{k-1}(P)$ 和 $ L_{k}(P)$ 使得 $R_{k-1}(P)$ 以等于 $\omega(P)$ 在 $P_{k-1}$ 处的右导数 $K_{r}^{P_{k-1}}$ 的斜率通过 $(P_{k-1},\omega(P_{k-1}))$, 并且 $L_{k}(z)$ 以等于 $\omega(P)$ 在 $P_{k}$ 处的左导数 $K_{l}^{P_{k}}$
+  的斜率通过 $(P_{k},\omega(P_{k}))$。
+  \item[步骤 6.] 如果 $R_{k-1}(P)$ 经过 $(P_{k},\omega(P_{k}))$ 或者 $L_{k}(P)$ 经过 $(P_{k-1},\omega(P_{k-1}))$, 然后通过移除 $[P_{k-1},P_{k}]$ 更新 $\mathbb{I}$。否则, $R_{k-1}(P)$ 和 $L_{k}(P)$ 一定会在 $P=P'$ 处有一个唯一的交点，其中 $P'$ 为 $(P_{k-1},P_{k})$
+  中的一个点。
+  % \vspace{10pt}
+  通过加入$P^'$ 到 $I^*$中进行更新, 并且从 $\mathbb{I}$ 移除 $[P_{k-1},P_{k}]$ 和加入$[P_l,P']$ 和 $[P',P_r]$。
+  % \vspace{10pt}
+  \item[步骤 7.] 回到步骤 2.
+  \item[步骤 8.] 通过连接 $P \in I^*$ 中的所有点 $(P,\omega(P))$ 返回得到一个分段线性函数。
+
+\end{algorithmic}
+\end{algorithm}
 
 \end{document}
