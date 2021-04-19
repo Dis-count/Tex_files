@@ -1,0 +1,58 @@
+Dear Dr. Liu,
+
+a reviewer and the associate editor have now commented on your paper. You will see that they are advising that you further revise your manuscript significantly. If you are prepared to undertake the work required, I would be pleased to reconsider my decision.  
+
+For your guidance, the reviewer's and AE's comments are appended below.
+
+If you decide to revise the work, please submit a list of changes or a rebuttal against each point which is being raised when you submit the revised manuscript.
+
+Please note: When uploading your revised files, please make sure only to submit your editable source files.
+
+Your revision is due by 13 Jun 2021.
+
+To submit a revision, go to https://www.editorialmanager.com/mmor/ and log in as an Author. You will see a menu item call Submission Needing Revision. You will find your submission record there. 
+
+Yours sincerely
+
+Oliver Stein
+Editor-in-Chief
+Mathematical Methods of Operations Research
+
+
+AE's comments:
+
+The referee detected new problematic parts and that the issues raised in his former report were not properly implemented in this revision which, hence, may be regarded, at least partially, as a deterioration when compared with the old version. Even if a further, now much more careful, revision that incorporates all reviewer's comments successfully would still make a relatively small contribution, I think that it can be justified to allow a last attempt, i.e., one further round of reviewing, without any guarantee for finally accepting the manuscript.
+
+
+Reviewer #1's comments: 
+
+I would like to thank the authors for the attempt to modify and revise the manuscript. Unfortunately, I suspect that my comments to the original version of the paper have not been specific enough and have not been understood by the authors properly, since the revision response does not clarify much to me, and often confuses me more. Alternative explanation might be that I do not understand the response provided by the authors. 
+
+First of all, I do not support the newly introduced term 'variant LP' as not being insightful or even confusing. I would like to go back to the restriction discussion I tried to do in my previous review. Specifically, I understand the reason why the authors have decided not to call LP (4) a restriction of the LP (2). However, my question focused on the LP (2) is as follows:
+Is it true that in LP (2), one might replace constraint 
+\beta(V) = c(V) - w 
+by 
+\beta(V) >= c(V) - w,
+such that for any optimal solution to LP (2) this constraint will be binding? From what is written on page 9 when such adjustment was introduced for z_lambda(w), it seems to me that the same adjustment can be done for LP (2) as well. Please check whether this is the case. 
+
+If this is the case (which, again, I would like the authors to confirm or disconfirm precisely) then I believe many things in the paper, including proofs, for example of Theorem 1 and probably other things will become easier. For example, it will become obvious that LP with constraints 
+\beta(S) <= c_l(S) + z <= c(S) + z 
+\beta(V) >= c_u(V) + z >= c(V) + z 
+will be the proper restriction of LP (2). Moreover, replacing c_l(S) and c_u(V) by c_u(S) and c_l(V)
+\beta(S) <= c_u(S) + z 
+\beta(V) >= c_l(V) + z 
+one will obtain the \emph{relaxation} of the LP (2) with the corresponding lower bound on the z(w). 
+
+Other responses have not appeared clear to me either. For example, When I asked about upper bound on c(S) I am now referred to page 7, where it is stated that Lagrangian relaxation is used to find both bounds. How can Lagrangian relaxation be used to find both bounds? In any case, I have not seen any discussion about possible ways to obtain the upper bound c_u(V) and have not noticed the exact choice of the upper bound employed in the computational study. 
+The new clarification appeared on page 17 is still confusing. For example, 'the curve in subfigure (a) represents that the respective lines passing the two squared points have the same slope' -- I am not sure I understand how different lines can pass through two points, so the entire paragraph is confusing. Further on, I understand that the figure presents results for 4 different games. Why does a) instance obtain zero penalty-subsidy combinations, b) -- 1, c) -- 3, d) -- 4 combinations, what is the logic behind this?
+
+I am still unclear why you introduce the symmetric TSP problems with the full set of binary variables x_{ij}, i != j instead of x_{ij}, i < j. This does not seem to be necessary in relation to coalitions S, please clarify.
+
+Minor comments:
+1. page 10, lines 19-21, s_1 and s_2 should probably be corrected to S_1 and S_2
+2. page 4, line 36: linear programming problems
+3. page 5, line 5: program
+4. page 12, line 17, please add space after min
+5. page 13, line 43, why do you need the notation 't' in c_t(S)?
+6. page 14, line 10-11, could you please clarify the phrase 'constraints (14) and (15) are redundant due to (12)'?
+7. page 15, line 41, 55: s.t.
