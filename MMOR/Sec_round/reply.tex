@@ -56,7 +56,7 @@ Implementations on Rooted Travelling Salesman Games}}
 
 \noindent
 
-We would like to thank the Associate Editor for processing our submission efficiently and providing guidance for the revision, and also thank the Referees for the encouraging and detailed comments on the paper.
+We would like to thank the Associate Editor for processing our submission efficiently and providing guidance for the revision, and also thank the Referee for the detailed comments on the paper.
 We have carefully studied all the comments and addressed them in our manuscript.
 
 % In this reply, we summarize several major changes we have made, and then give the specific details.
@@ -76,7 +76,7 @@ We have carefully studied all the comments and addressed them in our manuscript.
 % Sixth, regarding the Figure 2, we add the definitions of squared points and round points to the legend of the figure and the meaning of curves (a) and (c) in Figure 2 is explained on page 17.
 %
 
-Please find below our point-by-point reply to each of the Referees. To facilitate reading, the original comments are in {\it italics}.
+Please find below our point-by-point reply to the Referee. To facilitate reading, the original comments are in {\it italics}.
 
 %\vspace{10mm}
 \newpage
@@ -90,7 +90,7 @@ The main issues raised in your report are addressed as follows:
 \\[4mm]
 %
 %
-\noindent {\textbf{Question 1.}
+\noindent {\it \textbf{Question 1.}
 However, my question focused on the LP (2) is as follows:
 Is it true that in LP (2), one might replace constraint
 $\beta(V) = c(V) - w$
@@ -105,23 +105,30 @@ $$\beta(V) \textcolor{red}{\geq c_u(V) + z \geq c(V) + z}$$
 For example, it will become obvious that LP with constraints
 $\beta(S) \leq c_l(S) + z \leq c(S) + z$
 $\beta(V) \geq c_u(V) + z \geq c(V) + z$
-will be the proper restriction of LP (2). Moreover, replacing c_l(S) and c_u(V) by c_u(S) and c_l(V)
-$ \beta(S) \leq c_u(S) + z$
-$ \beta(V) \geq c_l(V) + z$
+will be the proper restriction of LP (2). Moreover, replacing $c_l(S)$ and $c_u(V)$ by $c_u(S)$ and $c_l(V)$
+$\beta(S) \leq c_u(S) + z$
+$\beta(V) \geq c_l(V) + z$}
 
 \noindent \textbf{Reply 1.}
 Thanks for your question. With regard to the conversion from the equality to the inequality, we have added more detailed explanations on page 9. For the second part of this question, we are sorry that the original term ``restricted LP" on page 7 is misunderstanding, and it is now replaced with term ``variant LP" to describe the relationships between LPs (2) and (4).
 
 To be specific, when $c(S)$ and $c(V)$, in LP (2), are respectively replaced by $c_l(S)$ and $c_u(V)$ in LP (4).
-Constraint $\beta(S) \leq c_l(S) + z \leq c(S) + z$ for any $S$ is a restriction of the original one, while $\beta(V) \geq c_u(V) + z \geq c(V) + z$ is not.
+
+Constraint $\beta(S) \leq c_l(S) + z \leq c(S) + z$ for any $S$ is a restriction of the original one, while 
+$\beta(V) \geq c_u(V) + z \geq c(V) + z$ is not.
 Therefore, LP(4) can be viewed as a variant, rather than a restriction, of LP(2).
 Under the joint effects of the replacement of both constraints, we can find that LP(4) indeed can provide an upper bound for LP(2), as we have shown in Theorem 1.
+
+bound 证明改吗？
+LP2 -> 4 -> 6
+LP2 -> 6
+一两页
 \\[4mm]
 %
 %
 %
-\noindent {\textbf{Question 2.}
-Other responses have not appeared clear to me either. For example, When I asked about upper bound on c(S) I am now referred to page 7, where it is stated that Lagrangian relaxation is used to find both bounds. How can Lagrangian relaxation be used to find both bounds? In any case, I have not seen any discussion about possible ways to obtain the upper bound c_u(V) and have not noticed the exact choice of the upper bound employed in the computational study.
+\noindent {\it \textbf{Question 2.}
+Other responses have not appeared clear to me either. For example, When I asked about upper bound on c(S) I am now referred to page 7, where it is stated that Lagrangian relaxation is used to find both bounds. How can Lagrangian relaxation be used to find both bounds? In any case, I have not seen any discussion about possible ways to obtain the upper bound $c_u(V)$ and have not noticed the exact choice of the upper bound employed in the computational study.}
 ~\\[2mm]
 
 \noindent \textbf{Reply 2.}
@@ -135,7 +142,7 @@ In the second half of this manuscript, when the Lagrangian relaxation technique 
 % In order to be consistent with the general methods, we only mentioned a general method, i.e., Lagrangian heuristic to calculate the upper bound $c(V)$.
 ~\\[4mm]
 
-\noindent {\textbf{Question 3.}
+\noindent {\it \textbf{Question 3.}
 I am a bit confused by Figure 2. Does it represent 4 different games? What exactly is on y axis and x axis, Penalty and Subsidy on y and x axis for all 4 figures? I suggest to add definitions of squared points and round points to the legend of the figure. Why is it that one figure gets two points and another gets 6 and they are evaluated at different levels of subsidy?}
 ~\\[2mm]
 
@@ -162,15 +169,29 @@ The curve in subfigure (b) represents that the two lines passing the two squared
 As for the curve in subfigure (d), the only difference between the curve in (c) and the curve in (d) is that the curve in (d) has one more line intersection process than that in (c) at the right half part of the subfigure.
 ~\\[4mm]
 
-\noindent {\textbf{Question 4.}
+\noindent {\it \textbf{Question 4.}
 The symmetry of TSP game. I would like to attract the attention of the authors to the Dantzig Fulkerson Johnson (1954) paper, which originated the development of the TSP theory. Most importantly, the authors there also considered a symmetric TSP problem. If the problem is symmetric, one does not need as many binary variables as was introduced by authors. For example, on page 13 $x_{ij}$ exists together with $x_{ji}$ but direction of the travel is not important for symmetric problem therefore it is sufficient to introduce $x_e$ for e being an edge or $x_{ij}$ for $i < j$ only. This is how the TSP problem was introduced in DFJ and this is something that can simplify many notations in this paper. Also, it will be probably a good idea to get rid of $x_{ii}$ variables on page 13 and other optimization problems.}
 ~\\[2mm]
 
-I am still unclear why you introduce the symmetric TSP problems with the full set of binary variables $ x_{ij}, i = j$ instead of $x_{ij}, i < j$. This does not seem to be necessary in relation to coalitions S, please clarify.
+I am still unclear why you introduce the symmetric TSP problems with the full set of binary variables $x_{ij}, i \noteq j$ instead of $x_{ij}, i < j$. This does not seem to be necessary in relation to coalitions S, please clarify.
 
 \noindent \textbf{Reply 4.}
 Thanks a lot for your comment.
-Yes, as you have pointed out, when it comes to a symmetric TSP problem, it is more convenient to introduce decision variables such as $``x_e"$ or $``x_{ij}, i<j"$.
+% Yes, as you have pointed out, when it comes to a symmetric TSP problem, it is more convenient to introduce decision variables such as $``x_e"$ or $``x_{ij}, i<j"$.
+1.  $x_{ij}, i \noteq j$ will be helpful to derive (17)
+
+2.
+
+3. 
+
+2. TSP 对称问题   只定义 TSP game 只用一半角标是可以的，但是计算。
+- 1. x_e 不能体现局中人
+- 2. ij 对称有助于推导(17)，而 i<j 不行
+- 3. 对称与生成树之间的关系 1971 帮助求解  加速后面的过程
+× 4. 对称 包括了不对称的情形？ 这条不必要
+
+强调 对称为了后面能够计算  只说为什么 而不用提怎么用。
+
 However, in the context of cooperative game theory (e.g., TSP game), since we have to indicate the existence of some player in a coalition (e.g., $\gamma^{S}_j=1$ indicates that player $j$ is in coalition $S$), it would be useful and neat to introduce variable $x_{ij}$ for better descriptions.
 \\[4mm]
 
@@ -189,6 +210,8 @@ Thank you very much for pointing out the typos of our manuscript in Minor Commen
 5. page 13, line 43, why do you need the notation 't' in $c_t(S)$?
 
 6. page 14, line 10-11, could you please clarify the phrase 'constraints (14) and (15) are redundant due to (12)'?
+
+constraint (12) means 
 
 7. page 15, line 41, 55: s.t.
 
