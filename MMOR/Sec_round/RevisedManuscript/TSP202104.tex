@@ -155,7 +155,7 @@ Therefore, following the S\&P idea and stabilizing the grand coalition in unbala
 By broadly focusing on the integer minimization (IM) game, \cite{leastcore2018} developed the cutting plane (CP) and linear programming (LP) approaches based on the CP method and LP duality theory, respectively, to compute $\omega(z)$ for a given $z$.
 The two approaches are effective under certain situations: the CP approach is effective when the corresponding separation problem is computationally tractable, and the LP approach is effective when the associating convex polyhedron is well identified.
 However, computing the subsidized minimum penalty $z(\omega)$ for any given $\omega$ is in general hard due to the following reasons.
-First, LP (\ref{eqn:SLC}) is a \textcolor{red}{linear programming involving an exponential number of constraints.}
+First, LP (\ref{eqn:SLC}) is \textcolor{red}{a linear programming problem involving an exponential number of constraints.}
 Second, the characteristic function $c(S)$ is intractable in some IM games, such as machine scheduling (\citealt{leastcore2018}), facility location (\citealt{Kolen1983FL,Goemans2000FL,Puerto2011}), and travelling salesman (TSP) (\citealt{tamir1989core,potters1992traveling,kimms2016core}).
 
 Following the concept of simultaneous S\&P, we develop a new heuristic algorithm based on the Lagrangian relaxation to compute the subsidized minimum penalty, $z^*(\omega)$, for an IM game.
@@ -167,7 +167,7 @@ Compared with the CP approach in \cite{leastcore2018}, this framework is efficie
 
 
 Second, following the heuristic framework, we introduce the well-known Lagrangian bounds and develop an algorithm based on Lagrangian relaxation (LRB algorithm) for computing $z(\omega)$.
-Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, \textcolor{red}{for those integer linear programmings having no integrality property,} Lagrangian bounds are sharper than linear relaxation bounds.
+Compared with the LP approach in \cite{leastcore2018}, the LRB algorithm is effective since, \textcolor{red}{for those integer linear programming problems having no integrality property,} Lagrangian bounds are sharper than linear relaxation bounds.
 Furthermore, the LRB algorithm is able to deal with nonlinear situations while the LP approach is not.
 
 Third, we implement our ideas in the rooted TSP games.
@@ -459,7 +459,7 @@ Therefore, we need to find the lower bound of $z(\omega)$ in order to evaluate t
 We propose a method to calculate the lower bound $z_{k}(\omega)$, also called the $k$-level lower bound, of $z(\omega)$ by merely considering a subset of the constraints in LP~(\ref{eqn:SLC}). The value of $z_{k}(\omega)$ is obtained from LP,
 \begin{eqnarray}\label{eqn:klevel}
 \begin{aligned}
-z_k(\omega) = \min_{\beta,z} &z\\
+z_k(\omega) = \min_{\beta,z} &~z\\
 s.t.~~~\textcolor{red}{\beta(S) \leq c_{u}(S)+z,  \textcolor{red}{{~where~} |S| \leq k} &  \textcolor{red}{\text{~or~} |S| > v-k, ~\forall ~ S \in \mathbb{S} \setminus V}},\\
 \beta(S) \leq c_{u}(S)+z,~\forall& S \in \mathbb{S}^{'\omega}_{\lambda},\\
 \beta(V)=c_{\lambda}(V)&-\omega.
